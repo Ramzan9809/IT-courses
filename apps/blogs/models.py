@@ -1,6 +1,8 @@
 from django.db import models
 from apps.courses.models import Instructors, Category
 from django.urls import reverse
+from ckeditor.fields import RichTextField
+
 
 class Blog(models.Model):
     banner = models.ImageField(upload_to='media/', verbose_name='Баннер')
@@ -10,8 +12,8 @@ class Blog(models.Model):
     date = models.DateTimeField(auto_now_add=True) 
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     count_comments = models.IntegerField(verbose_name='Кол-во комментраиев')
-    desc = models.TextField(verbose_name='Текст')
-    quote = models.TextField(verbose_name='Цитата')
+    desc = RichTextField(verbose_name='Описание')
+    quote = RichTextField(verbose_name='Описание')
     slug = models.SlugField(unique=True)
 
     class Meta:

@@ -44,17 +44,50 @@ class Course(models.Model):
     count_lessons = models.IntegerField(
         verbose_name='Количество уроков', blank=True, null=True
     )
+    discount_price = models.DecimalField(
+        verbose_name="Фиксированная скидка (в валюте)",
+        max_digits=12, decimal_places=2, null=True, blank=True,
+        help_text="Например: -500 означает скидку  500 сомов" 
+    )  
+    discount_percent = models.PositiveIntegerField(
+        verbose_name="Процентная скидка (%)",
+        blank=True, null=True, 
+        help_text="Например: 20 означает скидку 20%"
+    )
     slug = models.SlugField(null=False, unique=True)
 
     def __str__(self):
         return self.title
     
+    def get_final_price(self):
+        price = self.price
+        
+        # если есть процентная скидка
+        if self.discount_percent:
+            price = price - (price * self.discount_percent/ 100)
+
+        # если есть фиксированная скидка
+        if self.discount_price:
+            price = price - self.discount_price
+
+        return max(price, 0)
+
+    def get_absolute_url(self):
+        return reverse("course_detail", kwargs={"slug": self.slug})
+
     class Meta:
         verbose_name = 'курс'
         verbose_name_plural = 'Курсы'
 
-    def get_absolute_url(self):
-        return reverse("course_detail", kwargs={"slug": self.slug})
+
+class Video(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='курс')
+    title = models.CharField(max_length=50, verbose_name='название')
+    banner = models.ImageField(upload_to='product-detail', verbose_name='баннер')
+    url = models.CharField(max_length=255, verbose_name='ссылка на видео')
+
+    def __str__(self):
+        return self.course.title
 
 
 class Instructors(models.Model): 
@@ -64,7 +97,7 @@ class Instructors(models.Model):
         verbose_name='Должность', max_length=100, 
         help_text="Например: Фронтенд мидл разработчик, Экономист"
     )
-    desc = models.TextField(verbose_name='Обо мне')   
+    desc = RichTextField(verbose_name='Описание')
     count_courses = models.IntegerField(
        verbose_name='Количество курсов с Ментором', blank=True, null=True
     )

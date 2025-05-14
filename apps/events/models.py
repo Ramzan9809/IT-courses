@@ -1,10 +1,12 @@
 from django.db import models
 from django.urls import reverse
 from apps.courses.models import Instructors
+from ckeditor.fields import RichTextField
+
 
 class Event(models.Model):
     title = models.CharField(max_length=200, verbose_name='Название')
-    desc = models.TextField(verbose_name='Описание')
+    desc = RichTextField(verbose_name='Описание')
     price = models.CharField(max_length=6, verbose_name='Цена')
     day = models.CharField(max_length=2, verbose_name='День мероприятия')
     month = models.CharField(max_length=10, verbose_name='Месяц мероприятия')

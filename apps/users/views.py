@@ -12,7 +12,7 @@ def login_view(request):
          login = request.POST.get('login')
          password = request.POST.get('password')
          usr = authenticate(request, username=login, password=password)
-         if usr is not None: # проверка на сущ
+         if usr is not None:
              user_login(request, usr)
              return HttpResponseRedirect('/')
          else:
@@ -45,11 +45,5 @@ def reg_view(request):
 def logout_view(request):
     user_logout(request)
     return HttpResponseRedirect('/')
-
-
-# @login_required
-# def profile_view(request):
-#     categories = Category.objects.all()[:6]
-#     return render(request, 'auth/profile.html', {'categories':categories})
 
 

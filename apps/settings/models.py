@@ -1,5 +1,7 @@
 from django.db import models
 from apps.courses.models import Category
+from ckeditor.fields import RichTextField
+
 
 class Settings(models.Model):
     logo = models.ImageField(upload_to='media/', verbose_name='лого')
@@ -20,7 +22,7 @@ class Slider(models.Model):
     on_title = models.CharField(max_length=100, verbose_name='Над заголовок')
     under_title = models.CharField(max_length=50, verbose_name='Под заголовок', null=True, blank=True)
     under_title_2 = models.CharField(max_length=50, verbose_name='Под заголовок 2', null=True, blank=True)
-    desc = models.TextField(verbose_name='Описание')
+    desc = RichTextField(verbose_name='Описание')
 
     def __str__(self):
         return self.main_title
@@ -31,7 +33,7 @@ class Slider(models.Model):
 
 class Faq(models.Model):
     question = models.CharField(max_length=100, verbose_name="Вопрос")
-    answer = models.TextField(verbose_name="Ответ")
+    answer = RichTextField(verbose_name='Описание')
 
     def __str__(self):
          return self.question
@@ -53,7 +55,7 @@ class Reviews(models.Model):
         ('Ментор', 'Ментор'),
     )
     main_message = models.CharField(max_length=100, verbose_name='Главное сообщение')
-    desc = models.TextField(verbose_name='Подробнее')
+    desc = RichTextField(verbose_name='Описание')
     rating = models.IntegerField(choices=RATING_CHOICES, default=5, verbose_name='Рейтинг')
     name = models.CharField(max_length=200, verbose_name='Фио')
     who_say = models.CharField(max_length=10, choices=WHO_CHOICES, default='Студент', verbose_name='Кто вы?')
