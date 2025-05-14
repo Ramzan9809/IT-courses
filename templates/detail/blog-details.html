@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!--==================================================-->
+<!-- Start educate Breadcumb Area -->
+<!--==================================================-->
+<div class="breadcumb-area two d-flex">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12">
+				<div class="breadcumb-content text-center">
+					<div class="breadcumb-title">
+						<h4>Детали блога</h4>
+					</div>
+					<ul>
+						<li><a href="{% url "home" %}">Главная <span><i class="fa-solid fa-arrow-right-long"></i></span></a></li>
+						<li><a href="{% url "blog" %}">Блог<span><i class="fa-solid fa-arrow-right-long"></i></span></a></li>
+						<li>{{ blog.title }}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="bread-shape">
+			<img src="{% static 'images/inner-img/book-hand.png' %}" alt="book">
+		</div>
+		<div class="bread-dot">
+			<img src="{% static 'images/inner-img/bread-dot.png' %}" alt="dot">
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End educate Breadcumb Area -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- start educate blog details Area -->
+<!--==================================================-->
+<div class="blog-details-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="row blogs-pr">
+					<div class="single-blog-dtls-box">
+						<div class="blog-thumb">
+							<img src="{{ blog.banner.url }}" alt="thumb">
+							<div class="meta-blog">
+								<a href="blog-details.html">{{ blog.category }}</a>
+							</div>
+						</div>
+						<div class="blog-content">
+							<ul class="blog-author">
+								<li class="autor-name"><img src="{{ blog.instructor.mini_photo.url }}" alt="autor"><span>{{ blog.instructor.name }}</span></li>
+								<li class="detail-calender"><i class="fa-solid fa-calendar-week"></i><span>{{ blog.date }}</span> </li>
+								<li class="details-comment"> <i class="fa-solid fa-comments"></i>{{ blog.count_comments }} Комментариев</li>
+							</ul>
+
+							<h2 class="blog-title"><a href="blog-details.html">{{ blog.title }}</a></h2>
+
+							<p class="blog-desc2">{{ blog.desc }}</p>
+
+							<div class="blog-quote">
+								<p>“{{ blog.quote}}”</p>
+							</div>
+
+							<h2 class="blog-title2"><a href="blog-details.html">Узнайте преимущества</a></h2>
+
+							<p class="blog-desc3">Глобально задействуйте навыки лидерства в кросс-медиа, прежде чем кросс-медийные инновации начнут трансформироваться, гибкие, тогда как процессно-ориентированные модели преобладают. Эффективно преобразуйте основные 
+
+								направленные на клиента согласования для front-end meta. Радикально используйте кросс-платформенные лучшие практики, тогда как центрированные на данных бизнес-сервисы. После того, как
+								
+								независимо формулируйте стандарты в инновациях с беспроводным вертикальным интеллектуальным капиталом, прежде чем глобальные архитектуры технически вовлекут основанные на результатах с дальновидными 
+								
+								моделями. Радикально используйте платформу наилучшего отношения к образованию</p>
+							<div class="row">
+								<div class="col-lg-4">
+									<div class="blog-details-list">
+										<ul class="product-list">
+											<li>Член профессиональной команды</li>
+											<li>Решения проблем клиентов</li>
+											<li>Увеличение продаж дополнительных объектов</li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-lg-4">
+									<div class="blog-details-list two">
+										<ul class="product-list">
+											<li>Решение любых проблем</li>
+											<li>Доступна круглосуточная поддержка</li>
+											<li>Бесплатные инструменты для клиентов</li>
+										</ul>
+									</div>
+								</div>
+								<div class="col-lg-4">
+									<div class="blog-details-list three">
+										<ul class="product-list">
+											<li>Доступна круглосуточная поддержка</li>
+											<li>Бесплатные инструменты для клиентов</li>
+											<li>Увеличение продаж дополнительных объектов</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row align-items-center category-space">
+							<div class="col-lg-6 col-md-7">
+								<ul class="blog-category">
+									{% for c in category %}
+										<li><a href="#">{{ c.name }}</a></li>
+									{% endfor %}
+								</ul>
+							</div>
+							<div class="col-lg-6 col-md-5">
+								<div class="blog-details-social-icon">
+									<ul>
+										<li><a href="blog-details.html#"><i class="fab fa-facebook-f"></i></a></li>
+										<li><a href="blog-details.html#"><i class="fa-brands fa-x-twitter"></i></a></li>
+										<li><a href="blog-details.html#"><i class="fab fa-linkedin-in"></i></a></li>
+										<li><a href="blog-details.html#"><i class="fab fa-pinterest-p"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="blog-details-contents">
+									<h3>Комментариев {{ blog.count_comments }}</h3>	
+								</div>
+								{% for com in comments %}
+									<div class="blog-details-comment">
+										<div class="blog-details-comment-thumb">
+											<img src="{{ com.photo.url }}" alt="autor">
+										</div>
+										<div class="blog-details-comment-reply">							
+											<a href="#">Отетить</a>
+										</div>	
+										<div class="blog-details-comment-content">							
+											<h2>{{ com.name }}</h2>	
+											<span>{{ com.date }}</span>								
+											<p>{{ com.comment }}</p>
+										</div>									
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="comment-form">
+									<div class="comment-title">
+										<h3>Оставьте комментарий</h3>
+										<p>Ваш адрес электронной почты не будет опубликован. Так что не волнуйтесь.</p>
+										<span></span>
+									</div>
+									<form action="https://formspree.io/f/myyleorq" method="POST" id="dreamit-form">
+										<div class="row">
+											<div class="col-md-12">
+												<textarea name="comment-message" class="mb-20" id="comment-msg-box" cols="30" rows="4" placeholder="Ваш комментарий"></textarea>
+											</div>
+											<div class="col-md-6"><input type="text" class="comment-box" name="comment-name" placeholder="Имя *"></div>
+											<div class="col-md-6"><input type="email" class="comment-box" name="comment-email" placeholder="Email *"></div>
+			
+											<div class="checkout-option">
+												<input id="rememberMe" type="checkbox">
+												<label for="rememberMe">Сохранить мою информацию в этом браузере для следующих комментариев</label>
+											</div>									
+											<div class="col-lg-12">
+												<input type="submit" value="Отправить" class="submit-comment">
+											</div>
+										</div>
+									</form>
+									<div id="status"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- end educate blog Area -->
+<!--==================================================-->
+
+{% endblock content %}

@@ -1,0 +1,485 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="breadcumb-area two d-flex">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12">
+				<div class="breadcumb-content text-center">
+					<div class="breadcumb-title">
+						<h4>Магазин</h4>
+					</div>
+					<ul>
+						<li><a href="{% url "home" %}">Главная <span><i class="fa-solid fa-arrow-right-long"></i></span></a></li>
+						<li>Магазин</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="bread-shape">
+			<img src="{% static 'images/inner-img/book-hand.png' %}" alt="book">
+		</div>
+		<div class="bread-dot2">
+			<img src="{% static 'images/inner-img/bread-dot.png' %}" alt="dot">
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End educate Breadcumb Area -->
+<!--==================================================-->
+
+
+
+
+
+
+<!--==================================================-->
+<!-- start educate shop section area -->
+<!--==================================================-->
+<div class="shop-section">
+	<div class="container">
+		<div class="row products">
+			<div class="col-lg-12">
+				<div class="row">
+					<div class="col-lg-3">
+						<div class="widget-category-box">
+							<!-- categories title -->
+							<div class="categories-title">
+								<h4>Categories</h4>
+							</div>
+							<!-- label -->
+							<label class="widget-category">Historical Fiction <span>(18)</span>
+							</label>
+							<!-- label -->
+							<label class="widget-category">Mystery and Thriller <span>(13)</span>
+							</label>
+							<!-- label -->
+							<label class="widget-category">Biography and Memoir <span>(10)</span>
+							</label>
+							<!-- label -->
+							<label class="widget-category"> Business and Finance <span>(09)</span>
+							</label>
+							<!-- label -->
+							<label class="widget-category">Non-Fiction <span>(05)</span>
+							</label>
+							<!-- label -->
+							<label class="widget-category">Poetry <span>(02)</span>
+							</label>
+						</div>
+					<!-- range wrapper Start -->
+					<div class="range-wrapper-box">
+						<!-- categories title -->
+						<div class="range-title">
+							<h4> Filter by Price</h4>
+						</div>
+						<div id="slider-range"></div>
+						<div class="slider-labels">
+							<div class="caption">
+								<span id="slider-range-value1"></span>
+							</div>
+							<div class="text-right caption">
+								<span>-</span> <span id="slider-range-value2"></span>
+							</div>
+						</div>
+						<form>
+							<input type="hidden" name="min-value" value="">
+							<input type="hidden" name="max-value" value="">
+						</form>
+					</div>
+					<!-- range wrapper End -->
+					</div>
+					<div class="col-lg-9">
+						<!-- Tab -->
+						<div class="tab">
+							<div class="shop-tab-grid">
+								<ul class="tabs">
+									<li class="diamond"><a href="shop.html#"><i class="bi bi-x-diamond"></i></a></li>
+									<li class="shop-list"><a href="shop.html#"><i class="bi bi-text-left"></i></a></li>
+									<li class="shop-result">Showing 1-9 Result out of 12</li>
+								</ul> <!-- / tabs -->
+								<div class="shop-wiget-search">
+									<div class="search">
+										<form action="https://formspree.io/f/myyleorq" method="POST">
+											<input type="text" name="s" value="" placeholder="Search Here" title="Search for:" required="">
+											<button type="submit" class="icons"><i class="fa fa-search"></i></button>
+										</form>
+									</div>
+								</div>
+							</div>
+							<div class="tab_content">
+								<!-- / tabs_item -->
+								<div class="tabs_item">
+									<div class="row">
+										<div class="col-xl-4 col-lg-6 col-md-6">
+											<div class="single-products-box">
+												<!-- products thumb -->
+												<div class="products-thumb">
+													<img src="assets/images/inner-img/shop-thumb1.png" alt="thumb">
+													<div class="product-btn">
+														<a href="shop-details.html">View Details</a>
+													</div>
+												</div>
+												<!-- products content -->
+												<div class="product-content">
+													<div class="product-title">
+														<h2>George Orwell</h2>
+													</div>
+													<ul class="product-rating">
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="fa-classic fa-solid fa-star-half-stroke fa-fw"></i></li>
+														<li class="ratting-text">(4.5)</li>
+													</ul>
+													<div class="product-price">
+														<p>$60</p>
+													</div>
+												</div>
+											</div>
+										</div>
+	
+										<div class="col-xl-4 col-lg-6 col-md-6">
+											<div class="single-products-box">
+												<!-- products thumb -->
+												<div class="products-thumb">
+													<img src="assets/images/inner-img/shop-thumb2.png" alt="thumb">
+													<div class="product-btn">
+														<a href="shop-details.html">View Details</a>
+													</div>
+												</div>
+												<!-- products content -->
+												<div class="product-content">
+													<div class="product-title">
+														<h2>Moby-Dick</h2>
+													</div>
+													<ul class="product-rating">
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="fa-classic fa-solid fa-star-half-stroke fa-fw"></i></li>
+														<li class="ratting-text">(4.5)</li>
+													</ul>
+													<div class="product-price">
+														<p>$60 <del>$100</del></p>
+													</div>
+												</div>
+											</div>
+										</div>
+	
+										<div class="col-xl-4 col-lg-6 col-md-6">
+											<div class="single-products-box">
+												<!-- products thumb -->
+												<div class="products-thumb">
+													<img src="assets/images/inner-img/shop-thumb3.png" alt="thumb">
+													<div class="product-btn">
+														<a href="shop-details.html">View Details</a>
+													</div>
+												</div>
+												<!-- products content -->
+												<div class="product-content">
+													<div class="product-title">
+														<h2>Brave New World</h2>
+													</div>
+													<ul class="product-rating">
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="fa-classic fa-solid fa-star-half-stroke fa-fw"></i></li>
+														<li class="ratting-text">(4.5)</li>
+													</ul>
+													<div class="product-price">
+														<p>$40</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-xl-4 col-lg-6 col-md-6">
+											<div class="single-products-box">
+												<!-- products thumb -->
+												<div class="products-thumb">
+													<img src="assets/images/inner-img/shop-thumb4.png" alt="thumb">
+													<div class="product-btn">
+														<a href="shop-details.html">View Details</a>
+													</div>
+												</div>
+												<!-- products content -->
+												<div class="product-content">
+													<div class="product-title">
+														<h2>The Hobbit</h2>
+													</div>
+													<ul class="product-rating">
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="fa-classic fa-solid fa-star-half-stroke fa-fw"></i></li>
+														<li class="ratting-text">(4.5)</li>
+													</ul>
+													<div class="product-price">
+														<p>$40 <del>$100</del></p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-xl-4 col-lg-6 col-md-6">
+											<div class="single-products-box">
+												<!-- products thumb -->
+												<div class="products-thumb">
+													<img src="assets/images/inner-img/shop-thumb5.png" alt="thumb">
+													<div class="product-btn">
+														<a href="shop-details.html">View Details</a>
+													</div>
+												</div>
+												<!-- products content -->
+												<div class="product-content">
+													<div class="product-title">
+														<h2>A Game of Thrones</h2>
+													</div>
+													<ul class="product-rating">
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="fa-classic fa-solid fa-star-half-stroke fa-fw"></i></li>
+														<li class="ratting-text">(4.5)</li>
+													</ul>
+													<div class="product-price">
+														<p>$80</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-xl-4 col-lg-6 col-md-6">
+											<div class="single-products-box">
+												<!-- products thumb -->
+												<div class="products-thumb">
+													<img src="assets/images/inner-img/shop-thumb6.png" alt="thumb">
+													<div class="product-btn">
+														<a href="shop-details.html">View Details</a>
+													</div>
+												</div>
+												<!-- products content -->
+												<div class="product-content">
+													<div class="product-title">
+														<h2>Neuromancer</h2>
+													</div>
+													<ul class="product-rating">
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="fa-classic fa-solid fa-star-half-stroke fa-fw"></i></li>
+														<li class="ratting-text">(4.5)</li>
+													</ul>
+													<div class="product-price">
+														<p>$60</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-xl-4 col-lg-6 col-md-6">
+											<div class="single-products-box">
+												<!-- products thumb -->
+												<div class="products-thumb">
+													<img src="assets/images/inner-img/shop-thumb7.png" alt="thumb">
+													<div class="product-btn">
+														<a href="shop-details.html">View Details</a>
+													</div>
+												</div>
+												<!-- products content -->
+												<div class="product-content">
+													<div class="product-title">
+														<h2>Big Little Lies</h2>
+													</div>
+													<ul class="product-rating">
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="fa-classic fa-solid fa-star-half-stroke fa-fw"></i></li>
+														<li class="ratting-text">(4.5)</li>
+													</ul>
+													<div class="product-price">
+														<p>$50</p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-xl-4 col-lg-6 col-md-6">
+											<div class="single-products-box">
+												<!-- products thumb -->
+												<div class="products-thumb">
+													<img src="assets/images/inner-img/shop-thumb8.png" alt="thumb">
+													<div class="product-btn">
+														<a href="shop-details.html">View Details</a>
+													</div>
+												</div>
+												<!-- products content -->
+												<div class="product-content">
+													<div class="product-title">
+														<h2>The Reversal</h2>
+													</div>
+													<ul class="product-rating">
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="fa-classic fa-solid fa-star-half-stroke fa-fw"></i></li>
+														<li class="ratting-text">(4.5)</li>
+													</ul>
+													<div class="product-price">
+														<p>$70 <del>$100</del></p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-xl-4 col-lg-6 col-md-6">
+											<div class="single-products-box">
+												<!-- products thumb -->
+												<div class="products-thumb">
+													<img src="assets/images/inner-img/shop-thumb9.png" alt="thumb">
+													<div class="product-btn">
+														<a href="shop-details.html">View Details</a>
+													</div>
+												</div>
+												<!-- products content -->
+												<div class="product-content">
+													<div class="product-title">
+														<h2>Sharp Objects</h2>
+													</div>
+													<ul class="product-rating">
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="bi bi-star-fill"></i></li>
+														<li><i class="fa-classic fa-solid fa-star-half-stroke fa-fw"></i></li>
+														<li class="ratting-text">(4.5)</li>
+													</ul>
+													<div class="product-price">
+														<p>$60</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div> 
+							</div>
+							<!-- / tabs_item -->
+							<div class="tabs_item">
+								<div class="row">
+									<div class="col-xl-4 col-lg-6 col-md-6">
+										<div class="single-products-box">
+											<!-- products thumb -->
+											<div class="products-thumb">
+												<img src="assets/images/inner-img/shop-thumb7.png" alt="thumb">
+												<div class="product-btn">
+													<a href="shop-details.html">View Details</a>
+												</div>
+											</div>
+											<!-- products content -->
+											<div class="product-content">
+												<div class="product-title">
+													<h2>Big Little Lies</h2>
+												</div>
+												<ul class="product-rating">
+													<li><i class="bi bi-star-fill"></i></li>
+													<li><i class="bi bi-star-fill"></i></li>
+													<li><i class="bi bi-star-fill"></i></li>
+													<li><i class="bi bi-star-fill"></i></li>
+													<li><i class="fa-classic fa-solid fa-star-half-stroke fa-fw"></i></li>
+													<li class="ratting-text">(4.5)</li>
+												</ul>
+												<div class="product-price">
+													<p>$50</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-xl-4 col-lg-6 col-md-6">
+										<div class="single-products-box">
+											<!-- products thumb -->
+											<div class="products-thumb">
+												<img src="assets/images/inner-img/shop-thumb8.png" alt="thumb">
+												<div class="product-btn">
+													<a href="shop-details.html">View Details</a>
+												</div>
+											</div>
+											<!-- products content -->
+											<div class="product-content">
+												<div class="product-title">
+													<h2>The Reversal</h2>
+												</div>
+												<ul class="product-rating">
+													<li><i class="bi bi-star-fill"></i></li>
+													<li><i class="bi bi-star-fill"></i></li>
+													<li><i class="bi bi-star-fill"></i></li>
+													<li><i class="bi bi-star-fill"></i></li>
+													<li><i class="fa-classic fa-solid fa-star-half-stroke fa-fw"></i></li>
+													<li class="ratting-text">(4.5)</li>
+												</ul>
+												<div class="product-price">
+													<p>$70 <del>$100</del></p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-xl-4 col-lg-6 col-md-6">
+										<div class="single-products-box">
+											<!-- products thumb -->
+											<div class="products-thumb">
+												<img src="assets/images/inner-img/shop-thumb9.png" alt="thumb">
+												<div class="product-btn">
+													<a href="shop-details.html">View Details</a>
+												</div>
+											</div>
+											<!-- products content -->
+											<div class="product-content">
+												<div class="product-title">
+													<h2>Sharp Objects</h2>
+												</div>
+												<ul class="product-rating">
+													<li><i class="bi bi-star-fill"></i></li>
+													<li><i class="bi bi-star-fill"></i></li>
+													<li><i class="bi bi-star-fill"></i></li>
+													<li><i class="bi bi-star-fill"></i></li>
+													<li><i class="fa-classic fa-solid fa-star-half-stroke fa-fw"></i></li>
+													<li class="ratting-text">(4.5)</li>
+												</ul>
+												<div class="product-price">
+													<p>$60</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div> 
+							<!-- / tabs_item -->
+						</div> 
+					<!-- End tab -->
+					<div class="pagination-menu">
+						<ul>
+						  <li><a href="shop.html#">1</a></li>
+						  <li><a href="shop.html#">2</a></li>
+						  <li>
+							<a href="shop.html#"><i class="fa-solid fa-angle-right"></i></a>
+						  </li>
+						</ul>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>
+
+<!--==================================================-->
+<!-- start educate shop section area -->
+<!--==================================================-->
+
+{% endblock content %}

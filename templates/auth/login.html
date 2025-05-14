@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!--==================================================-->
+<!-- Start educate sign in form area -->
+<!--==================================================-->
+<section class="course-sign-form-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-6 col-lg-6">
+				<div class="course-sign-in">
+					<div class="sign-form">
+						<div class="bd-section-title-wrapper">
+							<h2 class="sign-form-title">Добро пожаловать!</h2>
+							<p class="sign-desc">Войдите, чтобы продолжить свое путешествие и открыть для себя мир возможностей.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6">
+				<div class="sign-form-wrapper">
+					<div class="sign-form-logo">
+						<a href="{% url "home" %}"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
+					</div>
+					<h3 class="sign-in-title">Войти</h3>
+					<p class="subtitle">С возвращением.</p>
+					<form action="https://formspree.io/f/myyleorq" method="POST">
+						<div class="form-input-box">
+							<div class="form-input-title">
+								<label for="emailAddress">Email <span>*</span></label>
+							</div>
+							<div class="form-input">
+								<input name="email" id="emailAddress" type="email" placeholder="Email">
+							</div>
+						</div>
+						<div class="form-input-box">
+							<div class="form-input-title">
+								<label for="password">Пароль <span>*</span></label>
+							</div>
+							<div class="form-input">
+								<input name="password" id="password" type="password" placeholder="Пароль">
+							</div>
+						</div>
+						<div class="sign-option">
+							<div class="checkout-option">
+								<input id="rememberMe" type="checkbox">
+								<label for="rememberMe">Запомнить меня</label>
+							</div>
+							<div class="sign-forgot">
+								<a href="forgot.html" class="sign-link">Забыли пароль?</a>
+							</div>
+						</div>
+						<div class="sign-btn">
+							<a href="sign-in.html">Войти</a>
+						</div>
+					</form>
+					<div class="bd-alter-sign">
+						<button><span class="btn-icon"><i class="fa-brands fa-facebook"></i></span>Facebook</button>
+						<button><span class="btn-icon"><i class="fa-brands fa-google"></i></span>Google</button>
+					</div>
+					<div class="bd-sign-up-label">
+						Нет аккаунта?<a href="{% url "register" %}" class="sign-link"> Зарегистрируйтесь</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--==================================================-->
+<!-- End educate sign form area  -->
+<!--==================================================-->
+{% endblock content %}

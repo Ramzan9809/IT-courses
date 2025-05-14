@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="breadcumb-area d-flex">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12">
+				<div class="breadcumb-content">
+					<div class="breadcumb-title">
+						<h4>Блог</h4>
+					</div>
+					<ul>
+						<li><a href="{% url "home" %}">Главная <span><i class="fa-solid fa-arrow-right-long"></i></span></a></li>
+						<li>Блог</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="breadcumb-shape">
+			<img src="{% static 'images/inner-img/breadcumb-dot.png' %}" alt="dot">
+		</div>
+		<div class="breadcumb-shape2">
+			<img src="{% static 'images/inner-img/breadcumb-ball.png' %}" alt="ball">
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End educate Breadcumb Area -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- start educate blog Area -->
+<!--==================================================-->
+<div class="blog-area style-one blog">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+				<div class="row">
+					{% for b in blog %}
+						<div class="col-xl-6 col-lg-12 col-md-6">
+							<div class="single-blog-box box-1">
+								<div class="single-blog-thumb">
+									<img src="{{ b.banner.url }}" alt="thumb">
+									<div class="blog-meta-top">
+										<span>{{ b.date }}</span>
+									</div>
+								</div>
+								<div class="blog-content">
+									<div class="blog-author">
+										<h4><img src="{{ b.instructor.photo.url }}" style="width:80px; border-radius:20px" alt="autor">{{ b.instructor.name }}</h4>
+									</div>
+									<div class="blog-title">
+										<h3><a href="{{ b.get_absolute_url }}">{{ b.title }}</a></h3>
+									</div>
+									<div class="blog-btn">
+										<a href="{{ b.get_absolute_url }}">Узнать больше <img src="{% static 'images/home-one/blog-icon1.png' %}" alt="icon"></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+					<div class="pagination-menu">
+						<ul>
+						  <li><a href="blog.html#">1</a></li>
+						  <li><a href="blog.html#">2</a></li>
+						  <li>
+							<a href="blog.html#"><i class="fa-solid fa-angle-right"></i></a>
+						  </li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="blog-right-sidebar">
+					<div class="widget-categories-box">
+						<!-- categories title -->
+						<h4 class="sidebar-title">Категории</h4>
+						<!-- widget categories menu -->
+						<div class="widget-categories-menu">
+							<ul>
+								{% for c in category %}
+									<li class=""><a href="blog.html">{{ c.name }}</a></li>	
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+					<div class="widget-categories-box">
+						<h4 class="sidebar-title">Последние посты</h4>
+						{% for b in blog %}
+							<div class="widget-recent-post d-flex">
+								<div class="rpost-thumb">
+									<a href="blog.html#"><img src="{{ b.mini_banner.url }}" alt="post thumb"></a>
+								</div>
+								<div class="rpost-content">
+									<div class="rpost-title">
+										<h4><a href="blog.html#">{{ b.title }}</a></h4>
+										<span>{{ b.date }}</span>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- end educate blog Area -->
+<!--==================================================-->
+
+
+
+
+{% endblock content %}

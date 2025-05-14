@@ -1,0 +1,180 @@
+<!--==================================================-->
+<!-- Start educate Footer Area -->
+<!--==================================================-->
+{% load static %}
+<div class="footer-area">
+	<div class="container">
+		<div class="row subscribe align-items-center">
+			<div class="col-lg-4 col-md-12">
+				<div class="footer-logo">
+					<a href="{% url "home" %}"><img src="{{ settings.logo.url }}" alt="logo"></a>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-12">
+				<div class="footer-subcribe-title">
+					<h3>СЛЕДИ ЗА  <span>НОВОСТЯМИ</span></h3>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-12">
+				<form action="https://formspree.io/f/myyleorq" method="POST">
+					<div class="subscribe-box">
+						<span><i class="fa-classic fa-regular fa-envelope fa-fw"></i></span>
+						<input type="text" name="Email" placeholder="Отправить сообщение" required="">
+						<button type="submit"><span><i class="fa-classic fa-solid fa-location-arrow fa-fw"></i></span></button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="row add-footer-class">
+			<div class="col-xl-3 col-lg-3 col-md-6">
+				<div class="footer-widget-content">
+					<div class="footer-widget-title">
+						<h4>Свяжитесь с нами</h4>
+					</div>
+					<div class="footer-desc">
+						<p>Обучайте конечному пункту назначения для
+							Мы стремимся к преобразованию
+							без стандартов</p>
+					</div>
+					<div class="footer-contact-info">
+						<div class="footer-contact-phone">
+							<p><img src="{% static 'images/home-one/footer-call.png' %}" alt="call">{{ settings.phone }}</p>
+						</div>
+						<div class="footer-contact-address">
+							<span><i class="fa-classic fa-regular fa-envelope fa-fw"></i>{{ settings.email }}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-lg-3 col-md-6">
+				<div class="footer-widget-content">
+					<div class="footer-widget-title">
+						<h4>Онлайн-платформа</h4>
+					</div>
+					<div class="footer-widget-menu">
+						<ul>
+							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="{% url "about" %}">О нас</a></li>
+							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="{% url "course" %}">Наши курсы</a></li>
+							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="#">Менторы</a></li>
+							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="{% url "contact" %}">Связаться</a></li>
+							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="{% url "course" %}">Карьера</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>			
+			<div class="col-xl-3 col-lg-2 col-md-6">
+				<div class="footer-widget-content">
+					<div class="footer-widget-title">
+						<h4>Быстрые ссылки</h4>
+					</div>
+					<div class="footer-widget-menu">
+						<ul>
+							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="{% url "blog" %}">Блог</a></li>
+							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="{% url "home" %}">Галерея</a></li>
+							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="{% url "contact" %}">Контакты</a></li>
+							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="{% url "course" %}">Политика конфиденциальности</a></li>
+							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="#">Ответы на вопросы</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-lg-4 col-md-6">
+				<div class="footer-widget-title">
+					<h4>Последние посты</h4>
+				</div>
+				<div class="footer-widget-blog first">
+					<div class="footer-widget-blog-thumb">
+						<img src="{% static 'images/home-one/footer-recent-img1.png' %}" alt="recent-img">
+					</div>
+					<div class="footer-widget-blog-content">
+						<a href="blog-details.html">10 проверенных стратегий для
+							онлайн-обучения</a>
+						<p>8 Jan, 2025</p>
+					</div>
+				</div>
+				<div class="footer-widget-blog">
+					<div class="footer-widget-blog-thumb">
+						<img src="{% static 'images/home-one/footer-recent-img2.png' %}" alt="recent-img">
+					</div>
+					<div class="footer-widget-blog-content">
+						<a href="blog-details.html">Trends that are shaping 
+							the Learning...</a>
+						<p>8 Jan, 2025</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer-bottom-area">
+		<div class="container">
+			<div class="row footer-bottom">
+				<div class="col-lg-6">
+					<div class="footer-bottom-desc">
+						<p>© 2025 <a href="{% url "home" %}">Educate</a>. Разработано Dream IT Solution</p>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="footer-bottom-social-icon">
+						<ul>
+							<li><a href="index-3.html#"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="index-3.html#"><i class="fa-brands fa-x-twitter"></i></a></li>
+							<li><a href="index-3.html#"><i class="fab fa-linkedin-in"></i></a></li>
+							<li><a href="index-3.html#"><i class="fab fa-pinterest-p"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End educate Footer Area-->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- Start educate Scroll Up-->
+<!--==================================================-->
+<div class="prgoress_indicator active-progress">
+	<svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+		<path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 212.78;"></path>
+	</svg>
+ </div>
+<!--==================================================-->
+<!-- End educate Scroll Up-->
+<!--==================================================-->
+
+ 	<!-- modernizr js -->
+	<script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+	<!-- jquery js -->
+	<script src="{% static 'js/vendor/jquery-3.6.2.min.js' %}"></script>
+	<script src="{% static 'js/popper.min.js' %}"></script>
+	<!-- bootstrap js -->
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<!-- carousel js -->
+	<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+	<!-- counterup js -->
+	<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+	<!-- waypoints js -->
+	<script src="{% static 'js/waypoints.min.js' %}"></script>
+	<!-- wow js -->
+	<script src="{% static 'js/wow.js' %}"></script>
+	<!-- imagesloaded js -->
+	<script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+	<!-- venobox js -->
+	<script src="{% static 'js/venobox.js' %}"></script>
+	<!--  animated-text js -->
+	<script src="{% static 'js/animated-text.js' %}"></script>
+	<!-- venobox min js -->
+	<script src="{% static 'js/venobox.min.js' %}"></script>
+	<!-- isotope js -->
+	<script src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+	<!-- jquery meanmenu js -->
+	<script src="{% static 'js/jquery.meanmenu.js' %}"></script>
+	<!-- jquery scrollup js -->
+	<script src="{% static 'js/jquery.scrollUp.js' %}"></script>
+	<!-- barfiller -->
+	<script src="{% static 'js/jquery.barfiller.js' %}"></script>
+	<!-- theme js -->
+	<script src="{% static 'js/theme.js' %}"></script>
+</body>
+</html>

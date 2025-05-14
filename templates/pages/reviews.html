@@ -1,0 +1,320 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!--==================================================-->
+<!-- Start educate Breadcumb Area -->
+<!--==================================================-->
+<div class="breadcumb-area d-flex">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12">
+				<div class="breadcumb-content">
+					<div class="breadcumb-title">
+						<h4>Отзывы</h4>
+					</div>
+					<ul>
+						<li><a href="{% url "home" %}">Главная <span><i class="fa-solid fa-arrow-right-long"></i></span></a></li>
+						<li>Отзывы</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="breadcumb-shape">
+			<img src="{% static 'images/inner-img/breadcumb-dot.png' %}" alt="dot">
+		</div>
+		<div class="breadcumb-shape2">
+			<img src="{% static 'images/inner-img/breadcumb-ball.png' %}" alt="ball">
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End educate Breadcumb Area -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- Start educate testimonial Area -->
+<!--==================================================-->
+<div class="testimonial-area style-one">
+	<div class="container">
+		<div class="row section-title-space align-items-center">
+			<div class="col-lg-6">
+				<div class="section-sub-title">
+					<h6>ОТЗЫВЫ</h6>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="section_title">
+					<h1>Реальный опыт наших</h1>
+					<h1>преданных учеников</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="testi-thumb-wrapper">
+					<div class="testimonial-thumb">
+						<img src="{% static 'images/home-one/testi-thumb.png' %}" alt="thumb">
+					</div>
+					<div class="testi-dot-shape">
+						<img src="{% static 'images/home-one/testi-dot.png' %}" alt="dot">
+					</div>
+					<div class="testi-map-shape">
+						<img src="{% static 'images/home-one/testi-map.png' %}" alt="map">
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="row">
+					<div class="testi-list owl-carousel">
+						{% for rev in reviews %}
+							<div class="col-lg-12">
+								<div class="testi-box">
+									<div class="single-testi-box">
+										<div class="testi-quote">
+											<img src="{% static 'images/home-one/testi-quote.png' %}" alt="quote">
+										</div>
+										<div class="testi-title">
+											<h3>{{ rev.main_message }}</h3>
+										</div>
+										<div class="testi-desc">
+											<p>{{ rev.desc }}</p>
+										</div>
+										<div class="testi-ratting">
+											<ul>
+												{% for _ in reviews.full_stars %}
+													<li><i class="fa-solid fa-star" style="color: orange;"></i></li>
+												{% endfor %}
+												{% if reviews.half_star %}
+													<li><i class="fa-solid fa-star-half-stroke" style="color: orange;"></i></li>
+												{% endif %}
+												{% for _ in reviews.empty_stars %}
+													<li><i class="fa-regular fa-star" style="color: orange;"></i></li>
+												{% endfor %}
+											</ul>
+										</div>
+									</div>
+									<div class="testi-autor-box">
+										<div class="testi-autor">
+											<img src="{{ rev.photo.url }}" alt="autor">
+										</div>
+										<div class="testi-autor-content">
+											<h5 class="autor-title">{{ rev.name }}</h5>
+											<p class="autor-desi">{{ rev.category }}</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- end educate testimonial Area -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- Start educate testimonial Area -->
+<!--==================================================-->
+<div class="testimonial-area style-two">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4">
+				<!-- section title -->
+				<div class="section-sub-title two">
+					<h6><img src="{% static 'images/home-two/subtitle-icon.png' %}" alt="icon">Университет Educate</h6>
+				</div>
+				<div class="section_title two">
+					<h1>За них говорит</h1>
+					<h1>Опыт</h1>
+				</div>
+				<div class="section-title-desc two">
+					<p>Объединяя богатую историю, этот колледж поощряет
+						академические и развивающие мета-услуги архитектора посредством
+						доски обмена мыслями</p>
+				</div>
+				<div class="testi-mentor-btn">
+					<a href="#">Все Менторы<i class="flaticon flaticon-right-arrow"></i></a>
+				</div>
+			</div>
+			<div class="col-lg-8">
+				<div class="row">
+					<div class="testi-list2 owl-carousel">
+						{% for rev in reviews %}
+							<div class="col-lg-12">
+								<div class="single-testi-box">
+									<div class="testi-quote">
+										<img src="{% static 'images/home-two/quote-icon21.png' %}" alt="quote">
+									</div>
+									<div class="testi-desc">
+										<p>{{ rev.desc }}</p>
+									</div>
+									<div class="testi-ratting">
+										<ul>
+											{% for _ in reviews.full_stars %}
+												<li><i class="fa-solid fa-star" style="color: orange;"></i></li>
+											{% endfor %}
+											{% if reviews.half_star %}
+												<li><i class="fa-solid fa-star-half-stroke" style="color: orange;"></i></li>
+											{% endif %}
+											{% for _ in reviews.empty_stars %}
+												<li><i class="fa-regular fa-star" style="color: orange;"></i></li>
+											{% endfor %}
+										</ul>
+									</div>
+								</div>
+								<div class="testi-autor-box">
+									<div class="testi-autor">
+										<img src="{{ rev.photo.url }}" alt="autor">
+									</div>
+									<div class="testi-autor-content">
+										<h5 class="autor-title">{{ rev.name }}</h5>
+										<p class="autor-desi">{{ rev.who_say }}</p>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="testi-plus-shape">
+			<img src="{% static 'images/home-two/testi-shape.png' %}" alt="plus-shape">
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- end educate testimonial Area -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- Start educate testimonial Area -->
+<!--==================================================-->
+<div class="testimonial-area style-three">
+	<div class="container">
+		<div class="row section-title-space align-items-center">
+			<div class="col-lg-6">
+				<div class="section-sub-title three">
+					<h6>ОТЗЫВЫ</h6>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="section_title">
+					<h1>Реальный опыт наших</h1>
+					<h1>преданных учеников</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="row">
+					<div class="testi-list3 owl-carousel">
+						{% for rev in reviews %}
+							<div class="col-lg-12">
+								<div class="testi-box">
+									<div class="single-testi-box">
+										<div class="testi-quote">
+											<img src="{% static 'images/home-one/testi-quote.png' %}" alt="quote">
+										</div>
+										<div class="testi-title">
+											<h3>{{ rev.main_message }}</h3>
+										</div>
+										<div class="testi-desc">
+											<p>{{ rev.desc }}</p>
+										</div>
+										<div class="testi-ratting">
+											<ul>
+												{% for _ in reviews.full_stars %}
+													<li><i class="fa-solid fa-star" style="color: orange;"></i></li>
+												{% endfor %}
+												{% if reviews.half_star %}
+													<li><i class="fa-solid fa-star-half-stroke" style="color: orange;"></i></li>
+												{% endif %}
+												{% for _ in reviews.empty_stars %}
+													<li><i class="fa-regular fa-star" style="color: orange;"></i></li>
+												{% endfor %}
+											</ul>
+										</div>
+									</div>
+									<div class="testi-autor-box">
+										<div class="testi-autor">
+											<img src="{{ rev.photo.url }}" alt="autor">
+										</div>
+										<div class="testi-autor-content">
+											<h5 class="autor-title">{{ rev.name }}</h5>
+											<p class="autor-desi">{{ rev.category }}</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="testi-shape31">
+			<img src="{% static 'images/home-three/testi-star.png' %}" alt="star">
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- end educate testimonial Area -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- start educate brand Area -->
+<!--==================================================-->
+<div class="brand-area style-one inner">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-5">
+				<div class="section-sub-title">
+					<h6>Наши партнёры</h6>
+				</div>
+				<div class="section_title">
+					<h1>Наши надежные партнеры</h1>
+				</div>
+			</div>
+			<div class="col-lg-7">
+				<div class="brand-list owl-carousel">
+					<div class="col-lg-12">
+						<div class="single-brand-box">
+							<div class="brand-thumb">
+							   <img src="{% static 'images/inner-img/brand-inner1.png' %}" alt="brand">
+							</div>
+						</div>
+					</div>				    
+					<div class="col-lg-12">
+						<div class="single-brand-box">
+							<div class="brand-thumb">
+								<img src="{% static 'images/inner-img/brand-inner2.png' %}" alt="brand">
+							</div>
+						</div>
+					</div>				   
+					<div class="col-lg-12">
+						<div class="single-brand-box">
+							<div class="brand-thumb">
+								<img src="{% static 'images/inner-img/brand-inner3.png' %}" alt="brand">
+							</div>
+						</div>
+					</div>				    				    			    
+				</div>
+			</div>
+		</div>
+		<div class="brand-arrow-shape">
+			<img src="{% static 'images/home-one/brand-arrow.png' %}" alt="arrow">
+		</div>
+		<div class="brand-star-shape">
+			<img src="{% static 'images/home-one/brand-star.png' %}" alt="star">
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- end educate brand Area -->
+<!--==================================================-->
+{% endblock content %}

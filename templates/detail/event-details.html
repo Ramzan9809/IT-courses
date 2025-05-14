@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!--==================================================-->
+<!-- Start educate Breadcumb Area -->
+<!--==================================================-->
+<div class="breadcumb-area d-flex">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12">
+				<div class="breadcumb-content">
+					<div class="breadcumb-title">
+						<h4>Детали мероприятия</h4>
+					</div>
+					<ul>
+						<li><a href="{% url "home" %}">Главная <span><i class="fa-solid fa-arrow-right-long"></i></span></a></li>
+						<li><a href="{% url "event" %}">Мероприятия<span><i class="fa-solid fa-arrow-right-long"></i></span></a></li>
+						<li>{{ event.title }}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="breadcumb-shape">
+			<img src="{% static 'images/inner-img/breadcumb-dot.png' %}" alt="dot">
+		</div>
+		<div class="breadcumb-shape2">
+			<img src="{% static 'images/inner-img/breadcumb-ball.png' %}" alt="ball">
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End educate Breadcumb Area -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- start educate event details area -->
+<!--==================================================-->
+<section class="event-details-area style-inner">
+	<div class="container">
+		<div class="row">
+			<div class="col-xxl-8 col-xl-8 col-lg-7 col-md-12">
+				<div class="event-details-thumb">
+					<img src="{% static 'images/inner-img/event-detail-thumb.png' %}" alt="thumb">
+				</div>
+				<div class="event-details-content">
+					<div class="event-details-heading">
+						<h2 class="event-details-title">{{ event.title }}</h2>
+					</div>
+					<div class="event-details-content">
+						<p class="description">{{ event.desc }}</p>
+					</div>
+					<div class="event-details-content">
+						<h3 class="event-details-content-title">Чему вы научитесь?</h3>
+						<div class="event-post-details-list">
+							<ul>
+								<li><img src="{% static 'images/inner-img/learn-icon.png' %}" alt="icon">Cохватывает такие важные темы, как предпринимательство, маркетинг</li>
+								<li><img src="{% static 'images/inner-img/learn-icon.png' %}" alt="icon">Регулярные живые сессии с профессионалами отрасли для обучения в режиме реального времени.</li>
+								<li><img src="{% static 'images/inner-img/learn-icon.png' %}" alt="icon">Интерактивные тесты для закрепления знаний и отслеживания прогресса.</li>
+								<li><img src="{% static 'images/inner-img/learn-icon.png' %}" alt="icon">Извлечение уроков из успешных и неудачных бизнес-моделей.</li>
+								<li><img src="{% static 'images/inner-img/learn-icon.png' %}" alt="icon">Признанный сертификат для повышения авторитета.</li>
+							</ul>
+							<div class="post-details-list-desc">
+								<p>Образовать конечное место для искателей знаний и педагогов, как четко восстановить установленные
+									Мы стремимся преобразовать специальное образование воздействие на мир</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xxl-4 col-xl-4 col-lg-5 col-md-12">
+				<div class="event-sidebar-wrapper">
+					<div class="event-sidebar">
+						<div class="event-info">
+							<div class="event-info-title">
+								<h3>Информация</h3>
+							</div>
+						</div>
+						<div class="event-info-list">
+							<ul>
+								<li>
+									<div class="label">
+										<i class="fa-solid fa-dollar-sign"></i>Стоимость
+									</div>
+									<span class="value-dollar">{{ event.price }}</span>
+								</li>
+								<li>
+									<div class="label">
+										<i class="fa-regular fa-calendar"></i>Дата начала
+									</div>
+									<span class="value">{{ event.start_date }}</span>
+								</li>
+								<li>
+									<div class="label">
+										<i class="fa-regular fa-clock"></i>Время
+									</div>
+									<span class="value">{{ event.time }}</span>
+								</li>
+								<li>
+									<div class="label">
+										<i class="fa-regular fa-circle-user"></i>Количество участников
+									</div>
+									<span class="value">{{ event.count_people }}</span>
+								</li>
+								<li>
+									<div class="label">
+										<i class="fa-solid fa-location-dot"></i>Адресс
+									</div>
+									<span class="value">{{ event.location }}</span>
+								</li>
+							</ul>
+						</div>
+						<div class="event-info-btn">
+							<a href="{% url "contact" %}">Записаться<i class="flaticon flaticon-right-arrow"></i></a>
+						</div>
+						
+					</div>
+					<div class="event-sidebar-location">
+						<div class="event-sidebar-title">
+							<h4>Локация</h4>
+						</div>
+						<div class="event-map">
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6512735.958500206!2d-124.59205639304162!3d37.151585384809685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb9fe5f285e3d%3A0x8b5109a227086f55!2z4KaV4KeN4Kav4Ka-4Kay4Ka_4Kar4KeL4Kaw4KeN4Kao4Ka_4Kav4Ka84Ka-LCDgpq7gpr7gprDgp43gppXgpr_gpqgg4Kav4KeB4KaV4KeN4Kak4Kaw4Ka-4Ka34KeN4Kaf4KeN4Kaw!5e0!3m2!1sbn!2sbd!4v1739869220051!5m2!1sbn!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--==================================================-->
+<!-- start educate event details area -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- Start educate team Area -->
+<!--==================================================-->
+<div class="team-area style-one">
+	<div class="container">
+		<div class="row section-title-space">
+			<div class="col-lg-12">
+				<div class="section_title">
+					<h1>Кураторы</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			{% for inst in instructors %}
+				<div class="col-xl-3 col-lg-6 col-md-6">
+					<div class="single-team-box box-1">
+						<div class="team-thumb">
+							<img src="{{ inst.photo.url }}" alt="thumb">
+							<div class="team-social-icon">
+								<div class="team-social">
+									<ul>
+										<li class="team-icon-1"><a href="event-details.html#"><i class="fab fa-facebook-f"></i></a></li>
+										<li class="team-icon-2"><a href="event-details.html#"><i class="fa-brands fa-x-twitter"></i></a></li>
+										<li class="team-icon-3"><a href="event-details.html#"><i class="fab fa-linkedin-in"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="team-content">
+							<div class="team-title">
+								<h3><a href="instructor-details.html">{{ inst.name }}</a></h3>
+							</div>
+							<div class="team-sub-title">
+								<h5>{{ inst.position }}</h5>
+							</div>
+							<div class="team-ratting">
+								<ul>
+									{% for _ in inst.full_stars %}
+										<li><i class="fa-solid fa-star" style="color: orange;"></i></li>
+									{% endfor %}
+									{% if inst.half_star %}
+										<li><i class="fa-solid fa-star-half-stroke" style="color: orange;"></i></li>
+									{% endif %}
+									{% for _ in inst.empty_stars %}
+										<li><i class="fa-regular fa-star" style="color: orange;"></i></li>
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- end educate team Area -->
+<!--==================================================-->
+{% endblock content %}

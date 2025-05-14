@@ -1,0 +1,985 @@
+<!DOCTYPE HTML>
+{% load static %}
+<html lang="en-US">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title> Educate | IT-courses </title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" sizes="56x56" href="{% static 'images/fav-icon/icon.png' %}">
+	<!-- bootstrap CSS -->
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css" media="all">
+	<!-- carousel CSS -->
+	<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css" media="all">
+	<!-- animate CSS -->
+	<link rel="stylesheet" href="{% static 'css/animate.css' %}" type="text/css" media="all">
+	<!-- animated-text CSS -->
+	<link rel="stylesheet" href="{% static 'css/animated-text.css' %}" type="text/css" media="all">
+	<!-- font-awesome CSS -->
+	<link rel="stylesheet" href="{% static 'css/all.min.css' %}" type="text/css" media="all">
+	<!-- theme-default CSS -->
+	<link rel="stylesheet" href="{% static 'css/theme-default.css' %}" type="text/css" media="all">
+	<!-- meanmenu CSS -->
+	<link rel="stylesheet" href="{% static 'css/meanmenu.min.css' %}" type="text/css" media="all">
+	<!-- transitions CSS -->
+	<link rel="stylesheet" href="{% static 'css/owl.transitions.css' %}" type="text/css" media="all">
+	<!-- venobox CSS -->
+	<link rel="stylesheet" href="{% static 'venobox/venobox.css' %}" type="text/css" media="all">
+	<!-- flaticon -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap-icons.css' %}" type="text/css" media="all">
+	<!-- bootstrap icons -->
+	<link rel="stylesheet" href="{% static 'css/flaticon.css' %}" type="text/css" media="all">
+	<!-- Main Style CSS -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all">
+	<!-- responsive CSS -->
+	<link rel="stylesheet" href="{% static 'css/responsive.css' %}" type="text/css" media="all">
+	<!-- Coustom Animation CSS -->
+	<link rel="stylesheet" href="{% static 'css/coustom-animation.css' %}" type="text/css" media="all">
+	<!-- odometer CSS -->	
+	<link rel="stylesheet" href="{% static 'css/odometer-theme-default.css' %}" type="text/css" media="all">
+
+	<link rel="stylesheet" href="{% static 'css/scroll-up.css' %}" type="text/css" media="all">	
+
+</head>
+
+<body>
+
+	<div class="header-top-area">
+		<div class="container-fluid">
+			<div class="row header-top">
+				<div class="col-xxl-6 col-xl-8 col-lg-8">
+					<div class="header-top-welcome">
+						<p><img src="{% static 'images/home-one/top-star.png' %}" alt="star">Добро пожаловать в <a href="{% url "home" %}">Educate</a>– Раскрываем силу образования!</p>
+					</div>
+				</div>
+				<div class="col-xxl-6 col-xl-4 col-lg-4">
+					<div class="header-top-right">
+						<div class="educate-header-from">
+							<a class="login-btn" href="{% url "login" %}"></i>Войти</a>
+							<a class="sign-up-btn" href="{% url "register" %}">Зарегистрироваться</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div class="search-popup">
+	<button class="close-search style-two"><i class="fas fa-times"></i></button>
+	<button class="close-search"><i class="fas fa-arrow-up"></i></button>
+	<form method="post" action="index-3.html#">
+		<div class="form-group">
+			<input id="search1" type="search" name="search-field" value="" placeholder="Search Here" required="">
+			<button type="submit"><i class="fas fa-search"></i></button>
+		</div>
+	</form>
+	</div>
+		
+	<div class="sidebar-menu-wrapper">
+		<div class="cart_sidebar">
+			<button type="button" class="close_btn"><i class="fas fa-times"></i></button>
+			<h2 class="heading_title text-uppercase">Cart Items - <span>4</span></h2>
+	
+			<div class="cart_items_list">
+				<div class="cart_item">
+					<div class="item_image">
+						<img src="{% static 'images/inner-img/rpost-thumb1.png' %}" alt="image_not_found">
+					</div>
+					<div class="item_content">
+						<h4 class="item_title">	
+						How Gamification is Changing the Way...
+						</h4>
+						<span class="item_price">$21.00</span>
+						<button type="button" class="remove_btn"><i class="fas fa-times"></i></button>
+					</div>
+				</div>
+	
+				<div class="cart_item">
+					<div class="item_image">
+						<img src="{% static 'images/inner-img/rpost-thumb2.png' %}" alt="image_not_found">
+					</div>
+					<div class="item_content">
+						<h4 class="item_title">
+							Learning is the Key soft skills and Professional
+						</h4>
+						<span class="item_price">$23.00</span>
+						<button type="button" class="remove_btn"><i class="fas fa-times"></i></button>
+					</div>
+				</div>
+	
+				<div class="cart_item">
+					<div class="item_image">
+						<img src="{% static 'images/inner-img/rpost-thumb3.png' %}" alt="image_not_found">
+					</div>
+					<div class="item_content">
+						<h4 class="item_title">
+							The Importance of Critical Thinking in Education
+						</h4>
+						<span class="item_price">$25.00</span>
+						<button type="button" class="remove_btn"><i class="fas fa-times"></i></button>
+					</div>
+				</div>
+	
+				<div class="cart_item">
+					<div class="item_image">
+						<img src="{% static 'images/inner-img/rpost-thumb2.png' %}" alt="image_not_found">
+					</div>
+					<div class="item_content">
+						<h4 class="item_title">
+							Learning is the Key soft skills and Professional
+						</h4>
+						<span class="item_price">$19.00</span>
+						<button type="button" class="remove_btn"><i class="fas fa-times"></i></button>
+					</div>
+				</div>
+			</div>
+			<div class="total_price text-uppercase">
+				<span>Sub Total:</span>
+				<span>$88.00</span>
+			</div>
+			<ul class="btns_group ul_li">
+				<li><a href="cart.html" class="btn btn_primary text-uppercase">View Cart</a></li>
+				<li><a href="checkout.html" class="btn btn_border border_black text-uppercase">Checkout</a></li>
+			</ul>
+		</div>
+		<div class="cart_sidebar_overlay"></div>
+	</div>
+	<!--==================================================-->
+	<!-- End Cart Side Bar -->
+	<!--==================================================-->
+	
+	<div class="educate-header-area style-three" id="sticky-header" >
+		<div class="container-fluid">
+			<div class="row header-wrap align-items-center">
+				<div class="col-lg-2">
+					<div class="header-logo">
+						<a class="active_logo" href="index.html"><img src="{% static 'images/footer-logo.png' %}" alt="logo"></a>
+						<a class="logo_two" href="index.html"><img src="{% static 'images/footer-logo.png' %}" alt="logo"></a>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="header-menu">
+						<ul class="nav_scroll">
+							<li><a href="{% url "home" %}">Главная</a>
+						</li>
+						<li><a href="{% url "about" %}">О нас</a></li>
+						<li><a href="#">Страницы</a>
+							<ul class="sub_menu"> 
+								<li><a href="{% url "instructor" %}">Менторы</a></li>	  
+								<li><a href="{% url "reviews" %}">Отзывы</a></li>	 	 			
+								<li><a href="{% url "faq" %}">Вопросы \ Ответы</a></li>	 
+							</ul>
+						</li>
+						<li><a href="{% url "course" %}">Курсы</a>
+						</li> 
+						<li><a href="{% url "blog" %}">Блог</a>
+						</li>
+						<li><a href="{% url "contact" %}">Контакты</a></li>
+						</ul>					
+					</div>
+				</div>
+	
+				<div class="col-lg-4">
+					<div class="header-right-wrapper">
+						<div class="header-sidebar">
+							<a href="{% url "contact" %}">
+							<button class="cart_btn headers-button" type="button">
+								<i class="fa-solid fa-cart-shopping"></i>
+								</a>
+							</button>
+							<div class="header-btn">
+								<a href="{% url "contact" %}">Записаться<i class="flaticon flaticon-right-arrow"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	
+	
+
+{% include "sliders.html" with sliders=sliders %}
+
+<!-- ---------------------------------------------------------------------------------- -->
+
+
+<section class="feature-area style-two">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-4 col-lg-6 col-md-6">
+				<div class="single-feature-box box-1">
+					<div class="feature-icon">
+						<img src="{% static 'images/home-three/feature-icon21.png' %}" alt="feature-icon">
+					</div>
+					<div class="feature-content">
+						<h4 class="feature-title">Стипендиальный фонд</h4>
+						<p class="feature-desc">Абсолютные знания о месте назначения
+							Мы стремимся учиться</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6">
+				<div class="single-feature-box box-2">
+					<div class="feature-icon">
+						<img src="{% static 'images/home-three/feature-icon22.png' %}" alt="feature-icon">
+					</div>
+					<div class="feature-content">
+						<h4 class="feature-title">Книжный магазин</h4>
+						<p class="feature-desc">Абсолютные знания о месте назначения
+							Мы стремимся учиться</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6">
+				<div class="single-feature-box box-3">
+					<div class="feature-icon">
+						<img src="{% static 'images/home-three/feature-icon23.png' %}" alt="feature-icon">
+					</div>
+					<div class="feature-content">
+						<h4 class="feature-title">Легкое онлайн-обучение</h4>
+						<p class="feature-desc">Абсолютные знания о месте назначения
+							Мы стремимся учиться</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="feature-shape21">
+			<img src="{% static 'images/home-three/feature-shape21.png' %}" alt="shape">
+		</div>
+	</div>
+</section>
+<!--==================================================-->
+<!-- End educate feature Area-->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- Start educate About Area style-three -->
+<!--==================================================-->
+<section class="about-area style-three">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-6 col-lg-12">
+				<div class="about-thumb-wrapper">
+					<div class="about-learn-box">
+						<div class="about-learn-icon">
+							<img src="{% static 'images/home-three/learn-icon.png' %}" alt="icon">
+						</div>
+						<div class="learn-title">
+							<h5>Учитесь онлайн где угодно</h5>
+						</div>
+					</div>
+					<div class="about-thumb">
+						<img src="{% static 'images/home-three/about-thumb31.png' %}" alt="thumb">
+					</div>
+					<div class="about-experience-box">
+						<div class="about-experience-count">
+						<h3 class="counter">16</h3>
+						<span>+</span>
+						</div>
+						<div class="about-experience-desc">
+							<p>Лет<br>
+								Опыта</p>
+						</div>	
+					</div>
+					<div class="about-shape32">
+						<img src="{% static 'images/home-three/about-shape32.png' %}" alt="shape">
+					</div>
+				</div>
+			</div>	
+			<div class="col-xl-6 col-lg-12">
+				<div class="about_content">
+					<!-- section title -->
+					<div class="section-sub-title three">
+						<h6>О НАС</h6>
+					</div>
+					<div class="section_title">
+						<h1>Кто мы – Введение в</h1>
+						<h1>Educate онлайн-платформу</h1>
+					</div>
+					<div class="section-title-desc">
+						<p>Educate — конечный пункт назначения для искателей знаний и педагогов.
+							 Мы стремимся преобразовать специальное образование, 
+							 которое влияет на глобальные каналы без систем, соответствующих стандартам</p>
+					</div>
+					<div class="about-iteam-list">
+						<ul>
+							<li><img src="{% static 'images/home-three/about-icon31.png' %}" alt="icon">Каталог курсов & информация о программе</li>
+							<li><img src="{% static 'images/home-three/about-icon31.png' %}" alt="icon">Онлайн-подача заявлений & процесс приема</li>
+							<li><img src="{% static 'images/home-three/about-icon31.png' %}" alt="icon">Финансовая помощь и стипендии</li>
+						</ul>
+					</div>
+					<div class="about-iteam-phone">
+						<p><span><img src="{% static 'images/home-three/about-call.png' %}" alt="call"></span>+996 550 777 462</p>
+					</div>
+					<div class="about-btn">
+						<a href="about.html">Узнать больше<i class="flaticon flaticon-right-arrow"></i></a>
+					</div>
+					<div class="about-education-box">
+						<div class="education-icon">
+							<span><i class="bi bi-check-lg"></i></span>
+						</div>
+						<div class="education-content">
+							<p>Надежные онлайн и офлайн образовательные услуги</p>
+							<span>Скала Джонсон</span>
+						</div>
+					</div>
+				</div>
+			</div>			
+		</div>
+		<div class="about-shape31">
+			<img src="{% static 'images/home-three/about-shape31.png' %}" alt="shape">
+		</div>
+	</div>
+</section>
+<!--==================================================-->
+<!-- End educate About Area -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- Start educate course program Area style-three -->
+<!--==================================================-->
+<div class="course-program-area style-three">
+	<div class="container">
+		<div class="row align-items-center section-title-space">
+			<div class="col-lg-6">
+				<div class="section-sub-title three">
+					<h6>АКАДЕМИЧЕСКИЕ ПРОГРАММЫ</h6>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="section_title">
+					<h1>Наши курсы – все сторонние</h1>
+					<h1>Доступны все программы</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="tab">
+					<div class="row">
+						<div class="col-lg-4">					
+							<ul class="tabs">
+								<li><a href="{% url "course" %}"><span><i class="bi bi-check-lg"></i></span>Выпускная программа</a></li>
+								<li><a href="{% url "course" %}"><span><i class="bi bi-check-lg"></i></span>Программы магистратуры</a></li>
+								<li><a href="{% url "course" %}"><span><i class="bi bi-check-lg"></i></span>Онлайн программа</a></li>
+								<li><a href="{% url "contact" %}"><span><i class="bi bi-check-lg"></i></span>Программа стипендий</a></li>
+							</ul>
+							<div class="course-instuctor-wrapper">
+								<div class="course-instuctor-box">
+									<div class="instuctor-image">
+										<img src="{% static 'images/home-three/course-instructor.png' %}" alt="instructor">
+									</div>
+									<div class="course-instructor-content">
+										<h3 class="counter">130</h3>
+										<span>+</span>
+										<p>Менторов</p>
+									</div>
+								</div>
+								<div class="instuctor-dot-shape">
+									<img src="{% static 'images/home-three/couse-dot.png' %}" alt="dot">
+								</div>
+								<div class="instuctor-arrow-shape">
+									<img src="{% static 'images/home-three/couse-arrow.png' %}" alt="arrow">
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-8">
+							<div class="course-program owl-carousel">							
+								<div class="tab_content">
+									<div class="tabs_item">
+										<div class="row">
+									  {% for cours in course %}
+									<div class="col-xxl-6 col-xl-6 col-lg-12 col-md-6">
+										<div class="single-course-box">
+											<div class="course-thumb">
+												<img src="{{ cours.banner.url }}" alt="thumb">
+											</div>
+											<div class="course-content">
+												<h5>{{ cours.category }}</h5>
+												<h3><a href="course-details.html">{{ cours.title }}</a></h3>
+												<div class="course-rating">
+													<ul>
+														<li><i class="fa-solid fa-star"></i></li>
+														<li><i class="fa-solid fa-star"></i></li>
+														<li><i class="fa-solid fa-star"></i></li>
+														<li><i class="fa-solid fa-star"></i></li>
+														<li><i class="fa-classic fa-solid fa-star-half-stroke fa-fw"></i></li>
+													</ul>
+													<div class="course-rating-num">
+														<span>(4.5/3 Ratings)</span>
+													</div>
+												</div>
+												<div class="course-price">
+													<span class="price">{{ cours.price }}</span>
+												</div>
+												<div class="course-btn">
+													<a href="course-details.html">Узнать больше<i class="flaticon flaticon-right-arrow"></i></a>
+												</div>
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+
+								  		</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--==================================================-->
+	<!--End educate course program Area style-three -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- Start educate call to action Area style-two -->
+<!--==================================================-->
+<div class="call-to-action style-two">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-6">
+				<div class="call-to-title">
+					<h3>Ваше обучению начинается здесь</h3>
+					<h3>Узнайте про все программы</h3>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="call-to-btn">
+					<a href="{% url "contact" %}">Все программы<i class="flaticon flaticon-right-arrow"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class="call-to-shape31">
+			<img src="{% static 'images/home-three/call-to-arrow2.png' %}" alt="shape">
+		</div>
+	</div>
+</div>
+
+
+<!--==================================================-->
+<!-- end educate call to action Area style-two -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- Start educate cumpus life section style-three -->
+<!--==================================================-->
+<div class="campus-life-section style-three">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-6 col-lg-12">
+				<div class="campus-life-thumb">
+					<img src="{% static 'images/home-three/campus-life-thumb.png' %}" alt="thumb">
+					<div class="campus-video-icon">
+						<a class="video-vemo-icon venobox vbox-item" data-vbtype="youtube" data-autoplay="true" href="https://www.youtube.com/watch?v=Wx48y_fOfiY"><i class="fa-classic fa-solid fa-play fa-fw"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-12">
+				<div class="section-sub-title three">
+					<h6>Кампус life</h6>
+				</div>
+				<div class="section_title">
+					<h1>Инновационный и эффективный</h1>
+					<h1>подходы к обучению</h1>
+				</div>
+				<div class="section-title-desc">
+					<p>Educate — конечный пункт назначения для искателей знаний и педагогов. 
+						Мы стремимся преобразовать специальные образовательные каналы воздействия на мир 
+						без систем, соответствующих стандартам</p>
+				</div>
+				<div class="row box-space">
+					<div class="col-lg-4 col-md-6">
+						<div class="campus-single-box">
+							<div class="campus-icon">
+								<img src="{% static 'images/home-three/campus-icon1.png' %}" alt="icon">
+							</div>
+							<div class="campus-title">
+								<h5>Размещение студентов</h5>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="campus-single-box two">
+							<div class="campus-icon">
+								<img src="{% static 'images/home-three/campus-icon2.png' %}" alt="icon">
+							</div>
+							<div class="campus-title">
+								<h5>Тренажерный зал и спортивные сооружения</h5>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6">
+						<div class="campus-single-box three">
+							<div class="campus-icon">
+								<img src="{% static 'images/home-three/campus-icon3.png' %}" alt="icon">
+							</div>
+							<div class="campus-title">
+								<h5>Исследования и Библиотека</h5>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="campus-btn">
+					<a href="{% url "contact" %}">Начать<i class="flaticon flaticon-right-arrow"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class="campus-life-shape1">
+			<img src="{% static 'images/home-three/campus-shape1.png' %}" alt="shape">
+		</div>
+		<div class="campus-life-shape2">
+			<img src="{% static 'images/home-three/campus-shape2.png' %}" alt="shape">
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- end educate cumpus life section style-three -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- start educate brand Area -->
+<!--==================================================-->
+<div class="brand-area style-one">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="brand-list2 owl-carousel">
+					<div class="col-lg-12">
+						<div class="single-brand-box">
+							<div class="brand-thumb">
+							   <img src="{% static 'images/home-three/brand-img1.png' %}" alt="brand">
+							</div>
+						</div>
+					</div>				    
+					<div class="col-lg-12">
+						<div class="single-brand-box">
+							<div class="brand-thumb">
+								<img src="{% static 'images/home-three/brand-img2.png' %}" alt="brand">
+							</div>
+						</div>
+					</div>				   
+					<div class="col-lg-12">
+						<div class="single-brand-box">
+							<div class="brand-thumb">
+								<img src="{% static 'images/home-three/brand-img3.png' %}" alt="brand">
+							</div>
+						</div>
+					</div>	
+					<div class="col-lg-12">
+						<div class="single-brand-box">
+							<div class="brand-thumb">
+								<img src="{% static 'images/home-three/brand-img4.png' %}" alt="brand">
+							</div>
+						</div>
+					</div>	
+					<div class="col-lg-12">
+						<div class="single-brand-box">
+							<div class="brand-thumb">
+								<img src="{% static 'images/home-three/brand-img5.png' %}" alt="brand">
+							</div>
+						</div>
+					</div>				    				    			    
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--==================================================-->
+<!-- end educate brand Area -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- Start educate testimonial Area -->
+<!--==================================================-->
+<div class="testimonial-area style-three">	
+	<div class="container">
+		<div class="row section-title-space align-items-center">
+			<div class="col-lg-6">
+				<div class="section-sub-title three">
+					<a href="{% url "reviews" %}"><h6>ОТЗЫВЫ</h6></a>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="section_title">
+					<h1>Реальный опыт наших</h1>
+					<h1>преданных учеников</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="row">
+					<div class="testi-list3 owl-carousel">
+						{% for rev in reviews %}
+							<div class="col-lg-12">
+								<div class="testi-box">
+									<div class="single-testi-box">
+										<div class="testi-quote">
+											<img src="{% static 'images/home-one/testi-quote.png' %}" alt="quote">
+										</div>
+										<div class="testi-title">
+											<h3>{{ rev.main_message }}</h3>
+										</div>
+										<div class="testi-desc">
+											<p>{{ rev.desc }}</p>
+										</div>
+										<div class="testi-ratting">
+											<ul>
+												{% for _ in reviews.full_stars %}
+													<li><i class="fa-solid fa-star" style="color: orange;"></i></li>
+												{% endfor %}
+												{% if reviews.half_star %}
+													<li><i class="fa-solid fa-star-half-stroke" style="color: orange;"></i></li>
+												{% endif %}
+												{% for _ in reviews.empty_stars %}
+													<li><i class="fa-regular fa-star" style="color: orange;"></i></li>
+												{% endfor %}
+											</ul>
+										</div>
+									</div>
+									<div class="testi-autor-box">
+										<div class="testi-autor">
+											<img src="{{ rev.photo.url }}" alt="autor">
+										</div>
+										<div class="testi-autor-content">
+											<h5 class="autor-title">{{ rev.name }}</h5>
+											<p class="autor-desi">{{ rev.category }}</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="testi-shape31">
+			<img src="{% static 'images/home-three/testi-star.png' %}" alt="star">
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- end educate testimonial Area -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- start educate admission learning  section -->
+<!--==================================================-->
+<div class="addmission-learning-section">
+	<div class="container">
+		<div class="row addmission-bg">
+			<div class="col-xl-6 col-lg-8 col-md-12">
+				<div class="addmission-content">
+					<div class="section-sub-title three">
+						<h6>Допуск</h6>
+					</div>
+					<div class="section_title">
+						<h1>Инновационный и эффективный</h1>
+						<h1>подходы к заработку</h1>
+					</div>
+					<div class="addmission-btn">
+						<a href="{% url "contact" %}">ЗАПИСАТЬСЯ<i class="flaticon flaticon-right-arrow"></i></a>
+					</div>
+				</div>
+				<div class="addmission-star">
+					<img src="{% static 'images/home-three/addmission-star.png' %}" alt="star">
+				</div>
+				<div class="addmission-dot">
+					<img src="{% static 'images/home-three/addmission-dot.png' %}" alt="dot">
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-4 col-md-12"></div>
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- end educate admission learning  section -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- start educate joint event area style-one -->
+<!--==================================================-->
+<div class="joint-event-area style-one">
+	<div class="container">
+		<div class="row section-title-space align-items-center">
+			<div class="col-lg-6">
+				<div class="section-sub-title three">
+					<h6>участвуйте в наших мероприятиях</h6>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="section_title">
+					<h1>Предстоящие академические встречи</h1>
+					<h1>Мастер-классы и семинары</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			{% for event in event %}
+				<div class="col-lg-12">
+					<div class="joint-event-box">
+						<div class="row align-items-center">
+							<div class="col-lg-3">
+								<div class="event-inner-box upper">
+									<div class="joint-event-date">
+										<h1>{{ event.day }}</h1>
+									</div>
+									<div class="joint-event-month">
+										<h5>{{ event.month }}</h5>
+										<p>2025</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<div class="event-inner-box">
+									<div class="event-content">
+										<div class="event-title">
+											<h3><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h3>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-3">
+								<div class="event-inner-box">
+									<div class="event-location">
+										<ul>
+											<li><img src="{% static 'images/home-three/event-icon1.png' %}" alt="icon">{{ event.location }}</li>
+											<li><img src="{% static 'images/home-three/event-icon2.png' %}" alt="icon">{{ event.time }}</li>
+										</ul>
+										<div class="event-thumb">
+											<img src="{% static 'images/home-three/event-thumb2.png' %}" alt="thumb">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-2">
+								<div class="joint-event-btn">
+									<a href="{{ event.get_absolute_url }}">Записаться<i class="flaticon flaticon-right-arrow"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="event-shape">
+			<img src="{% static 'images/home-three/event-shape.png' %}" alt="shape">
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- start educate  joint event area -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- Start educate Marquee Area-->
+<!--==================================================-->
+<div class="marquee-section">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="marquee">
+					<div class="marquee-block">
+						<h3><span><img src="{% static 'images/home-one/marquee-icon.png' %}" alt="icon"></span>обучение инновациям</h3>
+						<h3><span><img src="{% static 'images/home-one/marquee-icon.png' %}" alt="icon"></span>ученики по всему миру</h3>
+						<h3><span><img src="{% static 'images/home-one/marquee-icon.png' %}" alt="icon"></span>уникальные знания</h3>
+						<h3><span><img src="{% static 'images/home-one/marquee-icon.png' %}" alt="icon"></span>мечтай сегодня</h3>
+					</div>
+					<div class="marquee-block">
+						<h3><span><img src="{% static 'images/home-one/marquee-icon.png' %}" alt="icon"></span>обучение инновациям</h3>
+						<h3><span><img src="{% static 'images/home-one/marquee-icon.png' %}" alt="icon"></span>ученики по всему миру</h3>
+						<h3><span><img src="{% static 'images/home-one/marquee-icon.png' %}" alt="icon"></span>уникальные знания</h3>
+						<h3><span><img src="{% static 'images/home-one/marquee-icon.png' %}" alt="icon"></span>мечтай сегодня</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End educate Marquee Area-->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- start educate faq Area-->
+<!--==================================================-->
+<div class="faq-area style-one">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-6 col-lg-12">
+				<div class="faq-thumb-wrapper">
+					<div class="faq-thumb">
+						<img src="{% static 'images/home-three/faq-thumb.png' %}" alt="thumb">
+					</div>
+					<div class="faq-dot">
+						<img src="{% static 'images/home-three/faq-dot.png' %}" alt="dot">
+					</div>
+					<div class="faq-star">
+						<img src="{% static 'images/home-three/faq-star.png' %}" alt="star">
+					</div>
+					<div class="faq-qestion">
+						<img src="{% static 'images/home-three/faq-qestion.png' %}" alt="question">
+					</div>
+					<div class="faq-suport-box">
+						<div class="suport-icon">
+							<img src="{% static 'images/home-three/faq-icon.png' %}" alt="icon">
+						</div>
+						<div class="suport-content">
+							<h3>24 Часа</h3>
+							<p>на связи</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-12">
+				<div class="section-sub-title three">
+					<h6>часто задаваемые вопросы</h6>
+				</div>
+				<div class="section_title">
+					<h1>Что вы хотите знать об</h1>
+					<h1>университете Educate?</h1>
+				</div>
+
+				<!-- Start Accordion -->
+				<div class="tab_container">
+					<div id="tab1" class="tab_content">
+						<ul class="accordion">
+							{% for faq in faq %}
+								<li>
+									<a> <span></span>{{ faq.question}}</a>
+									<p><strong>Ответ :</strong> {{ faq.answer }}
+									</p>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+				<!-- End Accordion -->
+				<div class="faq-button">
+					<a href="{% url "faq" %}">Узнать больше<i class="flaticon flaticon-right-arrow"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class="faq-circle">
+			<img src="assets/images/home-three/faq-circle.png" alt="circle">
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End educate faq Area-->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- start educate blog Area -->
+<!--==================================================-->
+<div class="blog-area style-one">
+	<div class="container">
+		<div class="row section-title-space">
+			<div class="col-lg-6">
+				<div class="section-sub-title">
+					<h6>LATEST BLOG</h6>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="section_title">
+					<h1>Read the Latest Insights and</h1>
+					<h1>Updates Educate Blog</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xl-4 col-lg-6 col-md-6">
+				<div class="single-blog-box box-1">
+					<div class="single-blog-thumb">
+						<img src="assets/images/home-one/blog-thumb1.png" alt="thumb">
+						<div class="blog-meta-top">
+							<span>28 JAN</span>
+						</div>
+					</div>
+					<div class="blog-content">
+						<div class="blog-author">
+							<h4><img src="assets/images/home-one/blog-autor1.png" alt="autor">John D. Alexon</h4>
+						</div>
+						<div class="blog-title">
+							<h3><a href="blog-details.html">10 Proven Strategies to excel
+								Online Learning</a></h3>
+						</div>
+						<div class="blog-btn">
+							<a href="blog-details.html">Continue Reading <img src="assets/images/home-one/blog-icon1.png" alt="icon"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6">
+				<div class="single-blog-box box-2">
+					<div class="single-blog-thumb">
+						<img src="assets/images/home-one/blog-thumb2.png" alt="thumb">
+						<div class="blog-meta-top">
+							<span>29 JAN</span>
+						</div>
+					</div>
+					<div class="blog-content">
+						<div class="blog-author">
+							<h4><img src="assets/images/home-one/blog-autor2.png" alt="autor">Anjelina Watson</h4>
+						</div>
+						<div class="blog-title">
+							<h3><a href="blog-details.html">Trends that are shaping the 
+								Learning experience</a></h3>
+						</div>
+						<div class="blog-btn">
+							<a href="blog-details.html">Continue Reading <img src="assets/images/home-one/blog-icon2.png" alt="icon"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-lg-6 col-md-6">
+				<div class="single-blog-box box-3">
+					<div class="single-blog-thumb">
+						<img src="assets/images/home-one/blog-thumb3.png" alt="thumb">
+						<div class="blog-meta-top">
+							<span>30 JAN</span>
+						</div>
+					</div>
+					<div class="blog-content">
+						<div class="blog-author">
+							<h4><img src="assets/images/home-one/blog-autor3.png" alt="autor">David X. Barmer</h4>
+						</div>
+						<div class="blog-title">
+							<h3><a href="blog-details.html">Learning is the Key soft skills
+								and Professional</a></h3>
+						</div>
+						<div class="blog-btn">
+							<a href="blog-details.html">Continue Reading <img src="assets/images/home-one/blog-icon3.png" alt="icon"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- end educate blog Area -->
+<!--==================================================-->
+
+{% include "footer.html" %}
+
+</body>
+
+</html>

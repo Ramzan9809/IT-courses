@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="breadcumb-area two d-flex">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12">
+				<div class="breadcumb-content text-center">
+					<div class="breadcumb-title">
+						<h4>Курсы</h4>
+					</div>
+					<ul>
+						<li><a href="{% url "home" %}">Главная <span><i class="fa-solid fa-arrow-right-long"></i></span></a></li>
+						<li>Курсы</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="bread-shape">
+			<img src="{% static 'images/inner-img/book-hand.png' %}" alt="book">
+		</div>
+		<div class="bread-dot2">
+			<img src="{% static 'images/inner-img/bread-dot.png' %}" alt="dot">
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End educate Breadcumb Area -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- Start educate-details-course-area style-inner -->
+<!--==================================================-->
+<div class="educate-details-course-area style-inner">
+	<div class="container">
+		<div class="row align-items-center section-title-space">
+			<div class="col-lg-12">
+				<div class="section_title text-center">
+					<h1>Все наши курсы</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			{% for cours in course %}
+				<div class="col-xl-4 col-lg-6 col-md-6">
+					<div class="course-details-box">
+						<div class="course-details-thumb">
+							<img src="{{ cours.banner.url }}" style="width:320px!important" alt="thumb">
+							<div class="course-meta-top">
+								<span>{{ cours.category }}</span>
+							</div>
+						</div>
+						<div class="course-details-content">
+							<h4><a href="{{ cours.get_absolute_url }}">{{ cours.title }}</a></h4>
+							<div class="course-rating">
+								<ul>
+									{% for _ in cours.full_stars %}
+										<li><i class="fa-solid fa-star" style="color: orange;"></i></li>
+									{% endfor %}
+									{% if cours.half_star %}
+										<li><i class="fa-solid fa-star-half-stroke" style="color: orange;"></i></li>
+									{% endif %}
+									{% for _ in cours.empty_stars %}
+										<li><i class="fa-regular fa-star" style="color: orange;"></i></li>
+									{% endfor %}
+								</ul>
+								<div class="course-price">
+									<h3>{{ cours.price }}</h3>
+								</div>
+							</div>
+							<div class="course-details-list">
+								<div class="course-lesson">
+									<span><i class="fa-regular fa-file-lines"></i> {{ cours.count_lessons }} Уроков </span>
+								</div> 
+							</div>
+							<div class="course-btn">
+								<a href="{{ cours.get_absolute_url }}">ПОДРОБНЕЕ<i class="flaticon flaticon-right-arrow"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+	</div>
+</div>
+<!--==================================================-->
+	<!--End educate-details-course-area -->
+<!--==================================================-->
+{% endblock content %}

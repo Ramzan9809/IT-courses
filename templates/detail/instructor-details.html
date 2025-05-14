@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!--==================================================-->
+<!-- Start educate Breadcumb Area -->
+<!--==================================================-->
+<div class="breadcumb-area two d-flex">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12">
+				<div class="breadcumb-content text-center">
+					<div class="breadcumb-title">
+						<h4>Побробнее о {{ instructor.name }}</h4>
+					</div>
+					<ul>
+						<li><a href="{% url "home" %}">Главная <span><i class="fa-solid fa-arrow-right-long"></i></span></a></li>
+						<li>{{ instructor.name }}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="bread-shape">
+			<img src="{% static 'images/inner-img/book-hand.png' %}" alt="book">
+		</div>
+		<div class="bread-dot">
+			<img src="{% static 'images/inner-img/bread-dot.png' %}" alt="dot">
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End educate Breadcumb Area -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- Start educate instructor details section -->
+<!--==================================================-->
+<div class="instruction-details-section">
+	<div class="container">
+		<div class="row instructor-details-bg">
+			<div class="col-lg-3">
+				<div class="instructor-details-thumb">
+					<img src="{{ instructor.photo.url }}" style="width:300px" alt="instructor">
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="instructor-details-info">
+					<div class="instructor-info">
+						<h3 class="instructor-name">{{ instructor.name }}</h3>
+						<div class="instructior-designation">
+							<h5>{{ instructor.position }}</h5>
+						</div>
+						<div class="instructor-course-info">
+							<ul>
+								<li class="total-course"><a href="instructor-details.html#"><i class="fa-regular fa-bookmark"></i>
+									{{ instructor.count_courses }} Курсов</a></li>
+								<li><a href="instructor-details.html#"><i class="fa-regular fa-user"></i>{{ instructor.count_students }} Выпускников</a>
+								</li>
+							</ul>
+						</div>
+						<div class="instructor-social-icon">
+							<ul class="social-icon-list">
+								<li><a href="instructor-details.html#"><i class="fa-brands fa-facebook-f"></i></a></li>
+								<li><a href="instructor-details.html#"><i class="fa-brands fa-x-twitter"></i></a></li>
+								<li><a href="instructor-details.html#"><i class="fa-brands fa-linkedin-in"></i></a></li>
+								<li><a href="instructor-details.html#"><i class="fa-brands fa-instagram"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">				
+				<div class="instruction-details-box">
+					<div class="instructor-details-content">
+						<h3 class="instructor-details-title">Обо мне</h3>
+						<p class="instructor-details-desc">{{ instructor.desc }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- end educate instructor details section-->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- Start educate-details-course-area style-inner -->
+<!--==================================================-->
+<div class="educate-details-course-area style-inner">
+	<div class="container">
+		<div class="row align-items-center section-title-space">
+			<div class="col-lg-12">
+				<div class="section_title text-center">
+					<h1>Все мои курсы</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			{% for cours in courses %}
+				<div class="col-xl-4 col-lg-6 col-md-6">
+					<div class="course-details-box">
+						<div class="course-details-thumb">
+							<img src="{{ cours.banner.url }}" alt="thumb">
+							<div class="course-meta-top">
+								<span>{{ cours.category }}</span>
+							</div>
+						</div>
+						<div class="course-details-content">
+							<h4><a href="{{ cours.get_absolute_url }}">{{ cours.title }}</a></h4>
+							<div class="course-rating">
+								<ul>
+									{% for _ in cours.full_stars %}
+										<li><i class="fa-solid fa-star" style="color: orange;"></i></li>
+									{% endfor %}
+									{% if cours.half_star %}
+										<li><i class="fa-solid fa-star-half-stroke" style="color: orange;"></i></li>
+									{% endif %}
+									{% for _ in cours.empty_stars %}
+										<li><i class="fa-regular fa-star" style="color: orange;"></i></li>
+									{% endfor %}
+								</ul>
+								<div class="course-rating-num">
+									<span>{{ cours.rating }}</span>
+								</div>
+								<div class="course-price">
+									<h3>{{ cours.price }}</h3>
+								</div>
+							</div>
+							<div class="course-details-list">
+								<div class="course-lesson">
+									<span><i class="fa-regular fa-file-lines"></i>{{ cours.count_lessons }} Уроков</span>
+								</div>
+							</div>
+							<div class="course-btn">
+								<a href="{{ cours.get_absolute_url }}">ПОДРОБНЕЕ<i class="flaticon flaticon-right-arrow"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+	<!--End educate-details-course-area -->
+<!--==================================================-->
+{% endblock content %}

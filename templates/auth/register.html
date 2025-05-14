@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!--==================================================-->
+<!-- Start educate sign in form area -->
+<!--==================================================-->
+<section class="course-sign-form-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-6 col-lg-6">
+				<div class="course-sign-in">
+					<div class="sign-form">
+						<div class="bd-section-title-wrapper">
+							<h2 class="sign-form-title">Присоединяйтесь к нам сегодня!</h2>
+							<p class="sign-desc">Создайте свою учетную запись и шагните в мир, полный бесконечных возможностей.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6">
+				<div class="sign-form-wrapper">
+					<div class="sign-form-logo">
+						<a href="index.html"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
+					</div>
+					<h3 class="sign-in-title">Зарегистрироваться</h3>
+					<p class="subtitle">Присоединяйтесь к нам, создав бесплатную учетную запись</p>
+					{% csrf_token %}
+					<form action="https://formspree.io/f/myyleorq" method="POST">
+						<div class="form-input-box">
+							<div class="form-input-title">
+								<label for="name">ФИО<span>*</span></label>
+							</div>
+							<div class="form-input">
+								<input type="text" id="name" name="name" placeholder="ФИО">
+							</div>
+						</div>
+						<div class="form-input-box">
+							<div class="form-input-title">
+								<label for="emailAddress">Email <span>*</span></label>
+							</div>
+							<div class="form-input">
+								<input type="email" id="emailAddress" name="email" placeholder="Email">
+							</div>
+						</div>
+						<div class="form-input-box">
+							<div class="form-input-title">
+								<label for="password">Пароль <span>*</span></label>
+							</div>
+							<div class="form-input">
+								<input type="password" id="password" name="password" placeholder="Пароль">
+							</div>
+						</div>
+						<div class="sign-option">
+							<div class="checkout-option">
+								<input id="rememberMe" type="checkbox">
+								<label for="rememberMe">Запомнить меня</label>
+							</div>
+							<div class="sign-forgot">
+								<a href="forgot.html" class="sign-link">Забыли пароль?</a>
+							</div>
+						</div>
+						<div class="sign-btn">
+							<a href="sign-up.html">Зарегистрироваться</a>
+						</div>
+					</form>
+					<div class="bd-alter-sign">
+						<button><span class="btn-icon"><i class="fa-brands fa-facebook"></i></span>Facebook</button>
+						<button><span class="btn-icon"><i class="fa-brands fa-google"></i></span>Google</button>
+					</div>
+					<div class="bd-sign-up-label">
+						Нет аккаунта?<a href="sign-up.html" class="sign-link"> Зарегистрироваться</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--==================================================-->
+<!-- End educate sign form area  -->
+<!--==================================================-->
+
+{% endblock content %}

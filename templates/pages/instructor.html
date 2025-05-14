@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="breadcumb-area d-flex">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12">
+				<div class="breadcumb-content">
+					<div class="breadcumb-title">
+						<h4>Менторы</h4>
+					</div>
+					<ul>
+						<li><a href="{% url "home" %}">Главная <span><i class="fa-solid fa-arrow-right-long"></i></span></a></li>
+						<li>Менторы</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="breadcumb-shape">
+			<img src="{% static 'images/inner-img/breadcumb-dot.png' %}" alt="dot">
+		</div>
+		<div class="breadcumb-shape2">
+			<img src="{% static 'images/inner-img/breadcumb-ball.png' %}" alt="ball">
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End educate Breadcumb Area -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- Start educate team Area -->
+<!--==================================================-->
+<div class="team-area style-one inner">
+	<div class="container">
+		<div class="row section-title-space">
+			<div class="col-lg-12 text-center">
+				<div class="section-sub-title three">
+					<h6><img src="{% static 'images/inner-img/sub-title2.png' %}" alt="icon">Менторы</h6>
+				</div>
+				<div class="section_title">
+					<h1>Знакомство с педагогами и</h1>
+					<h1>профессиональными инструкторами</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			{% for inst in instructor %}
+				<div class="col-xl-4 col-lg-6 col-md-6">
+					<div class="single-team-box box-1">
+						<div class="team-thumb">
+							<img src="{{ inst.photo.url }}" alt="thumb">
+							<div class="team-social-icon">
+								<div class="team-social">
+									<ul>
+										<li class="team-icon-1"><a href="instructor.html#"><i class="fab fa-facebook-f"></i></a></li>
+										<li class="team-icon-2"><a href="instructor.html#"><i class="fa-brands fa-x-twitter"></i></a></li>
+										<li class="team-icon-3"><a href="instructor.html#"><i class="fab fa-linkedin-in"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="team-content">
+							<div class="team-title">
+								<h3><a href="{{ inst.get_absolute_url }}">{{ inst.name }}</a></h3>
+							</div>
+							<div class="team-sub-title">
+								<h5>{{ inst.position }}</h5>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- end educate team Area -->
+<!--==================================================-->
+{% endblock content %}

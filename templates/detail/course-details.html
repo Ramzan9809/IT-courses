@@ -1,0 +1,345 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!--==================================================-->
+<!-- Start educate Breadcumb Area -->
+<!--==================================================-->
+<div class="breadcumb-area two d-flex">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12">
+				<div class="breadcumb-content">
+					<div class="breadcumb-title">
+						<h4>Детали курса</h4>
+					</div>
+					<ul>
+						<li><a href="{% url "home" %}">Главная <span><i class="fa-solid fa-arrow-right-long"></i></span></a></li>
+						<li><a href="{% url "course" %}">Курсы<span><i class="fa-solid fa-arrow-right-long"></i></span></a></li>
+						<li>{{ course.title }}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xl-6 col-lg-8">
+				<div class="row breadcumb-autor">
+					<div class="col-lg-4 col-md-4">
+						<div class="breadcumb-autor-box">
+							<div class="breadcumb-autor">
+								<img src="{{ instructor.photo.url }}" style="width:80px; border-radius:20px" alt="autor">
+							</div>
+							<div class="breadcumb-autor-content">
+								<p>Ментор</p>
+								<h5>{{ instructor.name }}</h5>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4">
+						<div class="breadcumb-category">
+							<span>Категория</span>
+							<h6>{{ course.category }}</h6>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-4">
+						<div class="breadcumb-ratting">
+							<div class="reviews"><span>Рейтинг</span></div>
+							<div class="breadcumb-star">
+								<ul>
+									{% for _ in course.full_stars %}
+										<li><i class="fa-solid fa-star" style="color: orange;"></i></li>
+									{% endfor %}
+									{% if course.half_star %}
+										<li><i class="fa-solid fa-star-half-stroke" style="color: orange;"></i></li>
+									{% endif %}
+									{% for _ in course.empty_stars %}
+										<li><i class="fa-regular fa-star" style="color: orange;"></i></li>
+									{% endfor %}
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-4"></div>
+		</div>
+		<div class="bread-dot">
+			<img src="{% static 'images/inner-img/bread-dot.png' %}" alt="dot">
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End educate Breadcumb Area -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- Start educate-details-course-area style-inner -->
+<!--==================================================-->
+<section class="course-details-area style-inner">
+	<div class="container">
+		<div class="row">
+			<div class="col-xxl-8 col-xl-8 col-lg-7 col-md-12">
+				<div class="course-details-content">
+					{{course.desc|safe}}
+				</div>
+				<!-- Start Accordion -->
+				<div class="accordion-title">
+					<h2>Учебный план</h2>
+				</div>
+				<div class="tab_container">
+					<div id="tab1" class="tab_content">
+						<ul class="accordion">
+
+							<li>
+								<a><span>Здесь должны быть видео!</span></a>
+								<p>
+									<span class="title"><i class="fa-solid fa-circle-play"></i>Введение в бизнес-инновации</span>
+									<span class="duration">01:00:12<i class="fa-regular fa-eye"></i></span>
+								</p>
+								<p>
+									<span class="title"><i class="fa-solid fa-circle-play"></i>Типы инноваций (продукт, процесс, бизнес-модель и т. д.)</span>
+									<span class="duration">02:30:12<i class="fa-regular fa-eye"></i></span>
+								</p>
+								<p>
+									<span class="title"><i class="fa-solid fa-circle-play"></i>Практические примеры успешных бизнес-инноваций</span>
+									<span class="duration">03:40:12<i class="fa-regular fa-eye"></i></span>
+								</p>
+								<p>
+									<span class="title"><i class="fa-solid fa-circle-play"></i>Методы мозгового штурма и генерации идей</span>
+									<span class="duration">04:20:12<i class="fa-regular fa-eye"></i></span>
+								</p>
+								<p>
+									<span class="title"><i class="fa-solid fa-circle-play"></i>Проведение анализа рынка и тенденций</span>
+									<span class="duration">05:00:12<i class="fa-regular fa-eye"></i></span>
+								</p>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+				<!-- End Accordion -->
+				<div class="course-details-instructors">
+					<div class="course-instructors-content">
+						<div class="instructors-thumb">
+							<a href="#"><img src="{{ instructor.photo.url }}" style="width:300px" alt="Instructor image"></a>
+						</div>
+						<div class="course-instructors-info">
+							<div class="instructors-info">
+								<span class="instructor">Ментор</span>
+								<a href="#"><h3 class="name">{{ instructor.name }}</h3></a>
+							</div>
+							<div class="course-instructors-rating">
+								<ul>
+									{% for _ in instructor.full_stars %}
+										<li><i class="fa-solid fa-star" style="color: orange;"></i></li>
+									{% endfor %}
+									{% if instructor.half_star %}
+										<li><i class="fa-solid fa-star-half-stroke" style="color: orange;"></i></li>
+									{% endif %}
+									{% for _ in instructor.empty_stars %}
+										<li><i class="fa-regular fa-star" style="color: orange;"></i></li>
+									{% endfor %}
+								</ul>
+							</div>
+							<h5 class="designation">{{ instructor.position }}</h5>
+							<div class="instructor-dtls-social">
+								<ul class="social-icon-list">
+									<li><a href="course-details.html#"><i class="fab fa-facebook-f"></i></a></li>
+									<li><a href="course-details.html#"><i class="fa-brands fa-x-twitter"></i></a></li>
+									<li><a href="course-details.html#"><i class="fab fa-linkedin-in"></i></a></li>
+									<li><a href="course-details.html#"><i class="fa-brands fa-instagram"></i></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row align-items-center">
+					<div class="col-xl-5 col-lg-12">
+						<div class="instructor-ratting-box">
+							<div class="ins-rating-box-number">
+								<h4>{{ instructor.rating }}</h4>
+							</div>
+							<div class="ins-rating-box-icon">
+								<ul>
+									{% for _ in instructor.full_stars %}
+										<li><i class="fa-solid fa-star" style="color: orange;"></i></li>
+									{% endfor %}
+									{% if instructor.half_star %}
+										<li><i class="fa-solid fa-star-half-stroke" style="color: orange;"></i></li>
+									{% endif %}
+									{% for _ in instructor.empty_stars %}
+										<li><i class="fa-regular fa-star" style="color: orange;"></i></li>
+									{% endfor %}
+								</ul>
+							</div>
+							<p class="rating-box-desc">(Результат множества опросов)</p>
+						</div>
+					</div>
+
+					<div class="col-xl-7 col-lg-12">
+						<div class="instuctor-review-progress-wrapper">
+							<!-- Rating for 5 Stars -->
+							<!-- prossess bar -->
+							<div class="prossess-ber-plugin">
+								<span class="prosses-bar"><i class="fa-solid fa-star"></i>5 Звёзд</span>
+								<p class="bd-review-number">(05)</p> 
+								<div id="bar1" class="barfiller">
+									<div class="tipWrap">
+										<span class="tip">90</span>
+									</div>
+									<span class="fill" data-percentage="90"></span>
+								</div> 
+								<span class="prosses-bar"><i class="fa-solid fa-star"></i>4 Звёзд</span>
+								<p class="bd-review-number">(04)</p> 
+								<div id="bar2" class="barfiller">
+									<div class="tipWrap">
+										<span class="tip">80</span>
+									</div>
+									<span class="fill" data-percentage="80"></span>
+								</div>	
+								<span class="prosses-bar"><i class="fa-solid fa-star"></i>3 Звёзд</span>
+								<p class="bd-review-number">(03)</p> 
+								<div id="bar3" class="barfiller">
+									<div class="tipWrap">
+										<span class="tip">60</span>
+									</div>
+									<span class="fill" data-percentage="60"></span>
+								</div>	
+								<span class="prosses-bar"><i class="fa-solid fa-star"></i>2 Звёзд</span>
+								<p class="bd-review-number">(02)</p> 
+								<div id="bar4" class="barfiller">
+									<div class="tipWrap">
+										<span class="tip">50</span>
+									</div>
+									<span class="fill" data-percentage="50"></span>
+								</div>	
+								<span class="prosses-bar"><i class="fa-solid fa-star"></i>1 Звёзд</span>
+								<p class="bd-review-number">(01)</p> 
+								<div id="bar5" class="barfiller">
+									<div class="tipWrap">
+										<span class="tip">40</span>
+									</div>
+									<span class="fill" data-percentage="40"></span>
+								</div>			
+							</div>
+						</div>
+					</div>
+					<div class="course-detalis-reviews">
+						<h3 class="course-details-content-title">Отзывы студентов</h3>
+						<div class="reviews-postbox-comment">
+							<ul>
+								{% for rev in reviews %}
+									<li class="post-comment-box-1">
+										<div class="reviews-postbox-comment-box">
+											<div class="reviews-postbox-comment-text">
+												<div class="reviews-postbox-comment-info">
+													<div class="reviews-postbox-comment-autor">
+														<img src="{{ rev.photo.url }}" alt="image">
+													</div>
+												</div>
+												<div class="reviews-postbox-comment-name">
+													<a href="course-details.html#">{{ rev.name }}</a>
+													<div class="post-rating">
+														{% for _ in rev.full_stars %}
+															<li><i class="fa-solid fa-star" style="color: orange;"></i></li>
+														{% endfor %}
+														{% if rev.half_star %}
+															<li><i class="fa-solid fa-star-half-stroke" style="color: orange;"></i></li>
+														{% endif %}
+														{% for _ in rev.empty_stars %}
+															<li><i class="fa-regular fa-star" style="color: orange;"></i></li>
+														{% endfor %}
+													</div>
+												</div>
+											</div>
+											<div class="reviews-desc">
+												<p>{{ rev.desc }}</p>
+											</div>
+										</div>
+									</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xxl-4 col-xl-4 col-lg-5 col-md-12">
+				<div class="event-sidebar-wrapper">
+					<div class="event-sidebar">
+						<div class="event-sidebar-thumb">
+							<img src="{% static 'images/inner-img/course-thumb1.png' %}" alt="thumb">
+							<div class="course-video-icon">
+								<a class="video-vemo-icon venobox vbox-item" data-vbtype="youtube" data-autoplay="true" href="https://www.youtube.com/watch?v=Wx48y_fOfiY"><i class="fa-classic fa-solid fa-play fa-fw"></i></a>
+							</div>
+						</div>
+						<div class="event-info">
+							<div class="event-info-title">
+								<h3>Курс включает :</h3>
+							</div>
+						</div>
+						<div class="event-info-list">
+							<ul>
+								<li>
+									<div class="label">
+										<i class="fa-solid fa-dollar-sign"></i>Цена
+									</div>
+									<span class="value-dollar">{{ course.price }}</span>
+								</li>
+								<li>
+									<div class="label">
+										<i class="fa-solid fa-user"></i>Ментор
+									</div>
+									<span class="value">{{ instructor.name }}</span>
+								</li>
+								<li>
+									<div class="label">
+										<i class="fa-solid fa-book"></i> Кол-во уроков
+									</div>
+									<span class="value">{{ course.count_lessons}}</span>
+								</li>
+								<li>
+									<div class="label">
+										<i class="fa-regular fa-circle-user"></i> Кол-во учеников
+									</div>
+									<span class="value">{{ course.count_students }}</span>
+								</li>
+								<li>
+									<div class="label">
+										<i class="fa-regular fa-circle-check"></i>Наличие сертификата
+									</div>
+									<span class="value">{{ course.certification }}</span>
+								</li>
+								<li>
+									<div class="label">
+										<i class="fa-solid fa-globe"></i>Язык обучения
+									</div>
+									<span class="value">{{ course.language }}</span>
+								</li>
+							</ul>
+						</div>
+						<div class="event-info-btn">
+							<a href="{% url "contact" %}">Преобрести<i class="flaticon flaticon-right-arrow"></i></a>
+						</div>
+						<div class="course-share-title">
+							<h5>Поделиться сейчас</h5>
+						</div>
+						<div class="course-share-icon">
+							<ul class="share-icon">
+								<li><a href="course-details.html#"><i class="fab fa-facebook-f"></i></a></li>
+								<li><a href="course-details.html#"><i class="fa-brands fa-x-twitter"></i></a></li>
+								<li><a href="course-details.html#"><i class="fab fa-linkedin-in"></i></a></li>
+								<li><a href="course-details.html#"><i class="fa-brands fa-pinterest-p"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--==================================================-->
+	<!--End educate-details-course-area -->
+<!--==================================================-->
+{% endblock content %}

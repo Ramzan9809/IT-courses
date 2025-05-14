@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!--==================================================-->
+<!-- Start educate Breadcumb Area -->
+<!--==================================================-->
+<div class="breadcumb-area d-flex">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12">
+				<div class="breadcumb-content">
+					<div class="breadcumb-title">
+						<h4>Вопросы / Ответы</h4>
+					</div>
+					<ul>
+						<li><a href="{% url "home" %}">Главная <span><i class="fa-solid fa-arrow-right-long"></i></span></a></li>
+						<li>Вопросы / Ответы</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="breadcumb-shape">
+			<img src="{% static 'images/inner-img/breadcumb-dot.png' %}" alt="dot">
+		</div>
+		<div class="breadcumb-shape2">
+			<img src="{% static 'images/inner-img/breadcumb-ball.png' %}" alt="ball">
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- End educate Breadcumb Area -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- start educate faq Area-->
+<!--==================================================-->
+<div class="faq-area style-one">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-6 col-lg-12">
+				<div class="faq-thumb-wrapper">
+					<div class="faq-thumb">
+						<img src="{% static 'images/home-three/faq-thumb.png' %}" alt="thumb">
+					</div>
+					<div class="faq-dot">
+						<img src="{% static 'images/home-three/faq-dot.png' %}" alt="dot">
+					</div>
+					<div class="faq-star">
+						<img src="{% static 'images/home-three/faq-star.png' %}" alt="star">
+					</div>
+					<div class="faq-qestion">
+						<img src="{% static 'images/home-three/faq-qestion.png' %}" alt="question">
+					</div>
+					<div class="faq-suport-box">
+						<div class="suport-icon">
+							<img src="{% static 'images/home-three/faq-icon.png' %}" alt="icon">
+						</div>
+						<div class="suport-content">
+							<h3>24/7 Часа</h3>
+							<p>готовы к вопросам</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-12">
+				<div class="section-sub-title three">
+					<h6>часто задаваемые вопросы</h6>
+				</div>
+				<div class="section_title">
+					<h1>Что вы хотите знать об</h1>
+					<h1>университете Educate?</h1>
+				</div>
+
+				<!-- Start Accordion -->
+				<div class="tab_container">
+					<div id="tab1" class="tab_content">
+						<ul class="accordion">
+							{% for faq in faq %}
+								<li>
+									<a> <span></span>{{ faq.question}}</a>
+									<p><strong>Ответ :</strong> {{ faq.answer }}
+									</p>
+								</li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+				<!-- End Accordion -->
+				<div class="faq-button">
+					<a href="{% url "contact" %}">Узнать больше<i class="flaticon flaticon-right-arrow"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class="faq-circle">
+			<img src="{% static 'images/home-three/faq-circle.png' %}" alt="circle">
+		</div>
+	</div>
+</div>
+
+<!--==================================================-->
+<!-- End educate faq Area-->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- Start educate call to action Area style-two -->
+<!--==================================================-->
+<div class="call-to-action style-two">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-6">
+				<div class="call-to-title">
+					<h3>Ваше путешествие в обучении начинается здесь</h3>
+					<h3>Изучите – все программы сегодня</h3>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="call-to-btn">
+					<a href="{% url "contact" %}">Все программы<i class="flaticon flaticon-right-arrow"></i></a>
+				</div>
+			</div>
+		</div>
+		<div class="call-to-shape31">
+			<img src="{% static 'images/home-three/call-to-arrow2.png' %}" alt="shape">
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- end educate call to action Area style-two -->
+<!--==================================================-->
+
+<!--==================================================-->
+<!-- start educate brand Area -->
+<!--==================================================-->
+<div class="brand-area style-one inner">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-5">
+				<div class="section-sub-title">
+					<h6>Наши партнёры</h6>
+				</div>
+				<div class="section_title">
+					<h1>Наши надежные партнеры</h1>
+				</div>
+			</div>
+			<div class="col-lg-7">
+				<div class="brand-list owl-carousel">
+					<div class="col-lg-12">
+						<div class="single-brand-box">
+							<div class="brand-thumb">
+							   <img src="{% static 'images/inner-img/brand-inner1.png' %}" alt="brand">
+							</div>
+						</div>
+					</div>				    
+					<div class="col-lg-12">
+						<div class="single-brand-box">
+							<div class="brand-thumb">
+								<img src="{% static 'images/inner-img/brand-inner2.png' %}" alt="brand">
+							</div>
+						</div>
+					</div>				   
+					<div class="col-lg-12">
+						<div class="single-brand-box">
+							<div class="brand-thumb">
+								<img src="{% static 'images/inner-img/brand-inner3.png' %}" alt="brand">
+							</div>
+						</div>
+					</div>				    				    			    
+				</div>
+			</div>
+		</div>
+		<div class="brand-arrow-shape">
+			<img src="{% static 'images/home-one/brand-arrow.png' %}" alt="arrow">
+		</div>
+		<div class="brand-star-shape">
+			<img src="{% static 'images/home-one/brand-star.png' %}" alt="star">
+		</div>
+	</div>
+</div>
+<!--==================================================-->
+<!-- end educate brand Area -->
+<!--==================================================-->
+{% endblock content %}

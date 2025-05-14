@@ -1,0 +1,74 @@
+{% load static %}
+<div class="hero-slider owl-carousel">
+	{% for slid in sliders %}
+	<section class="hero_area style-three d-flex align-items-center">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6">
+					<!-- hero content -->
+					<div class="hero_content">
+						<h5 data-animation="fadeInUp" data-delay="100ms"><i class="bi bi-check2"></i>{{slid.on_title}}</h5>
+						<h1 data-animation="fadeInUp" data-delay="100ms">{{slid.main_title}}</h1>
+						<h1 data-animation="fadeInUp" data-delay="100ms">{{slid.under_title}} <span>{{slid.under_title_2}}</span></h1>
+						<p data-animation="fadeInUp" data-delay="100ms">{{slid.desc}}</p>
+							<!-- hero button -->						
+							<div class="hero-button" data-animation="fadeInUp" data-delay="100ms">
+								<div class="hero-btn">
+									<a href="{% url "contact" %}">ЗАПИСАТЬСЯ<i class="flaticon flaticon-right-arrow"></i></a>
+								</div>
+								<div class="hero-course-btn">
+									<a href="{% url "course" %}">НАЙТИ КУРС<i class="flaticon flaticon-right-arrow"></i></a>
+								</div>
+							</div>
+						<div class="hero-shape31">
+							<img src="{% static 'images/home-three/hero-shape31.png' %}" alt="hero-shape1">
+						</div>
+						<div class="hero-shape32">
+							<img src="{% static 'images/home-three/hero-shape32.png' %}" alt="hero-shape2">
+						</div>
+						<div class="hero-shape33">
+							<img src="{% static 'images/home-three/hero-shape33.png' %}" alt="hero-shape3">
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6"></div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="hero_area style-three four d-flex align-items-center">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6">
+					<!-- hero content -->
+					<div class="hero_content">
+						<h5 data-animation="fadeInUp" data-delay="100ms"><i class="bi bi-check2"></i>{{slid.on_title}}</h5>
+						<h1 data-animation="fadeInUp" data-delay="100ms">{{slid.main_title}}</h1>
+						<h1 data-animation="fadeInUp" data-delay="100ms">{{slid.under_title}} <span>{{slid.under_title_2}}</span></h1>
+						<p data-animation="fadeInUp" data-delay="100ms">{{slid.desc}}</p>
+							<!-- hero button -->						
+						<div class="hero-button" data-animation="fadeInUp" data-delay="100ms">
+							<div class="hero-btn">
+								<a href="{% url "contact" %}">ЗАПИСАТЬСЯ<i class="flaticon flaticon-right-arrow"></i></a>
+							</div>
+							<div class="hero-course-btn">
+								<a href="{% url "course" %}">НАЙТИ КУРС<i class="flaticon flaticon-right-arrow"></i></a>
+							</div>
+						</div>
+						<div class="hero-shape31">
+							<img src="{% static 'images/home-three/hero-shape31.png' %}" alt="hero-shape1">
+						</div>
+						<div class="hero-shape32">
+							<img src="{% static 'images/home-three/hero-shape32.png' %}" alt="hero-shape2">
+						</div>
+						<div class="hero-shape33">
+							<img src="{% static 'images/home-three/hero-shape33.png' %}" alt="hero-shape3">
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6"></div>
+			</div>
+		</div>
+	</section>
+	{% endfor %}
+</div>
