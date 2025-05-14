@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
-from .models import Course, Instructors
+from .models import Course, Instructors, Video
 from apps.settings.models import Reviews
 
 
@@ -26,6 +26,7 @@ def course_detail(request, slug):
     course = get_object_or_404(Course, slug=slug)
     instructor = course.instructor
     reviews = Reviews.objects.all()[:2]
+    video = Video.objects.filter(course=course)
 
     rating = float(course.rating)
     full = int(rating)
@@ -40,6 +41,7 @@ def course_detail(request, slug):
         'course': course,
         'instructor': instructor,
         'reviews': reviews,
+        'video': video,
     }
     return render(request, 'detail/course-details.html', context)
 

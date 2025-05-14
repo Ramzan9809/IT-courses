@@ -81,10 +81,10 @@ class Course(models.Model):
 
 
 class Video(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='курс')
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='курс ')
     title = models.CharField(max_length=50, verbose_name='название')
-    banner = models.ImageField(upload_to='product-detail', verbose_name='баннер')
     url = models.CharField(max_length=255, verbose_name='ссылка на видео')
+    duration = models.CharField(max_length=10, verbose_name='продолжительность видео', help_text='Например: 02:18:02', blank=True, null=True)
 
     def __str__(self):
         return self.course.title

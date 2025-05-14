@@ -82,26 +82,17 @@
 				<div class="footer-widget-title">
 					<h4>Последние посты</h4>
 				</div>
-				<div class="footer-widget-blog first">
-					<div class="footer-widget-blog-thumb">
-						<img src="{% static 'images/home-one/footer-recent-img1.png' %}" alt="recent-img">
+				{% for b in blog %}
+					<div class="footer-widget-blog">
+						<div class="footer-widget-blog-thumb">
+							<img src="{% static 'images/home-one/footer-recent-img2.png' %}" alt="recent-img">
+						</div>
+						<div class="footer-widget-blog-content">
+							<a href="{{ b.get_absolute_url }}">{{ b.title }}</a>
+							<p>{{ b.date }}</p>
+						</div>
 					</div>
-					<div class="footer-widget-blog-content">
-						<a href="blog-details.html">10 проверенных стратегий для
-							онлайн-обучения</a>
-						<p>8 Jan, 2025</p>
-					</div>
-				</div>
-				<div class="footer-widget-blog">
-					<div class="footer-widget-blog-thumb">
-						<img src="{% static 'images/home-one/footer-recent-img2.png' %}" alt="recent-img">
-					</div>
-					<div class="footer-widget-blog-content">
-						<a href="blog-details.html">Trends that are shaping 
-							the Learning...</a>
-						<p>8 Jan, 2025</p>
-					</div>
-				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</div>

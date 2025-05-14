@@ -16,17 +16,18 @@
 						<li><a href="{% url "home" %}">Главная</a>
 						</li>
 						<li><a href="{% url "about" %}">О нас</a></li>
-						<li><a href="#">Страницы</a>
+						<li><a href="{% url "instructor" %}">Менторы</a>
+						</li>	
+						<li><a href="{% url "course" %}">Курсы</a>
+						</li>
+						<li><a href="{% url "blog" %}">Блог</a>
+						</li>
+						<li><a href="#">К сведению</a>
 							<ul class="sub_menu"> 
-								<li><a href="{% url "instructor" %}">Менторы</a></li>	  
 								<li><a href="{% url "reviews" %}">Отзывы</a></li>	 	 			
 								<li><a href="{% url "faq" %}">Вопросы \ Ответы</a></li>	 
 							</ul>
-						</li>
-						<li><a href="{% url "course" %}">Курсы</a>
 						</li> 
-						<li><a href="{% url "blog" %}">Блог</a>
-						</li>
 						<li><a href="{% url "contact" %}">Контакты</a></li>
 					</ul>					
 				</div>

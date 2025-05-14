@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'apps.users',
     'apps.settings',
     'apps.blogs',
-    'apps.books',
     'apps.events',
     'mptt',
     'ckeditor',

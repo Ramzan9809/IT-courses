@@ -93,29 +93,18 @@
 						<ul class="accordion">
 
 							<li>
-								<a><span>Здесь должны быть видео!</span></a>
-								<p>
-									<span class="title"><i class="fa-solid fa-circle-play"></i>Введение в бизнес-инновации</span>
-									<span class="duration">01:00:12<i class="fa-regular fa-eye"></i></span>
-								</p>
-								<p>
-									<span class="title"><i class="fa-solid fa-circle-play"></i>Типы инноваций (продукт, процесс, бизнес-модель и т. д.)</span>
-									<span class="duration">02:30:12<i class="fa-regular fa-eye"></i></span>
-								</p>
-								<p>
-									<span class="title"><i class="fa-solid fa-circle-play"></i>Практические примеры успешных бизнес-инноваций</span>
-									<span class="duration">03:40:12<i class="fa-regular fa-eye"></i></span>
-								</p>
-								<p>
-									<span class="title"><i class="fa-solid fa-circle-play"></i>Методы мозгового штурма и генерации идей</span>
-									<span class="duration">04:20:12<i class="fa-regular fa-eye"></i></span>
-								</p>
-								<p>
-									<span class="title"><i class="fa-solid fa-circle-play"></i>Проведение анализа рынка и тенденций</span>
-									<span class="duration">05:00:12<i class="fa-regular fa-eye"></i></span>
-								</p>
-							</li>
+								<a><span>Видео уроки</span></a>
+									{% for vid in video %}
+										<p>
+											<a href="{{ vid.url }}"><span class="title"><i class="fa-solid fa-circle-play"></i>{{ vid.title }}</span></a>
+											<span class="duration">{{ vid.duration }}<i class="fa-regular fa-eye"></i></span>
 
+										</p>
+									{% endfor %}
+							</li>
+							<li>
+								<a href="https://www.youtube.com/watch?v=ND8xtTI2WoE">video</a>
+							</li>
 						</ul>
 					</div>
 				</div>

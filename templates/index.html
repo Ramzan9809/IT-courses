@@ -13,8 +13,8 @@
 	<!-- bootstrap CSS -->
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css" media="all">
 	<!-- carousel CSS -->
@@ -165,25 +165,26 @@
 						<a class="active_logo" href="index.html"><img src="{% static 'images/footer-logo.png' %}" alt="logo"></a>
 						<a class="logo_two" href="index.html"><img src="{% static 'images/footer-logo.png' %}" alt="logo"></a>
 					</div>
-				</div>
+				</div> 
 				<div class="col-lg-6">
 					<div class="header-menu">
 						<ul class="nav_scroll">
 							<li><a href="{% url "home" %}">Главная</a>
-						</li>
-						<li><a href="{% url "about" %}">О нас</a></li>
-						<li><a href="#">Страницы</a>
-							<ul class="sub_menu"> 
-								<li><a href="{% url "instructor" %}">Менторы</a></li>	  
-								<li><a href="{% url "reviews" %}">Отзывы</a></li>	 	 			
-								<li><a href="{% url "faq" %}">Вопросы \ Ответы</a></li>	 
-							</ul>
-						</li>
-						<li><a href="{% url "course" %}">Курсы</a>
-						</li> 
-						<li><a href="{% url "blog" %}">Блог</a>
-						</li>
-						<li><a href="{% url "contact" %}">Контакты</a></li>
+							</li>
+							<li><a href="{% url "about" %}">О нас</a></li>
+							<li><a href="{% url "instructor" %}">Менторы</a>
+							</li>	
+							<li><a href="{% url "course" %}">Курсы</a>
+							</li>
+							<li><a href="{% url "blog" %}">Блог</a>
+							</li>
+							<li><a href="#">К сведению</a>
+								<ul class="sub_menu"> 
+									<li><a href="{% url "reviews" %}">Отзывы</a></li>	 	 			
+									<li><a href="{% url "faq" %}">Вопросы \ Ответы</a></li>	 
+								</ul>
+							</li> 
+							<li><a href="{% url "contact" %}">Контакты</a></li>
 						</ul>					
 					</div>
 				</div>
@@ -211,7 +212,7 @@
 
 {% include "sliders.html" with sliders=sliders %}
 
-<!-- ---------------------------------------------------------------------------------- -->
+<!-------------------------------------------------------------------------------------->
 
 
 <section class="feature-area style-two">
@@ -323,12 +324,9 @@
 						<p><span><img src="{% static 'images/home-three/about-call.png' %}" alt="call"></span>+996 550 777 462</p>
 					</div>
 					<div class="about-btn">
-						<a href="about.html">Узнать больше<i class="flaticon flaticon-right-arrow"></i></a>
+						<a href="{% url "about" %}">Узнать больше<i class="flaticon flaticon-right-arrow"></i></a>
 					</div>
 					<div class="about-education-box">
-						<div class="education-icon">
-							<span><i class="bi bi-check-lg"></i></span>
-						</div>
 						<div class="education-content">
 							<p>Надежные онлайн и офлайн образовательные услуги</p>
 							<span>Скала Джонсон</span>
@@ -370,10 +368,13 @@
 					<div class="row">
 						<div class="col-lg-4">					
 							<ul class="tabs">
-								<li><a href="{% url "course" %}"><span><i class="bi bi-check-lg"></i></span>Выпускная программа</a></li>
-								<li><a href="{% url "course" %}"><span><i class="bi bi-check-lg"></i></span>Программы магистратуры</a></li>
-								<li><a href="{% url "course" %}"><span><i class="bi bi-check-lg"></i></span>Онлайн программа</a></li>
-								<li><a href="{% url "contact" %}"><span><i class="bi bi-check-lg"></i></span>Программа стипендий</a></li>
+								{% for cat in category %}
+									<li>
+									<a href="?category={{ cat.slug }}" class="{% if category_slug == cat.slug %}active{% endif %}">
+										{{ cat.name }}
+									</a>
+									</li>
+								{% endfor %}
 							</ul>
 							<div class="course-instuctor-wrapper">
 								<div class="course-instuctor-box">
@@ -399,37 +400,41 @@
 								<div class="tab_content">
 									<div class="tabs_item">
 										<div class="row">
-									  {% for cours in course %}
-									<div class="col-xxl-6 col-xl-6 col-lg-12 col-md-6">
-										<div class="single-course-box">
-											<div class="course-thumb">
-												<img src="{{ cours.banner.url }}" alt="thumb">
-											</div>
-											<div class="course-content">
-												<h5>{{ cours.category }}</h5>
-												<h3><a href="course-details.html">{{ cours.title }}</a></h3>
-												<div class="course-rating">
+											{% for cours in course %}
+											<div class="col-xxl-6 col-xl-6 col-lg-12 col-md-6">
+											  <div class="single-course-box">
+												<div class="course-thumb">
+												  <img src="{{ cours.banner.url }}" alt="thumb">
+												</div>
+												<div class="course-content">
+												  <h5>{{ cours.category.name }}</h5>
+												  <h3><a href="{{ cours.get_absolute_url }}">{{ cours.title }}</a></h3>
+												  <div class="course-rating">
 													<ul>
-														<li><i class="fa-solid fa-star"></i></li>
-														<li><i class="fa-solid fa-star"></i></li>
-														<li><i class="fa-solid fa-star"></i></li>
-														<li><i class="fa-solid fa-star"></i></li>
-														<li><i class="fa-classic fa-solid fa-star-half-stroke fa-fw"></i></li>
+													  {% for _ in cours.full_stars %}
+														<li><i class="fa-solid fa-star" style="color: orange;"></i></li>
+													  {% endfor %}
+													  {% if cours.half_star %}
+														<li><i class="fa-solid fa-star-half-stroke" style="color: orange;"></i></li>
+													  {% endif %}
+													  {% for _ in cours.empty_stars %}
+														<li><i class="fa-regular fa-star" style="color: orange;"></i></li>
+													  {% endfor %}
 													</ul>
 													<div class="course-rating-num">
-														<span>(4.5/3 Ratings)</span>
+													  <span>{{ cours.rating }}</span>
 													</div>
+												  </div>
+												  <div class="course-price">
+													<span class="price">{{ cours.get_final_price }} сом</span>
+												  </div>
+												  <div class="course-btn">
+													<a href="{{ cours.get_absolute_url }}">Узнать больше<i class="flaticon flaticon-right-arrow"></i></a>
+												  </div>
 												</div>
-												<div class="course-price">
-													<span class="price">{{ cours.price }}</span>
-												</div>
-												<div class="course-btn">
-													<a href="course-details.html">Узнать больше<i class="flaticon flaticon-right-arrow"></i></a>
-												</div>
+											  </div>
 											</div>
-										</div>
-									</div>
-									{% endfor %}
+										  {% endfor %}
 
 								  		</div>
 									</div>
@@ -442,7 +447,6 @@
 		</div>
 	</div>
 </div>
-
 <!--==================================================-->
 	<!--End educate course program Area style-three -->
 <!--==================================================-->
@@ -470,8 +474,6 @@
 		</div>
 	</div>
 </div>
-
-
 <!--==================================================-->
 <!-- end educate call to action Area style-two -->
 <!--==================================================-->
@@ -638,7 +640,7 @@
 											<h3>{{ rev.main_message }}</h3>
 										</div>
 										<div class="testi-desc">
-											<p>{{ rev.desc }}</p>
+											<p>{{ rev.desc|striptags|safe }}</p>
 										</div>
 										<div class="testi-ratting">
 											<ul>
@@ -894,92 +896,46 @@
 		<div class="row section-title-space">
 			<div class="col-lg-6">
 				<div class="section-sub-title">
-					<h6>LATEST BLOG</h6>
+					<h6>Блог</h6>
 				</div>
 			</div>
 			<div class="col-lg-6">
 				<div class="section_title">
-					<h1>Read the Latest Insights and</h1>
-					<h1>Updates Educate Blog</h1>
+					<h1>Читайте последние идеи и</h1>
+					<h1>обновления в блоге Educate</h1>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-xl-4 col-lg-6 col-md-6">
-				<div class="single-blog-box box-1">
-					<div class="single-blog-thumb">
-						<img src="assets/images/home-one/blog-thumb1.png" alt="thumb">
-						<div class="blog-meta-top">
-							<span>28 JAN</span>
+			{% for b in blog %}
+				<div class="col-xl-4 col-lg-6 col-md-6">
+					<div class="single-blog-box box-1">
+						<div class="single-blog-thumb">
+							<img src="{{ b.banner.url }}" alt="thumb">
+							<div class="blog-meta-top">
+								<span>{{ b.date }}</span>
+							</div>
 						</div>
-					</div>
-					<div class="blog-content">
-						<div class="blog-author">
-							<h4><img src="assets/images/home-one/blog-autor1.png" alt="autor">John D. Alexon</h4>
-						</div>
-						<div class="blog-title">
-							<h3><a href="blog-details.html">10 Proven Strategies to excel
-								Online Learning</a></h3>
-						</div>
-						<div class="blog-btn">
-							<a href="blog-details.html">Continue Reading <img src="assets/images/home-one/blog-icon1.png" alt="icon"></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-4 col-lg-6 col-md-6">
-				<div class="single-blog-box box-2">
-					<div class="single-blog-thumb">
-						<img src="assets/images/home-one/blog-thumb2.png" alt="thumb">
-						<div class="blog-meta-top">
-							<span>29 JAN</span>
-						</div>
-					</div>
-					<div class="blog-content">
-						<div class="blog-author">
-							<h4><img src="assets/images/home-one/blog-autor2.png" alt="autor">Anjelina Watson</h4>
-						</div>
-						<div class="blog-title">
-							<h3><a href="blog-details.html">Trends that are shaping the 
-								Learning experience</a></h3>
-						</div>
-						<div class="blog-btn">
-							<a href="blog-details.html">Continue Reading <img src="assets/images/home-one/blog-icon2.png" alt="icon"></a>
+						<div class="blog-content">
+							<div class="blog-author">
+								<h4><img src="{{ b.instructor.photo.url }}" style="width:40px; border-radius:20px" alt="autor">{{ b.instructor.name }}</h4>
+							</div>
+							<div class="blog-title">
+								<h3><a href="{{ b.get_absolute_url }}">{{ b.title }}</a></h3>
+							</div>
+							<div class="blog-btn">
+								<a href="{{ b.get_absolute_url }}">Читать <img src="{% static 'images/home-one/blog-icon1.png' %}" alt="icon"></a>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-xl-4 col-lg-6 col-md-6">
-				<div class="single-blog-box box-3">
-					<div class="single-blog-thumb">
-						<img src="assets/images/home-one/blog-thumb3.png" alt="thumb">
-						<div class="blog-meta-top">
-							<span>30 JAN</span>
-						</div>
-					</div>
-					<div class="blog-content">
-						<div class="blog-author">
-							<h4><img src="assets/images/home-one/blog-autor3.png" alt="autor">David X. Barmer</h4>
-						</div>
-						<div class="blog-title">
-							<h3><a href="blog-details.html">Learning is the Key soft skills
-								and Professional</a></h3>
-						</div>
-						<div class="blog-btn">
-							<a href="blog-details.html">Continue Reading <img src="assets/images/home-one/blog-icon3.png" alt="icon"></a>
-						</div>
-					</div>
-				</div>
-			</div>
+			{% endfor %}
 		</div>
 	</div>
 </div>
 <!--==================================================-->
 <!-- end educate blog Area -->
 <!--==================================================-->
-
 {% include "footer.html" %}
-
 </body>
-
 </html>
