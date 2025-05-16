@@ -72,91 +72,6 @@
 		</div>
 	</div>
 	
-	
-	<div class="search-popup">
-	<button class="close-search style-two"><i class="fas fa-times"></i></button>
-	<button class="close-search"><i class="fas fa-arrow-up"></i></button>
-	<form method="post" action="index-3.html#">
-		<div class="form-group">
-			<input id="search1" type="search" name="search-field" value="" placeholder="Search Here" required="">
-			<button type="submit"><i class="fas fa-search"></i></button>
-		</div>
-	</form>
-	</div>
-		
-	<div class="sidebar-menu-wrapper">
-		<div class="cart_sidebar">
-			<button type="button" class="close_btn"><i class="fas fa-times"></i></button>
-			<h2 class="heading_title text-uppercase">Cart Items - <span>4</span></h2>
-	
-			<div class="cart_items_list">
-				<div class="cart_item">
-					<div class="item_image">
-						<img src="{% static 'images/inner-img/rpost-thumb1.png' %}" alt="image_not_found">
-					</div>
-					<div class="item_content">
-						<h4 class="item_title">	
-						How Gamification is Changing the Way...
-						</h4>
-						<span class="item_price">$21.00</span>
-						<button type="button" class="remove_btn"><i class="fas fa-times"></i></button>
-					</div>
-				</div>
-	
-				<div class="cart_item">
-					<div class="item_image">
-						<img src="{% static 'images/inner-img/rpost-thumb2.png' %}" alt="image_not_found">
-					</div>
-					<div class="item_content">
-						<h4 class="item_title">
-							Learning is the Key soft skills and Professional
-						</h4>
-						<span class="item_price">$23.00</span>
-						<button type="button" class="remove_btn"><i class="fas fa-times"></i></button>
-					</div>
-				</div>
-	
-				<div class="cart_item">
-					<div class="item_image">
-						<img src="{% static 'images/inner-img/rpost-thumb3.png' %}" alt="image_not_found">
-					</div>
-					<div class="item_content">
-						<h4 class="item_title">
-							The Importance of Critical Thinking in Education
-						</h4>
-						<span class="item_price">$25.00</span>
-						<button type="button" class="remove_btn"><i class="fas fa-times"></i></button>
-					</div>
-				</div>
-	
-				<div class="cart_item">
-					<div class="item_image">
-						<img src="{% static 'images/inner-img/rpost-thumb2.png' %}" alt="image_not_found">
-					</div>
-					<div class="item_content">
-						<h4 class="item_title">
-							Learning is the Key soft skills and Professional
-						</h4>
-						<span class="item_price">$19.00</span>
-						<button type="button" class="remove_btn"><i class="fas fa-times"></i></button>
-					</div>
-				</div>
-			</div>
-			<div class="total_price text-uppercase">
-				<span>Sub Total:</span>
-				<span>$88.00</span>
-			</div>
-			<ul class="btns_group ul_li">
-				<li><a href="cart.html" class="btn btn_primary text-uppercase">View Cart</a></li>
-				<li><a href="checkout.html" class="btn btn_border border_black text-uppercase">Checkout</a></li>
-			</ul>
-		</div>
-		<div class="cart_sidebar_overlay"></div>
-	</div>
-	<!--==================================================-->
-	<!-- End Cart Side Bar -->
-	<!--==================================================-->
-	
 	<div class="educate-header-area style-three" id="sticky-header" >
 		<div class="container-fluid">
 			<div class="row header-wrap align-items-center">
@@ -192,7 +107,7 @@
 				<div class="col-lg-4">
 					<div class="header-right-wrapper">
 						<div class="header-sidebar">
-							<a href="{% url "contact" %}">
+							<a href="{% url "cart" %}">
 							<button class="cart_btn headers-button" type="button">
 								<i class="fa-solid fa-cart-shopping"></i>
 								</a>
@@ -866,8 +781,7 @@
 							{% for faq in faq %}
 								<li>
 									<a> <span></span>{{ faq.question}}</a>
-									<p><strong>Ответ :</strong> {{ faq.answer }}
-									</p>
+									<p><strong>Ответ :</strong>{{ faq.answer|safe }}</p>
 								</li>
 							{% endfor %}
 						</ul>

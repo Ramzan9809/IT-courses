@@ -1,8 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+import json
+
 from .models import Faq, Settings, Slider, Reviews
 from apps.courses.models import Course, Video, Instructors, Category
 from apps.blogs.models import Blog
 from apps.events.models import Event
+from .cart import Cart
+
+
 
 def home(request):
     sliders = Slider.objects.all()[:2]
@@ -107,3 +114,114 @@ def about(request):
         'reviews': reviews,
     }
     return render(request, 'pages/about.html', context)
+
+
+
+
+def cart_add(request, course_id):
+    cart = Cart(request)
+    course = get_object_or_404(Course, id=course_id)
+    cart.add(course=course)
+    return redirect('cart_detail')
+
+
+def cart_remove(request, course_id):
+    cart = Cart(request)
+    course = get_object_or_404(Course, id=course_id)
+    cart.remove(course=course)
+    return redirect('cart_detail')
+
+
+def cart_detail(request):
+    cart = Cart(request)
+    category = Category.objects.all()[:6]
+    context = {
+        'cart': cart,
+        'category': category,
+        'cart_total_quantity': sum(item['quantity'] for item in cart),
+        'cart_total_price': sum(float(item['price']) * item['quantity'] for item in cart),
+    }
+    return render(request, 'pages/cart.html', context)
+
+
+def checkout_view(request):
+    category = Category.objects.all()[:6]
+    cart = Cart(request)
+    context = {
+        'category': category,
+        'cart': cart,
+        'cart_total_price': cart.get_total_price(),
+    }
+    return render(request, 'pages/checkout.html', context)
+
+
+@csrf_exempt
+def cart_add_ajax(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            course_id = data.get('course_id')
+            quantity = int(data.get('quantity', 1))
+        except (json.JSONDecodeError, ValueError, TypeError):
+            return JsonResponse({'success': False, 'error': 'Invalid JSON data.'}, status=400)
+
+        try:
+            course = Course.objects.get(id=course_id)
+        except Course.DoesNotExist:
+            return JsonResponse({'success': False, 'error': 'course not found.'}, status=404)
+
+        cart = request.session.get('cart', {})
+
+        if str(course_id) in cart:
+            cart[str(course_id)]['quantity'] += quantity
+        else:
+            cart[str(course_id)] = {
+                'price': str(course.price),
+                'quantity': quantity,
+                'title': course.title,
+                'banner': course.banner.url if course.banner else '',
+            }
+
+        request.session['cart'] = cart
+
+        total_quantity = sum(item['quantity'] for item in cart.values())
+        total_price = sum(float(item['price']) * item['quantity'] for item in cart.values())
+
+        return JsonResponse({
+            'success': True,
+            'cart_total_quantity': total_quantity,
+            'cart_total_price': round(total_price, 2),
+            'cart_currency': 'сом',
+        })
+    else:
+        return JsonResponse({'success': False, 'error': 'Invalid request method.'}, status=400)
+
+
+@csrf_exempt
+def cart_remove_ajax(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            course_id = data.get('course_id')
+        except (json.JSONDecodeError, TypeError):
+            return JsonResponse({'success': False, 'error': 'Invalid JSON data.'}, status=400)
+
+        cart = request.session.get('cart', {})
+
+        if str(course_id) in cart:
+            del cart[str(course_id)]
+            request.session['cart'] = cart
+
+            total_quantity = sum(item['quantity'] for item in cart.values())
+            total_price = sum(float(item['price']) * item['quantity'] for item in cart.values())
+
+            return JsonResponse({
+                'success': True,
+                'cart_total_quantity': total_quantity,
+                'cart_total_price': round(total_price, 2),
+                'cart_currency': 'сом',
+            })
+
+        return JsonResponse({'success': False, 'error': 'course not found in cart.'}, status=404)
+    else:
+        return JsonResponse({'success': False, 'error': 'Invalid request method.'}, status=400)

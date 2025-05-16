@@ -22,138 +22,55 @@
 	</div>
 </div>
 
-    {% include "menu.html" %}
 
-<div class="search-popup">
-<button class="close-search style-two"><i class="fas fa-times"></i></button>
-<button class="close-search"><i class="fas fa-arrow-up"></i></button>
-<form method="post" action="index-3.html#">
-	<div class="form-group">
-		<input id="search1" type="search" name="search-field" value="" placeholder="Search Here" required="">
-		<button type="submit"><i class="fas fa-search"></i></button>
-	</div>
-</form>
-</div>
-	
-<div class="sidebar-menu-wrapper">
-	<div class="cart_sidebar">
-		<button type="button" class="close_btn"><i class="fas fa-times"></i></button>
-		<h2 class="heading_title text-uppercase">Cart Items - <span>4</span></h2>
-
-		<div class="cart_items_list">
-			<div class="cart_item">
-				<div class="item_image">
-					<img src="{% static 'images/inner-img/rpost-thumb1.png' %}" alt="image_not_found">
-				</div>
-				<div class="item_content">
-					<h4 class="item_title">	
-					How Gamification is Changing the Way...
-					</h4>
-					<span class="item_price">$21.00</span>
-					<button type="button" class="remove_btn"><i class="fas fa-times"></i></button>
+    <div class="educate-header-area" id="sticky-header" >
+	<div class="container-fluid">
+		<div class="row header-wrap align-items-center">
+			<div class="col-lg-2">
+				<div class="header-logo">
+					<a class="active_logo" href="{% url "home" %}"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
+					<a class="logo_two" href="{% url "home" %}"><img src="{% static 'images/footer-logo.png' %}" alt="logo"></a>
 				</div>
 			</div>
-
-			<div class="cart_item">
-				<div class="item_image">
-					<img src="{% static 'images/inner-img/rpost-thumb2.png' %}" alt="image_not_found">
-				</div>
-				<div class="item_content">
-					<h4 class="item_title">
-						Learning is the Key soft skills and Professional
-					</h4>
-					<span class="item_price">$23.00</span>
-					<button type="button" class="remove_btn"><i class="fas fa-times"></i></button>
-				</div>
-			</div>
-
-			<div class="cart_item">
-				<div class="item_image">
-					<img src="{% static 'images/inner-img/rpost-thumb3.png' %}" alt="image_not_found">
-				</div>
-				<div class="item_content">
-					<h4 class="item_title">
-						The Importance of Critical Thinking in Education
-					</h4>
-					<span class="item_price">$25.00</span>
-					<button type="button" class="remove_btn"><i class="fas fa-times"></i></button>
-				</div>
-			</div>
-
-			<div class="cart_item">
-				<div class="item_image">
-					<img src="{% static 'images/inner-img/rpost-thumb2.png' %}" alt="image_not_found">
-				</div>
-				<div class="item_content">
-					<h4 class="item_title">
-						Learning is the Key soft skills and Professional
-					</h4>
-					<span class="item_price">$19.00</span>
-					<button type="button" class="remove_btn"><i class="fas fa-times"></i></button>
-				</div>
-			</div>
-		</div>
-		<div class="total_price text-uppercase">
-			<span>Sub Total:</span>
-			<span>$88.00</span>
-		</div>
-		<ul class="btns_group ul_li">
-			<li><a href="cart.html" class="btn btn_primary text-uppercase">View Cart</a></li>
-			<li><a href="checkout.html" class="btn btn_border border_black text-uppercase">Checkout</a></li>
-		</ul>
-	</div>
-	<div class="cart_sidebar_overlay"></div>
-</div>
-<!--==================================================-->
-<!-- End Cart Side Bar -->
-<!--==================================================-->
-
-<!-- Sidebar Cart Item -->
-<div class="xs-sidebar-group info-group">
-	<div class="xs-overlay xs-bg-black"></div>
-	<div class="xs-sidebar-widget">
-		<div class="sidebar-widget-container">
-			<div class="widget-heading">
-				<a href="index.html" class="close-side-widget">
-					<i class="far fa-times-circle"></i>
-				</a>
-			</div>
-			<div class="sidebar-textwidget">
-				<!-- Sidebar Info Content -->
-				<div class="sidebar-info-contents">
-					<div class="content-inner">
-						<div class="nav-logo">
-							<a href="index.html"><img src="{% static 'images/home-one/footer-logo.png' %}" alt="logo"></a>
-						</div>
-						<div class="content-box">
-							<h2>About Us</h2>
-							<p class="text">The argument in favor of using filler text goes something like this: If
-								you use real content in the Consulting Process, anytime you reach a review point
-								you’ll end up reviewing and negotiating the content itself and not the design.</p>
-							<a href="https://html.ditsolution.net/educate/index" class="theme-btn btn-style-two"><span>Consultation</span> <i class="fas fa-heart"></i></a>
-						</div>
-						<div class="contact-info">
-							<h2>Contact Info</h2>
-							<ul class="list-style-one">
-								<li><span class="icon flaticon-email"></span>Chicago 12, Melborne City, USA</li>
-								<li><span> <i class="bi bi-telephone-inbound"></i> </span>(+001) 123-456-7890</li>
-								<li><span><i class="bi bi-geo-alt"></i></span>Example @gmail.com</li>
-								<li><span><i class="bi bi-clock"></i></span>Week Days: 09.00 to 18.00 Sunday: Closed
-								</li>
+			<div class="col-lg-6">
+				<div class="header-menu">
+					<ul class="nav_scroll">
+						<li><a href="{% url "home" %}">Главная</a>
+						</li>
+						<li><a href="{% url "about" %}">О нас</a></li>
+						<li><a href="{% url "instructor" %}">Менторы</a>
+						</li>	
+						<li><a href="{% url "course" %}">Курсы</a>
+						</li>
+						<li><a href="{% url "blog" %}">Блог</a>
+						</li>
+						<li><a href="#">К сведению</a>
+							<ul class="sub_menu"> 
+								<li><a href="{% url "reviews" %}">Отзывы</a></li>	 	 			
+								<li><a href="{% url "faq" %}">Вопросы \ Ответы</a></li>	 
 							</ul>
+						</li> 
+						<li><a href="{% url "contact" %}">Контакты</a></li>
+					</ul>					
+				</div>
+			</div>
+
+			<div class="col-lg-4">
+				<div class="header-right-wrapper">
+					<div class="header-sidebar">
+						<a href="{% url "cart" %}">
+						<button class="cart_btn headers-button" type="button">
+							<i class="fa-solid fa-cart-shopping"></i>
+							</a>
+						</button>
+						<div class="header-btn">
+							<a href="{% url "contact" %}">Записаться<i class="flaticon flaticon-right-arrow"></i></a>
 						</div>
-						<!-- Social Box -->
-						<ul class="social-box">
-							<li class="facebook"><a href="index-3.html#" class="fab fa-facebook-f"></a></li>
-							<li class="twitter"><a href="index-3.html#" class="fab fa-instagram"></a></li>
-							<li class="linkedin"><a href="index-3.html#" class="fa-brands fa-x-twitter"></a></li>
-							<li class="instagram"><a href="index-3.html#" class="fab fa-pinterest-p"></a></li>
-							<li class="youtube"><a href="index-3.html#" class="fab fa-linkedin-in"></a></li>
-						</ul>
 					</div>
 				</div>
 			</div>
+
 		</div>
 	</div>
 </div>
-<!--End Sidebar Cart Item -->
+
