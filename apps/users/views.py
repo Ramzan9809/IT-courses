@@ -4,10 +4,10 @@ from django.contrib.auth import authenticate, login as user_login, logout as use
 from django.contrib.auth.decorators import login_required
 from apps.courses.models import Category
 
-User= get_user_model()
+User = get_user_model()
 
 def login_view(request):
-     categories = Category.objects.all()[:6]
+     category = Category.objects.all()[:6]
      if request.method == 'POST':
          login = request.POST.get('login')
          password = request.POST.get('password')
@@ -16,8 +16,8 @@ def login_view(request):
              user_login(request, usr)
              return HttpResponseRedirect('/')
          else:
-             return render(request, 'auth/login.html', {'error':'Неверный логин или пароль', 'categories':categories})
-     return render(request, 'auth/login.html', {'categories':categories})
+             return render(request, 'auth/login.html', {'error':'Неверный логин или пароль', 'category':category})
+     return render(request, 'auth/login.html', {'category':category})
 
 
 def reg_view(request):
@@ -27,10 +27,10 @@ def reg_view(request):
         password2 = request.POST.get('password2')
 
         if password != password2:
-            return render(request, 'auth/reg.html', {'error': 'Пароли не совпадают'})
+            return render(request, 'auth/register.html', {'error': 'Пароли не совпадают'})
 
         if len(password)<6:
-            return render(request, 'auth/reg.html', {'error': 'Пароли должен содержать больше 6 символов'})
+            return render(request, 'auth/register.html', {'error': 'Пароли должен содержать больше 6 символов'})
         
         if password == password2:
             User.objects.create_user(username=login, password=password)
@@ -47,3 +47,5 @@ def logout_view(request):
     return HttpResponseRedirect('/')
 
 
+def forgot(request):
+    return render(request, 'auth/forgot.html')

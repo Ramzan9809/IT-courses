@@ -28,6 +28,7 @@
 					<h3 class="sign-in-title">Войти</h3>
 					<p class="subtitle">С возвращением.</p>
 					<form action="https://formspree.io/f/myyleorq" method="POST">
+						 {% csrf_token %}
 						<div class="form-input-box">
 							<div class="form-input-title">
 								<label for="emailAddress">Email <span>*</span></label>
@@ -54,12 +55,15 @@
 							</div>
 						</div>
 						<div class="sign-btn">
-							<a href="sign-in.html">Войти</a>
+							<a href=""><button type="submit" class="btn">Войти</button></a>
 						</div>
+						{% if error %}
+						<p style="color:red">{{error}}</p>
+						{% endif %}
 					</form>
 					<div class="bd-alter-sign">
-						<button><span class="btn-icon"><i class="fa-brands fa-facebook"></i></span>Facebook</button>
-						<button><span class="btn-icon"><i class="fa-brands fa-google"></i></span>Google</button>
+						<button><span class="btn-icon"><li><a href="https://www.facebook.com/?locale=ru_RU"><i class="fab fa-facebook-f"></i></a></li></span>Facebook</button>
+						<button><span class="btn-icon"><li><a href="https://x.com/"><i class="fa-brands fa-x-twitter"></i></a></li></span>Twitter</button>
 					</div>
 					<div class="bd-sign-up-label">
 						Нет аккаунта?<a href="{% url "register" %}" class="sign-link"> Зарегистрируйтесь</a>

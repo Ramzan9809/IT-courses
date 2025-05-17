@@ -15,4 +15,5 @@ urlpatterns = [
     path('cart/remove/<int:product_id>/', cart_remove, name='cart_remove'),
     path('cart/add/ajax/', cart_add_ajax, name='cart_add_ajax'),
     path('cart/remove/ajax/', cart_remove_ajax, name='cart_remove_ajax'),
+    path('checkout/', checkout_view, name='checkout')
 ]

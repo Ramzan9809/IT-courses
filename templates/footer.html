@@ -55,7 +55,7 @@
 						<ul>
 							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="{% url "about" %}">О нас</a></li>
 							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="{% url "course" %}">Наши курсы</a></li>
-							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="#">Менторы</a></li>
+							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="{% url "instructor" %}">Менторы</a></li>
 							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="{% url "contact" %}">Связаться</a></li>
 							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="{% url "course" %}">Карьера</a></li>
 						</ul>
@@ -70,30 +70,15 @@
 					<div class="footer-widget-menu">
 						<ul>
 							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="{% url "blog" %}">Блог</a></li>
-							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="{% url "home" %}">Галерея</a></li>
+							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="{% url "course" %}">Галерея</a></li>
 							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="{% url "contact" %}">Контакты</a></li>
-							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="{% url "course" %}">Политика конфиденциальности</a></li>
-							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="#">Ответы на вопросы</a></li>
+							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="{% url "about" %}">Политика конфиденциальности</a></li>
+							<li><img src="{% static 'images/home-one/footer-icon.png' %}" alt="icon"><a href="{% url "faq" %}">Ответы на вопросы</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
-			<div class="col-xl-3 col-lg-4 col-md-6">
-				<div class="footer-widget-title">
-					<h4>Последние посты</h4>
-				</div>
-				{% for b in blog %}
-					<div class="footer-widget-blog">
-						<div class="footer-widget-blog-thumb">
-							<img src="{% static 'images/home-one/footer-recent-img2.png' %}" alt="recent-img">
-						</div>
-						<div class="footer-widget-blog-content">
-							<a href="{{ b.get_absolute_url }}">{{ b.title }}</a>
-							<p>{{ b.date }}</p>
-						</div>
-					</div>
-				{% endfor %}
-			</div>
+
 		</div>
 	</div>
 	<div class="footer-bottom-area">
@@ -107,10 +92,10 @@
 				<div class="col-lg-6">
 					<div class="footer-bottom-social-icon">
 						<ul>
-							<li><a href="index-3.html#"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="index-3.html#"><i class="fa-brands fa-x-twitter"></i></a></li>
-							<li><a href="index-3.html#"><i class="fab fa-linkedin-in"></i></a></li>
-							<li><a href="index-3.html#"><i class="fab fa-pinterest-p"></i></a></li>
+							<li><a href="https://www.facebook.com/?locale=ru_RU"><i class="fab fa-facebook-f"></i></a></li>
+							<li><a href="https://x.com/"><i class="fa-brands fa-x-twitter"></i></a></li>
+							<li><a href="https://ru.linkedin.com/?trk=guest_homepage-basic_nav-header-logo"><i class="fab fa-linkedin-in"></i></a></li>
+							<li><a href="https://www.pinterest.com/"><i class="fab fa-pinterest-p"></i></a></li>
 						</ul>
 					</div>
 				</div>

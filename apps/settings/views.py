@@ -225,3 +225,4 @@ def cart_remove_ajax(request):
         return JsonResponse({'success': False, 'error': 'course not found in cart.'}, status=404)
     else:
         return JsonResponse({'success': False, 'error': 'Invalid request method.'}, status=400)
+    
