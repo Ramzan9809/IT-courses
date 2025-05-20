@@ -37,9 +37,15 @@ class Cart:
 
         for course_id, item in self.cart.items():
             item_copy = item.copy()
-            item_copy['course'] = courses_map.get(course_id)
-            item_copy['total_price'] = Decimal(item['price']) * item['quantity']
-            yield item_copy
+            course = courses_map.get(course_id)
+            if course:
+                item_copy['course'] = course
+                item_copy['title'] = course.title
+                item_copy['banner'] = course.banner.url if course.banner else ''
+                item_copy['price'] = course.get_final_price()
+                item_copy['cart_total_price'] = course.get_final_price() * item['quantity']
+                item_copy['quantity'] = item['quantity']
+                yield item_copy
 
     def __len__(self):
         return sum(item['quantity'] for item in self.cart.values())

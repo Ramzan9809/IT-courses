@@ -145,76 +145,7 @@
 					</div>
 				</div>
 				<div class="row align-items-center">
-					<div class="col-xl-5 col-lg-12">
-						<div class="instructor-ratting-box">
-							<div class="ins-rating-box-number">
-								<h4>{{ instructor.rating }}</h4>
-							</div>
-							<div class="ins-rating-box-icon">
-								<ul>
-									{% for _ in instructor.full_stars %}
-										<li><i class="fa-solid fa-star" style="color: orange;"></i></li>
-									{% endfor %}
-									{% if instructor.half_star %}
-										<li><i class="fa-solid fa-star-half-stroke" style="color: orange;"></i></li>
-									{% endif %}
-									{% for _ in instructor.empty_stars %}
-										<li><i class="fa-regular fa-star" style="color: orange;"></i></li>
-									{% endfor %}
-								</ul>
-							</div>
-							<p class="rating-box-desc">(Результат множества опросов)</p>
-						</div>
-					</div>
-
-					<div class="col-xl-7 col-lg-12">
-						<div class="instuctor-review-progress-wrapper">
-							<!-- Rating for 5 Stars -->
-							<!-- prossess bar -->
-							<div class="prossess-ber-plugin">
-								<span class="prosses-bar"><i class="fa-solid fa-star"></i>5 Звёзд</span>
-								<p class="bd-review-number">(05)</p> 
-								<div id="bar1" class="barfiller">
-									<div class="tipWrap">
-										<span class="tip">90</span>
-									</div>
-									<span class="fill" data-percentage="90"></span>
-								</div> 
-								<span class="prosses-bar"><i class="fa-solid fa-star"></i>4 Звёзд</span>
-								<p class="bd-review-number">(04)</p> 
-								<div id="bar2" class="barfiller">
-									<div class="tipWrap">
-										<span class="tip">80</span>
-									</div>
-									<span class="fill" data-percentage="80"></span>
-								</div>	
-								<span class="prosses-bar"><i class="fa-solid fa-star"></i>3 Звёзд</span>
-								<p class="bd-review-number">(03)</p> 
-								<div id="bar3" class="barfiller">
-									<div class="tipWrap">
-										<span class="tip">60</span>
-									</div>
-									<span class="fill" data-percentage="60"></span>
-								</div>	
-								<span class="prosses-bar"><i class="fa-solid fa-star"></i>2 Звёзд</span>
-								<p class="bd-review-number">(02)</p> 
-								<div id="bar4" class="barfiller">
-									<div class="tipWrap">
-										<span class="tip">50</span>
-									</div>
-									<span class="fill" data-percentage="50"></span>
-								</div>	
-								<span class="prosses-bar"><i class="fa-solid fa-star"></i>1 Звёзд</span>
-								<p class="bd-review-number">(01)</p> 
-								<div id="bar5" class="barfiller">
-									<div class="tipWrap">
-										<span class="tip">40</span>
-									</div>
-									<span class="fill" data-percentage="40"></span>
-								</div>			
-							</div>
-						</div>
-					</div>
+					
 					<div class="course-detalis-reviews">
 						<h3 class="course-details-content-title">Отзывы студентов</h3>
 						<div class="reviews-postbox-comment">
@@ -290,12 +221,6 @@
 								</li>
 								<li>
 									<div class="label">
-										<i class="fa-regular fa-circle-user"></i> Кол-во учеников
-									</div>
-									<span class="value">{{ course.count_students }}</span>
-								</li>
-								<li>
-									<div class="label">
 										<i class="fa-regular fa-circle-check"></i>Наличие сертификата
 									</div>
 									<span class="value">{{ course.certification }}</span>
@@ -309,7 +234,10 @@
 							</ul>
 						</div>
 						<div class="event-info-btn">
-							<a href="{% url "contact" %}">Преобрести<i class="flaticon flaticon-right-arrow"></i></a>
+							<form action="{% url 'cart_add' course.id %}" method="post">
+								{% csrf_token %}
+								<button type="submit" class="btn btn_primary" style="width: 100%;">Добавить в корзину</button>
+							</form>
 						</div>
 						<div class="course-share-title">
 							<h5>Поделиться сейчас</h5>

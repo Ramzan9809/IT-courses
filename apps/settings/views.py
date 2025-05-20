@@ -131,6 +131,10 @@ def cart_remove(request, course_id):
     cart.remove(course=course)
     return redirect('cart_detail')
 
+def cart_clear(request):
+    cart = Cart(request)
+    cart.clear()
+    return redirect('cart_detail')
 
 def cart_detail(request):
     cart = Cart(request)

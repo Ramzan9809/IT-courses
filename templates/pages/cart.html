@@ -70,140 +70,115 @@
               </tr>
             </thead>
             <tbody class="border-top-0">
-              <tr data-id="1">
-                <th><a href="shop-details.html">
-                    <img src="assets/images/inner-img/cart-thumb1.png" alt="img">
-                  </a></th>
-                <td><a href="shop-details.html">Brave New World</a></td>
-                <td class="price">$110.00</td>
-                <td>
-                  <div class="product-quantity-count">
-                    <input class="quantity" type="number" name="quantity" min="1" value="1">
-                  </div>
-                </td>
-                <td class="total">$110.00</td>
-                <td><button class="remove-btn"><i class="fas fa-times"></i></button></td>
-              </tr>
-              <tr>
-                <th><a href="shop-details.html">
-                  <img src="assets/images/inner-img/cart-thumb2.png" alt="img">
-                  </a></th>
-                <td><a href="shop-details.html">A Game of Thrones</a></td>
-                <td class="price">$19.00</td>
-                <td>
-                  <div class="product-quantity-count">
-                    <input class="quantity" type="number" name="quantity" min="1" value="1">
-                  </div>
-                </td>
-                <td class="total">$19.00</td>
-                <td><button class="remove-btn"><i class="fas fa-times"></i></button></td>
-              </tr>
-            </tbody>
+				{% for item in cart %}
+				<tr>
+					<th>
+					{% if item.banner %}
+						<img src="{{ item.banner }}" alt="img" width="80">
+					{% endif %}
+					</th>
+					<td>{{ item.title }}</td>
+					<td class="price">{{ item.price }} сом</td>
+					<td>
+					<div class="product-quantity-count">
+						<input class="quantity" type="number" name="quantity" min="1" value="{{ item.quantity }}" data-id="{{ item.id }}">
+					</div>
+					</td>
+					<td class="total">{{ item.cart_total_price }} сом</td>
+					<td>
+					<form method="post" action="{% url 'cart_remove' item.course.id %}">
+						{% csrf_token %}
+						<button type="submit" class="remove-btn"><i class="fas fa-times"></i></button>
+					</form>
+					</td>
+				</tr>
+				{% empty %}
+				<tr>
+					<td colspan="6">Корзина пуста</td>
+				</tr>
+				{% endfor %}
+				</tbody>
+
           </table>
           <!-- Cart Table For Tablet & Up Devices End -->
 
           <!-- Cart Table For Mobile Devices Start -->
-          <div class="cart-products-mobile d-md-none">
-			
-					<div class="cart-product-mobile">
+		   <div class="cart-products-mobile d-md-none">
+				{% for item in cart %}
+				<div class="cart-product-mobile">
 					<div class="cart-product-mobile-thumb">
-						<a href="shop-details.html" class="cart-product-mobile-image">
-						<img src="assets/images/inner-img/cart-thumb1.png" alt="online book Original" width="90" height="103">
-						</a>
-						<button class="cart-product-mobile-remove"><i class="bi bi-x-circle"></i></button>
+					<a href="#" class="cart-product-mobile-image">
+						<img src="{{ item.banner }}" alt="{{ item.title }}" width="100%">
+					</a>
+					<form method="post" action="{% url 'cart_remove' item.course.id %}">
+						{% csrf_token %}
+						<button type="submit" class="cart-product-mobile-remove">
+						<i class="bi bi-x-circle"></i>
+						</button>
+					</form>
 					</div>
 					<div class="cart-product-mobile-content">
-						<h5 class="cart-product-mobile-title">
-						<a href="shop-details.html">Brave New World</a>
-						</h5>
-						<span class="cart-product-mobile-quantity">1 x <span class="price2">$110.00</span></span>
-						<span class="cart-product-mobile-total"><b>Total:</b> <span class="total2">$110.00</span> </span>
-						<div class="product-quantity-count">
-						<input class="quantity2" type="number" name="quantity" min="1" value="1">
-						</div>
+					<h5 class="cart-product-mobile-title">
+						<a href="#">{{ item.title }}</a>
+					</h5>
+					<span class="cart-product-mobile-quantity">
+						{{ item.quantity }} x <span class="price2">{{ item.price }} сом</span>
+					</span>
+					<span class="cart-product-mobile-total">
+						<b>Итого:</b>
+						<span class="total2">{{ item.cart_total_price }} сом</span>
+					</span>
+					<div class="product-quantity-count">
+						<input class="quantity2" type="number" name="quantity" min="1" value="{{ item.quantity }}" data-id="{{ item.id }}">
 					</div>
 					</div>
+				</div>
+				{% empty %}
+				<p class="text-center">Корзина пуста</p>
+				{% endfor %}
+				</div>
 
-            <div class="cart-product-mobile">
-              <div class="cart-product-mobile-thumb">
-                <a href="shop-details.html" class="cart-product-mobile-image">
-                  <img src="assets/images/inner-img/cart-thumb2.png" alt="" width="90" height="103">
-                </a>
-                <button class="cart-product-mobile-remove"><i class="bi bi-x-circle"></i></button>
-              </div>
-              <div class="cart-product-mobile-content">
-                <h5 class="cart-product-mobile-title"><a href="shop-details.html">A Game of Thrones</a></h5>
-                <span class="cart-product-mobile-quantity">1 x <span class="price2">$18.00</span></span>
-                <span class="cart-product-mobile-total"><b>Total:</b> <span class="total2">$18.00</span> </span>
-                <div class="product-quantity-count">
-                  <input class="quantity2" type="number" name="quantity" min="1" value="1">
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Cart Table For Mobile Devices End -->
+		  <!-- Cart Table For Mobile Devices End -->
 
           <!-- Cart Action Buttons Start -->
-          <div class="row justify-content-between gap-3">
-            <a href="{% url "course" %}"><div class="col-auto"><button class="btn btn_primary">Вернуться</button></div></a>
-            <div class="col-auto d-flex flex-wrap gap-3">
-              <a href="#"><button class="btn btn_primary">Обновить</button></a>
-              <button class="btn btn_border border_black">Очистить корзину</button>
-            </div>
-          </div>
+        <div class="row justify-content-between gap-3">
+			<div class="col-auto">
+				<a href="{% url 'course' %}">
+				<button class="btn btn_primary">Вернуться</button>
+				</a>
+			</div>
+
+			<div class="col-auto d-flex flex-wrap gap-3">
+				<a href="{% url 'cart_detail' %}">
+				<button class="btn btn_primary">Обновить</button>
+				</a>
+
+				<form method="post" action="{% url 'cart_clear' %}">
+					{% csrf_token %}
+					<button type="submit" class="btn btn_border border_black">Очистить корзину</button>
+				</form>
+			</div>
+			</div>
           <!-- Cart Action Buttons End -->
 
         </div>
 
         <!-- Cart Totals Start -->
-        <div class="col mb-6 d-none d-md-table">
-          <div class="cart-totals">
-            <h4 class="title">Cart totals</h4>
-            <table class="table table-borderless bg-transparent">
-              <tbody>
-                <tr class="subtotal">
-                  <th>Subtotal</th>
-                  <td><span id="subtotal">£242.00</span></td>
-                </tr>
-                <tr class="shopping-fee">
-                  <th>Shopping Fee</th>
-                  <td><span id="shopping">$5.00</span></td>
-                </tr>
-                <tr class="total">
-                  <th>Total</th>
-                  <td><strong><span id="total">£242.00</span></strong></td>
-                </tr>
-              </tbody>
-            </table>
-            <button class="show-alert btn btn-dark">Proceed to checkout</button>
-          </div>
-        </div>
+       	<div class="col mb-6 d-none d-md-table">
+			<div class="cart-totals">
+				<h4 class="title">Итог корзины</h4>
+				<table class="table table-borderless bg-transparent">
+				<tbody>
+					<tr class="total">
+					<th>Итого</th>
+					<td><strong>{{ cart_total_price }} сом</strong></td>
+					</tr>
+				</tbody>
+				</table>
+				<a href="{% url 'checkout' %}" class="btn btn-dark">Перейти к оформлению</a>
+			</div>
+		</div>
         <!-- Cart Totals End -->
-
-        <!-- Cart Totals For Mobile Devices Start -->
-        <div class="col d-md-none">
-          <div class="cart-totals">
-            <h4 class="title">Cart totals</h4>
-            <table class="table table-borderless bg-transparent">
-              <tbody>
-                <tr class="subtotal">
-                  <th>Subtotal</th>
-                  <td><span id="subtotal2">£242.00</span></td>
-                </tr>
-                <tr class="shopping-fee">
-                  <th>Shopping Fee</th>
-                  <td><span id="shopping2">$5.00</span></td>
-                </tr>
-                <tr class="total">
-                  <th>Total</th>
-                  <td><strong><span id="total2">£242.00</span></strong></td>
-                </tr>
-              </tbody>
-            </table>
-            <button class="show-alert btn">Proceed to checkout</button>
-          </div>
-        </div>
-        <!-- Cart Totals For Mobile Devices End -->
 
       </div>
     </div>
@@ -290,7 +265,7 @@
 {% comment %} end educate brand Area {% endcomment %}
 
 	<!-- Cart Add -->
-	<script>   
+	{% comment %} <script>   
 	document.addEventListener("DOMContentLoaded", function () {
 	// First set of inputs
 	const set1 = setupInputs(".quantity", ".price", ".total", "subtotal", "shopping", "total");
@@ -368,5 +343,5 @@
 	alertJs.classList.remove("active")
 	);
 	});
-	</script>
+	</script> {% endcomment %}
 {% endblock content %}
