@@ -23,62 +23,79 @@
 			<div class="col-xl-6 col-lg-6">
 				<div class="sign-form-wrapper">
 					<div class="sign-form-logo">
-						<a href="index.html"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
+						<a href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
 					</div>
 					<h3 class="sign-in-title">Зарегистрироваться</h3>
 					<p class="subtitle">Присоединяйтесь к нам, создав бесплатную учетную запись</p>
-					<form action="https://formspree.io/f/myyleorq" method="POST">
+
+					<form method="post" action="{% url 'register' %}">
 						{% csrf_token %}
+
 						<div class="form-input-box">
 							<div class="form-input-title">
-								<label for="name">ФИО<span>*</span></label>
+								<label for="login">Логин <span>*</span></label>
 							</div>
 							<div class="form-input">
-								<input type="text" id="name" name="name" placeholder="ФИО">
+								<input type="text" id="login" name="login" placeholder="Введите логин" required>
 							</div>
 						</div>
-						<div class="form-input-box">
-							<div class="form-input-title">
-								<label for="emailAddress">Email <span>*</span></label>
-							</div>
-							<div class="form-input">
-								<input type="email" id="emailAddress" name="email" placeholder="Email">
-							</div>
-						</div>
+
 						<div class="form-input-box">
 							<div class="form-input-title">
 								<label for="password">Пароль <span>*</span></label>
 							</div>
 							<div class="form-input">
-								<input type="password" id="password" name="password" placeholder="Пароль">
+								<input type="password" id="password" name="password" placeholder="Введите пароль" required>
 							</div>
 						</div>
+
+						<div class="form-input-box">
+							<div class="form-input-title">
+								<label for="password2">Повторите пароль <span>*</span></label>
+							</div>
+							<div class="form-input">
+								<input type="password" id="password2" name="password2" placeholder="Повторите пароль" required>
+							</div>
+						</div>
+
+						<div class="form-input-box">
+							<div class="form-input-title">
+								<label for="emailAddress">Email <span>*</span></label>
+							</div>
+							<div class="form-input">
+								<input name="email" id="emailAddress" type="email" placeholder="Email" required>
+							</div>
+						</div>
+
 						<div class="sign-option">
 							<div class="checkout-option">
 								<input id="rememberMe" type="checkbox">
 								<label for="rememberMe">Запомнить меня</label>
 							</div>
 							<div class="sign-forgot">
-								<a href="forgot.html" class="sign-link">Забыли пароль?</a>
+								<a href="{% url 'forgot' %}" class="sign-link">Забыли пароль?</a>
 							</div>
 						</div>
+
 						<div class="sign-btn">
-							<a href=""><button type="submit" class="btn">Зарегистрироваться</button></a>
+							<button type="submit" style="background-color: var(--primary-color); width: 100%;" class="btn">Зарегистрироваться</button>
 						</div>
+
 						{% if error %}
-						<p style="color:red">{{error}}</p>
+						<p style="color:red; margin-top:10px;">{{ error }}</p>
 						{% endif %}
 					</form>
+
 					<div class="bd-alter-sign">
-						<button><span class="btn-icon"><li><a href="https://www.facebook.com/?locale=ru_RU"><i class="fab fa-facebook-f"></i></a></li></span>Facebook</button>
-						<button><span class="btn-icon"><li><a href="https://x.com/"><i class="fa-brands fa-x-twitter"></i></a></li></span>Twitter</button>
+						<button><span class="btn-icon"><a href="https://www.facebook.com/?locale=ru_RU"><i class="fab fa-facebook-f"></i></a></span>Facebook</button>
+						<button><span class="btn-icon"><a href="https://x.com/"><i class="fa-brands fa-x-twitter"></i></a></span>Twitter</button>
 					</div>
-					
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+
 <!--==================================================-->
 <!-- End educate sign form area  -->
 <!--==================================================-->
