@@ -94,17 +94,20 @@
 
 							<li>
 								<a><span>Видео уроки</span></a>
+								{% if purchased %}
 									{% for vid in video %}
 										<p>
-											<a href="{{ vid.url }}"><span class="title"><i class="fa-solid fa-circle-play"></i>{{ vid.title }}</span></a>
-											<span class="duration">{{ vid.duration }}<i class="fa-regular fa-eye"></i></span>
-
+											<a class="venobox vbox-item" data-vbtype="video" data-autoplay="true" href="{{ vid.url }}">
+												<i class="fa fa-play"></i> {{ vid.title }}
+											</a>
+											<span class="duration">{{ vid.duration }}</span>
 										</p>
 									{% endfor %}
+								{% else %}
+									<p style="color:red;">Купите курс, чтобы получить доступ к видеоурокам.</p>
+								{% endif %}
 							</li>
-							<li>
-								<a href="https://www.youtube.com/watch?v=ND8xtTI2WoE">video</a>
-							</li>
+
 						</ul>
 					</div>
 				</div>
@@ -190,9 +193,7 @@
 					<div class="event-sidebar">
 						<div class="event-sidebar-thumb">
 							<img src="{% static 'images/inner-img/course-thumb1.png' %}" alt="thumb">
-							<div class="course-video-icon">
-								<a class="video-vemo-icon venobox vbox-item" data-vbtype="youtube" data-autoplay="true" href="https://www.youtube.com/watch?v=Wx48y_fOfiY"><i class="fa-classic fa-solid fa-play fa-fw"></i></a>
-							</div>
+							
 						</div>
 						<div class="event-info">
 							<div class="event-info-title">

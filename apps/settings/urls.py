@@ -1,6 +1,6 @@
 from apps.settings.views import (home, about, contact, faq, reviews,
                                  cart_detail, cart_add, cart_remove, cart_remove_ajax, cart_add_ajax,
-                                 checkout_view, cart_clear)
+                                 checkout_view, cart_clear, checkout_success)
 from django.urls import path
 
 
@@ -17,5 +17,6 @@ urlpatterns = [
     path('cart/clear/', cart_clear, name='cart_clear'),
     path('cart/add/ajax/', cart_add_ajax, name='cart_add_ajax'),
     path('cart/remove/ajax/', cart_remove_ajax, name='cart_remove_ajax'),
-    path('checkout/', checkout_view, name='checkout')
+    path('checkout/', checkout_view, name='checkout'),
+    path('checkout/success/', checkout_success, name='checkout_success'),
 ]

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from .models import Course, Instructors, Video
-from apps.settings.models import Reviews
+from apps.settings.models import Reviews, Purchase
 
 
 def course(request):
@@ -25,8 +25,14 @@ def course(request):
 def course_detail(request, slug):
     course = get_object_or_404(Course, slug=slug)
     instructor = course.instructor
-    reviews = Reviews.objects.all()[:2]
-    video = Video.objects.filter(course=course)
+    reviews = Reviews.objects.filter(course=course)[:2]  # ✅ правильно — привязка по course
+
+    purchased = False
+    video = []
+    if request.user.is_authenticated:
+        purchased = Purchase.objects.filter(user=request.user, course=course).exists()
+        if purchased:
+            video = Video.objects.filter(course=course)
 
     rating = float(course.rating)
     full = int(rating)
@@ -42,9 +48,9 @@ def course_detail(request, slug):
         'instructor': instructor,
         'reviews': reviews,
         'video': video,
+        'purchased': purchased,
     }
     return render(request, 'detail/course-details.html', context)
-
 
 def instructor(request):
     instructor = Instructors.objects.all()

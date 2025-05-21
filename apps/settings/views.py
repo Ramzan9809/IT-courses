@@ -3,7 +3,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import json
 
-from .models import Faq, Settings, Slider, Reviews
+from .models import Faq, Settings, Slider, Reviews, Purchase
 from apps.courses.models import Course, Video, Instructors, Category
 from apps.blogs.models import Blog
 from apps.events.models import Event
@@ -151,6 +151,13 @@ def cart_detail(request):
 def checkout_view(request):
     category = Category.objects.all()[:6]
     cart = Cart(request)
+
+    if request.method == 'POST':
+        for item in cart:
+            Purchase.objects.get_or_create(user=request.user, course=item['course'])
+        cart.clear()
+        return redirect('success_page')  # или куда тебе нужно
+
     context = {
         'category': category,
         'cart': cart,
@@ -158,6 +165,20 @@ def checkout_view(request):
     }
     return render(request, 'pages/checkout.html', context)
 
+def checkout_success(request):
+    if request.user.is_authenticated:
+        cart = Cart(request)
+        for item in cart:
+            course = item['course']
+            Purchase.objects.get_or_create(user=request.user, course=course)
+
+        cart.clear()  # очищаем корзину после покупки
+
+        return render(request, 'pages/checkout_success.html', {
+            'message': 'Оплата прошла успешно! Доступ к курсам открыт.',
+        })
+
+    return redirect('login')
 
 @csrf_exempt
 def cart_add_ajax(request):
