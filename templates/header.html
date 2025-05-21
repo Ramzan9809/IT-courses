@@ -1,26 +1,33 @@
-<!--==================================================-->
-<!-- Start educate Header top area -->
-<!--==================================================-->
+
 {% load static %}
-<div class="header-top-area">
+
+<div class="header-top-area" style="height: 88px;">
 	<div class="container-fluid">
 		<div class="row header-top">
 			<div class="col-xxl-6 col-xl-8 col-lg-8">
-				<div class="header-top-welcome">
-					<p><img src="{% static 'images/home-one/top-star.png' %}" alt="star">Добро пожаловать в <a href="{% url "home" %}">Educate</a>– Раскрываем силу образования!</p>
+				<div class="header-top-welcome" style="height: 72%; display: flex; align-items: flex-end; padding-bottom: 10px;">
+					<p>
+						<img src="{% static 'images/home-one/top-star.png' %}" alt="star">
+						Добро пожаловать в <a href="{% url "home" %}">Educate</a> – Раскрываем силу образования!
+					</p>
 				</div>
 			</div>
 			<div class="col-xxl-6 col-xl-4 col-lg-4">
 				<div class="header-top-right">
 					<div class="educate-header-from">
-						<a class="login-btn" href="{% url "login" %}"></i>Войти</a>
-						<a class="sign-up-btn" href="{% url "register" %}">Зарегистрироваться</a>
+						{% if user.is_authenticated %}
+							<a href="{% url 'logout' %}" class="btn">Выйти из аккаунта</a>
+						{% else %}
+							<a href="{% url 'login' %}" class="btn">Войти</a>
+							<a class="sign-up-btn" href="{% url "register" %}">Зарегистрироваться</a>
+						{% endif %}
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
 
 
     <div class="educate-header-area" id="sticky-header" >
