@@ -54,7 +54,7 @@ class Course(models.Model):
         blank=True, null=True, 
         help_text="Например: 20 означает скидку 20%"
     )
-    slug = models.SlugField(null=False, unique=True)
+    slug = models.SlugField(unique=True)
 
     def __str__(self):
         return self.title

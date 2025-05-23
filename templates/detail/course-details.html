@@ -92,21 +92,24 @@
 					<div id="tab1" class="tab_content">
 						<ul class="accordion">
 
-							<li>
-								<a><span>Видео уроки</span></a>
-								{% if purchased %}
-									{% for vid in video %}
-										<p>
-											<a class="venobox vbox-item" data-vbtype="video" data-autoplay="true" href="{{ vid.url }}">
-												<i class="fa fa-play"></i> {{ vid.title }}
-											</a>
-											<span class="duration">{{ vid.duration }}</span>
-										</p>
-									{% endfor %}
-								{% else %}
-									<p style="color:red;">Купите курс, чтобы получить доступ к видеоурокам.</p>
-								{% endif %}
-							</li>
+							
+							
+								<li>
+							<a><span>Видео уроки</span></a>
+							{% if purchased %}
+								{% for vid in video %}
+									<p>
+										<a class="venobox vbox-item" data-vbtype="video" data-autoplay="true" href="{{ vid.url }}">
+											<i class="fa fa-play"></i> {{ vid.title }}
+										</a>
+										<span class="duration">{{ vid.duration }}</span>
+									</p>
+								{% endfor %}
+							{% else %}
+								<p style="color:red;">Купите курс, чтобы получить доступ к видеоурокам.</p>
+							{% endif %}
+						</li>
+
 
 						</ul>
 					</div>

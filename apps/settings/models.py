@@ -58,7 +58,7 @@ class Reviews(models.Model):
     )
     main_message = models.CharField(max_length=100, verbose_name='Главное сообщение')
     desc = RichTextField(verbose_name='Описание')
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True, blank=True)
+    course = models.ManyToManyField(Course, null=True, blank=True)
     rating = models.IntegerField(choices=RATING_CHOICES, default=5, verbose_name='Рейтинг')
     name = models.CharField(max_length=200, verbose_name='Фио')
     who_say = models.CharField(max_length=10, choices=WHO_CHOICES, default='Студент', verbose_name='Кто вы?')
@@ -75,8 +75,8 @@ class Reviews(models.Model):
 
 class Purchase(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    course = models.ManyToManyField(Course)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.user.username} - {self.course.title}"
+        return f"{self.user.username} - {', '.join([c.title for c in self.course.all()])}"

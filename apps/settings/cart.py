@@ -1,15 +1,14 @@
 from decimal import Decimal
 from apps.courses.models import Course
 
-
 class Cart:
     def __init__(self, request):
         self.session = request.session
         cart = self.session.get('cart')
         if not cart:
             cart = self.session['cart'] = {}
-        self.cart = cart 
-    
+        self.cart = cart
+
     def add(self, course, quantity=1, update_quantity=False):
         course_id = str(course.id)
         if course_id not in self.cart:
@@ -19,11 +18,10 @@ class Cart:
         else:
             self.cart[course_id]['quantity'] += quantity
         self.save()
-    
+
     def save(self):
-        if hasattr(self.session, 'modified'):
-            self.session.modified = True
-    
+        self.session.modified = True
+
     def remove(self, course):
         course_id = str(course.id)
         if course_id in self.cart:
@@ -31,7 +29,7 @@ class Cart:
             self.save()
 
     def __iter__(self):
-        course_ids = self.cart.keys()
+        course_ids = list(map(int, self.cart.keys()))
         courses = Course.objects.filter(id__in=course_ids)
         courses_map = {str(course.id): course for course in courses}
 
@@ -49,10 +47,10 @@ class Cart:
 
     def __len__(self):
         return sum(item['quantity'] for item in self.cart.values())
-    
+
     def get_total_price(self):
-        return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values()) 
-    
+        return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
+
     def clear(self):
         self.session.pop('cart', None)
         self.save()

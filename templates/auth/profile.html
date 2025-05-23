@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+
+<div class="breadcumb-area two d-flex">
+    <div class="row align-items-center">
+        <div class="col-lg-12">
+            <div class="breadcumb-content">
+                <div class="breadcumb-title">
+                    <h4>Профиль</h4>
+                </div>
+                <ul>
+                    <li><a href="{% url "home" %}">Главная <span><i class="fa-solid fa-arrow-right-long"></i></span></a></li>
+						<li>Профиль</li>
+                     </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section>
+    <div>
+        <div>
+            <h3>User name</h2>
+            <h3>user email</h3>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}
+

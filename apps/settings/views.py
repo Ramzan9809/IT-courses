@@ -12,6 +12,7 @@ from .cart import Cart
 
 
 def home(request):
+    settings = Settings.objects.latest('id')
     sliders = Slider.objects.all()[:2]
     category = Category.objects.all()[:4]
     faq = Faq.objects.all()[:3]
@@ -38,6 +39,7 @@ def home(request):
         c.empty_stars = range(empty)
 
     context = {
+        'settings': settings,
         'sliders': sliders,
         'course': course,
         'category': category,
@@ -115,7 +117,8 @@ def about(request):
     }
     return render(request, 'pages/about.html', context)
 
-
+def profile(request):
+    return render(request, 'auth/profile.html')
 
 
 def cart_add(request, course_id):
@@ -163,22 +166,8 @@ def checkout_view(request):
         'cart': cart,
         'cart_total_price': cart.get_total_price(),
     }
-    return render(request, 'pages/checkout.html', context)
+    return render(request, 'pages/checkout.html', context)  
 
-def checkout_success(request):
-    if request.user.is_authenticated:
-        cart = Cart(request)
-        for item in cart:
-            course = item['course']
-            Purchase.objects.get_or_create(user=request.user, course=course)
-
-        cart.clear()  # очищаем корзину после покупки
-
-        return render(request, 'pages/checkout_success.html', {
-            'message': 'Оплата прошла успешно! Доступ к курсам открыт.',
-        })
-
-    return redirect('login')
 
 @csrf_exempt
 def cart_add_ajax(request):

@@ -22,6 +22,7 @@ def course(request):
     }
     return render(request, 'pages/course.html', context)
 
+
 def course_detail(request, slug):
     course = get_object_or_404(Course, slug=slug)
     instructor = course.instructor
@@ -51,6 +52,7 @@ def course_detail(request, slug):
         'purchased': purchased,
     }
     return render(request, 'detail/course-details.html', context)
+
 
 def instructor(request):
     instructor = Instructors.objects.all()
