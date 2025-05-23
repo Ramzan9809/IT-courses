@@ -16,11 +16,12 @@
 				</div>
 			</div>
 			<div class="col-lg-4 col-md-12">
-				<form action="https://formspree.io/f/myyleorq" method="POST">
+				<form action="{% url 'contact' %}" method="POST">
+					{% csrf_token %}
 					<div class="subscribe-box">
 						<span><i class="fa-classic fa-regular fa-envelope fa-fw"></i></span>
 						<input type="text" name="Email" placeholder="Отправить сообщение" required="">
-						<button type="submit"><span><i class="fa-classic fa-solid fa-location-arrow fa-fw"></i></span></button>
+						<a href="{% url "contact" %}"><button type="submit"><span><i class="fa-classic fa-solid fa-location-arrow fa-fw"></i></span></button></a>	
 					</div>
 				</form>
 			</div>
@@ -86,19 +87,10 @@
 			<div class="row footer-bottom">
 				<div class="col-lg-6">
 					<div class="footer-bottom-desc">
-						<p>© 2025 <a href="{% url "home" %}">Educate</a>. Разработано Dream IT Solution</p>
+						<p>© 2025 <a href="{% url "home" %}">{{ settings.name }}</a>. Разработано Dream IT Solution</p>
 					</div>
 				</div>
-				<div class="col-lg-6">
-					<div class="footer-bottom-social-icon">
-						<ul>
-							<li><a href="https://www.facebook.com/?locale=ru_RU"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="https://x.com/"><i class="fa-brands fa-x-twitter"></i></a></li>
-							<li><a href="https://ru.linkedin.com/?trk=guest_homepage-basic_nav-header-logo"><i class="fab fa-linkedin-in"></i></a></li>
-							<li><a href="https://www.pinterest.com/"><i class="fab fa-pinterest-p"></i></a></li>
-						</ul>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	</div>

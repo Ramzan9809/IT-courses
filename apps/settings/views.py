@@ -3,7 +3,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import json
 
-from .models import Faq, Settings, Slider, Reviews, Purchase
+from .forms import ContactForm
+from .models import Faq, Settings, Slider, Reviews, Purchase, ContactMessage
 from apps.courses.models import Course, Video, Instructors, Category
 from apps.blogs.models import Blog
 from apps.events.models import Event
@@ -77,12 +78,19 @@ def faq(request):
     }
     return render(request, 'pages/faq.html', context)
 
-def contact(request):
-    settings = Settings.objects.latest('id')
-    context = {
-        'settings': settings,
-    }
-    return render(request, 'pages/contact.html', context)
+def contact_view(request):
+    settings = Settings.objects.latest('id')  
+    form = ContactForm(request.POST or None)
+    if request.method == 'POST' and form.is_valid():
+        ContactMessage.objects.create(
+            first_name=form.cleaned_data['name'],
+            last_name=form.cleaned_data['surname'],
+            phone=form.cleaned_data['phone'],
+            email=form.cleaned_data['email'],
+            message=form.cleaned_data['message'],
+        )
+        return redirect('contact')  
+    return render(request, 'pages/contact.html', {'form': form, 'settings': settings})
 
 def footer(request):
     settings = Settings.objects.latest('id')
@@ -118,7 +126,11 @@ def about(request):
     return render(request, 'pages/about.html', context)
 
 def profile(request):
-    return render(request, 'auth/profile.html')
+    purchases = Purchase.objects.filter(user=request.user).prefetch_related('course')
+    context = {
+        'purchases': purchases,
+    }
+    return render(request, 'auth/profile.html', context)
 
 
 def cart_add(request, course_id):
@@ -240,3 +252,4 @@ def cart_remove_ajax(request):
     else:
         return JsonResponse({'success': False, 'error': 'Invalid request method.'}, status=400)
     
+

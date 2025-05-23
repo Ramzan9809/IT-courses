@@ -5,30 +5,104 @@
 
 {% block content %}
 
-<div class="breadcumb-area two d-flex">
-    <div class="row align-items-center">
-        <div class="col-lg-12">
-            <div class="breadcumb-content">
-                <div class="breadcumb-title">
-                    <h4>Профиль</h4>
-                </div>
-                <ul>
-                    <li><a href="{% url "home" %}">Главная <span><i class="fa-solid fa-arrow-right-long"></i></span></a></li>
+<div class="breadcumb-area d-flex">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12">
+				<div class="breadcumb-content">
+					<div class="breadcumb-title"> 
+						<h4>Профиль</h4>
+					</div>
+					<ul>
+						<li><a href="{% url "home" %}">Главная <span><i class="fa-solid fa-arrow-right-long"></i></span></a></li>
 						<li>Профиль</li>
-                     </ul>
-            </div>
-        </div>
-    </div>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="breadcumb-shape">
+			<img src="{% static 'images/inner-img/breadcumb-dot.png' %}" alt="dot">
+		</div>
+		<div class="breadcumb-shape2">
+			<img src="{% static 'images/inner-img/breadcumb-ball.png' %}" alt="ball">
+		</div>
+	</div>
 </div>
 
-<section>
-    <div>
-        <div>
-            <h3>User name</h2>
-            <h3>user email</h3>
+<section style="margin: 30px 0;">
+  <div class="container">
+    <div class="row">
+
+      <!-- Левая колонка: данные пользователя -->
+      <div class="col-lg-6">
+        <div class="mb-5">
+          <h3>Ваш логин:</h3>
+          <h5>{{ request.user.first_name|default:request.user.username }}</h5>
         </div>
+        <div class="mb-5">
+          <h3>Ваш email:</h3>
+          <h5>{{ request.user.email }}</h5>
+        </div>
+        <div class="d-flex justify-content-center gap-3 mb-5 "  >
+          <a href="{% url 'logout' %}">
+            <button type="submit" class="btn btn-danger" style="
+                      background-color: #20c997;
+                      color: white;">Выйти из аккаунта</button>
+          </a>
+          <a href="{% url 'forgot' %}">
+            <button type="submit" class="btn btn-warning" style="
+                      background-color: #20c997;
+                      color: white; ">Сбросить пароль</button>
+          </a>
+        </div>
+      </div>
+
+      <!-- Правая колонка: курсы -->
+      <div class="col-lg-6">
+        <div class="mb-4">
+          <h3>Ваши курсы:</h3>
+        </div>
+
+        {% if purchases %}
+          <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: flex-start;">
+            {% for purchase in purchases %}
+              {% for course in purchase.course.all %}
+                <div style="width: 250px;">
+                  <img src="{{ course.banner.url }}" alt="{{ course.title }}"
+                       style="width: 100%; border-radius: 15px;">
+                  <a href="{{ course.get_absolute_url }}">
+                    <div style="
+                      background-color: #20c997;
+                      color: white;
+                      padding: 10px;
+                      border-radius: 10px;
+                      text-align: center;
+                      font-weight: bold;
+                      margin-top: 10px;">
+                      {{ course.title }}
+                    </div>
+                  </a>
+                </div>
+              {% endfor %}
+            {% endfor %}
+          </div>
+        {% else %}
+          <p>Вы ещё не приобрели ни одного курса.</p>
+          <div class="mt-4">
+            <a href="{% url 'course' %}">
+              <button type="submit" class="btn btn-primary w-100">
+                Купить курс
+              </button>
+            </a>
+          </div>
+        {% endif %}
+      </div>
+
     </div>
+  </div>
 </section>
+
+
 
 
 {% endblock content %}

@@ -88,11 +88,9 @@
 						</ul>
 					</div>
 					<div class="about-iteam-phone">
-						<p><span><img src="{% static 'images/home-three/about-call.png' %}" alt="call"></span>+996 550 777 462</p>
+						<p><span><img src="{% static 'images/home-three/about-call.png' %}" alt="call"></span>{{ settings.phone }}</p>
 					</div>
-					<div class="about-btn">
-						<a href="about.html">Узнать больше<i class="flaticon flaticon-right-arrow"></i></a>
-					</div>
+					
 					<div class="about-education-box">
 						<div class="education-content">
 							<p>Надежные онлайн и офлайн образовательные услуги</p>
@@ -223,26 +221,26 @@
 <!--==================================================-->
 <!-- Start educate call to action Area style-two -->
 <!--==================================================-->
-<div class="call-to-action style-two">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-6">
-				<div class="call-to-title">
-					<h3>Ваше обучению начинается здесь</h3>
-					<h3>Узнайте про все программы</h3>
+	<div class="call-to-action style-two">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6">
+					<div class="call-to-title">
+						<h3>Ваше обучению начинается здесь</h3>
+						<h3>Узнайте про все программы</h3>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="call-to-btn">
+						<a href="{% url "course" %}">Все программы<i class="flaticon flaticon-right-arrow"></i></a>
+					</div>
 				</div>
 			</div>
-			<div class="col-lg-6">
-				<div class="call-to-btn">
-					<a href="{% url "contact" %}">Все программы<i class="flaticon flaticon-right-arrow"></i></a>
-				</div>
+			<div class="call-to-shape31">
+				<img src="{% static 'images/home-three/call-to-arrow2.png' %}" alt="shape">
 			</div>
-		</div>
-		<div class="call-to-shape31">
-			<img src="{% static 'images/home-three/call-to-arrow2.png' %}" alt="shape">
 		</div>
 	</div>
-</div>
 <!--==================================================-->
 <!-- end educate call to action Area style-two -->
 <!--==================================================-->
@@ -269,15 +267,7 @@
 					<div class="single-team-box box-1">
 						<div class="team-thumb">
 							<img src="{{ inst.photo.url }}" alt="thumb">
-							<div class="team-social-icon">
-								<div class="team-social">
-									<ul>
-										<li><a href="https://www.facebook.com/?locale=ru_RU"><i class="fab fa-facebook-f"></i></a></li>
-										<li><a href="https://x.com/"><i class="fa-brands fa-x-twitter"></i></a></li>
-										<li><a href="https://ru.linkedin.com/?trk=guest_homepage-basic_nav-header-logo"><i class="fab fa-linkedin-in"></i></a></li>
-									</ul>
-								</div>
-							</div>
+							
 						</div>
 						<div class="team-content">
 							<div class="team-title">

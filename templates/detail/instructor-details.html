@@ -60,14 +60,7 @@
 								</li>
 							</ul>
 						</div>
-						<div class="instructor-social-icon">
-							<ul class="social-icon-list">
-								<li><a href="instructor-details.html#"><i class="fa-brands fa-facebook-f"></i></a></li>
-								<li><a href="instructor-details.html#"><i class="fa-brands fa-x-twitter"></i></a></li>
-								<li><a href="instructor-details.html#"><i class="fa-brands fa-linkedin-in"></i></a></li>
-								<li><a href="instructor-details.html#"><i class="fa-brands fa-instagram"></i></a></li>
-							</ul>
-						</div>
+						
 					</div>
 				</div>
 			</div>
@@ -75,7 +68,7 @@
 				<div class="instruction-details-box">
 					<div class="instructor-details-content">
 						<h3 class="instructor-details-title">Обо мне</h3>
-						<p class="instructor-details-desc">{{ instructor.desc }}</p>
+						<p class="instructor-details-desc">{{ instructor.desc | safe }}</p>
 					</div>
 				</div>
 			</div>

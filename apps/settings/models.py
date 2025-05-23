@@ -6,7 +6,8 @@ from apps.courses.models import Category, Course
 
 
 class Settings(models.Model):
-    logo = models.ImageField(upload_to='media/', verbose_name='лого')
+    logo = models.ImageField(upload_to='media/', verbose_name='лого только для index')
+    logo_2 = models.ImageField(upload_to='media/', verbose_name='лого для остальног сайта', null=True, blank=True)
     name = models.CharField(verbose_name='название сайта', max_length=20)
     address = models.CharField(verbose_name='адресс', max_length=200)
     phone = models.CharField(verbose_name='номер', max_length=17, help_text='+996 554 97 70 13')
@@ -80,3 +81,15 @@ class Purchase(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {', '.join([c.title for c in self.course.all()])}"
+
+
+class ContactMessage(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} - {self.email}"

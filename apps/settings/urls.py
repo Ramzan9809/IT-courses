@@ -1,13 +1,13 @@
-from apps.settings.views import (home, about, contact, faq, reviews,
+from apps.settings.views import (home, about, faq, reviews,
                                  cart_detail, cart_add, cart_remove, cart_remove_ajax, cart_add_ajax,
-                                 checkout_view, cart_clear, profile)
+                                 checkout_view, cart_clear, profile, contact_view)
 from django.urls import path
 
 
 urlpatterns = [
     path('', home, name='home'),
     path('about/', about, name='about'),
-    path('contact/', contact, name='contact'),
+    path('contact/', contact_view, name='contact'),
     path('faq/', faq, name='faq'),
     path('reviews/', reviews, name='reviews'),
     path('profile/', profile, name='profile'),
