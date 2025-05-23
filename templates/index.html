@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title> Educate | IT-courses </title>
+	<title> {{settings.name }} | IT-courses </title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Favicon -->
@@ -59,7 +59,7 @@
 				<div class="header-top-welcome" style="height: 72%; display: flex; align-items: flex-end; padding-bottom: 10px;">
 					<p>
 						<img src="{% static 'images/home-one/top-star.png' %}" alt="star">
-						Добро пожаловать в <a href="{% url "home" %}">Educate</a> – Раскрываем силу образования!
+						Добро пожаловать в <a href="{% url "home" %}">{{settings.name}}</a> – Раскрываем силу образования!
 					</p>
 				</div>
 			</div>
@@ -84,8 +84,15 @@
 			<div class="row header-wrap align-items-center">
 				<div class="col-lg-2">
 					<div class="header-logo">
-						<a class="active_logo" href="index.html"><img src="{% static 'images/footer-logo.png' %}" alt="logo"></a>
-						<a class="logo_two" href="index.html"><img src="{% static 'images/footer-logo.png' %}" alt="logo"></a>
+						{% if settings.logo %}
+						<a class="active_logo" href="{% url "home" %}">
+							<img src="{{settings.logo.url }}" width="80px" alt="logo">
+						</a>
+						{% else %}
+						<a class="logo_two" href="{% url "home" %}">
+							<img src="{% static 'images/footer-logo.png' %}"  width="80px" alt="logo">
+						</a>
+						{% endif %}	
 					</div>
 				</div> 
 				<div class="col-lg-6">
@@ -93,13 +100,15 @@
 						<ul class="nav_scroll">
 							<li><a href="{% url "home" %}">Главная</a>
 							</li>
-							<li><a href="{% url "about" %}">О нас</a></li>
+							<li><a href="{% url "about" %}">О нас</a>
+								<ul class="sub_menu"> 
+									<li><a href="{% url "blog" %}">Блог</a></li>	 	 	  
+								</ul>
+							</li>
 							<li><a href="{% url "instructor" %}">Менторы</a>
 							</li>	
 							<li><a href="{% url "course" %}">Курсы</a>
-							</li>
-							<li><a href="{% url "blog" %}">Блог</a>
-							</li>
+							</li> 
 							<li><a href="#">К сведению</a>
 								<ul class="sub_menu"> 
 									<li><a href="{% url "reviews" %}">Отзывы</a></li>	 	 			
