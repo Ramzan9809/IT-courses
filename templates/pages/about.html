@@ -48,11 +48,11 @@
 						</div>
 					</div>
 					<div class="about-thumb">
-						<img src="{% static 'images/home-three/about-thumb31.png' %}" alt="thumb">
+						<img src="{{ aboutus_blog.banner_first.url }}" alt="thumb">
 					</div>
 					<div class="about-experience-box">
 						<div class="about-experience-count">
-						<h3 class="counter">16</h3>
+						<h3 class="counter">{{ aboutus_blog.experience }}</h3>
 						<span>+</span>
 						</div>
 						<div class="about-experience-desc">
@@ -72,30 +72,24 @@
 						<h6>О НАС</h6>
 					</div>
 					<div class="section_title">
-						<h1>Кто мы – Введение в</h1>
-						<h1>Educate онлайн-платформу</h1>
+						<h1>{{ aboutus_blog.title }}</h1>
+						<h1>{{ aboutus_blog.under_title }}</h1>
 					</div>
 					<div class="section-title-desc">
-						<p>Educate — конечный пункт назначения для искателей знаний и педагогов.
-							 Мы стремимся преобразовать специальное образование, 
-							 которое влияет на глобальные каналы без систем, соответствующих стандартам</p>
+						<p>{{ aboutus_blog.desc|safe }}</p>
 					</div>
 					<div class="about-iteam-list">
 						<ul>
-							<li><img src="{% static 'images/home-three/about-icon31.png' %}" alt="icon">Каталог курсов & информация о программе</li>
-							<li><img src="{% static 'images/home-three/about-icon31.png' %}" alt="icon">Онлайн-подача заявлений & процесс приема</li>
-							<li><img src="{% static 'images/home-three/about-icon31.png' %}" alt="icon">Финансовая помощь и стипендии</li>
+							<li><img src="{% static 'images/home-three/about-icon31.png' %}" alt="icon">{{ aboutus_blog.advantage_first }}</li>
+							<li><img src="{% static 'images/home-three/about-icon31.png' %}" alt="icon">{{ aboutus_blog.advantage_second }}</li>
+							<li><img src="{% static 'images/home-three/about-icon31.png' %}" alt="icon">{{ aboutus_blog.advantage_third }}</li>
 						</ul>
 					</div>
 					<div class="about-iteam-phone">
 						<p><span><img src="{% static 'images/home-three/about-call.png' %}" alt="call"></span>{{ settings.phone }}</p>
 					</div>
-					
-					<div class="about-education-box">
-						<div class="education-content">
-							<p>Надежные онлайн и офлайн образовательные услуги</p>
-							<span>Скала Джонсон</span>
-						</div>
+					<div class="about-btn">
+						<a href="{% url "about" %}">Узнать больше<i class="flaticon flaticon-right-arrow"></i></a>
 					</div>
 				</div>
 			</div>			
@@ -115,42 +109,19 @@
 <section class="feature-area style-two">
 	<div class="container">
 		<div class="row">
-			<div class="col-xl-4 col-lg-6 col-md-6">
-				<div class="single-feature-box box-1">
-					<div class="feature-icon">
-						<img src="{% static 'images/home-three/feature-icon21.png' %}" alt="feature-icon">
-					</div>
-					<div class="feature-content">
-						<h4 class="feature-title">Стипендиальный фонд</h4>
-						<p class="feature-desc">Абсолютные знания о месте назначения
-							Мы стремимся учиться</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-4 col-lg-6 col-md-6">
-				<div class="single-feature-box box-2">
-					<div class="feature-icon">
-						<img src="{% static 'images/home-three/feature-icon22.png' %}" alt="feature-icon">
-					</div>
-					<div class="feature-content">
-						<h4 class="feature-title">Книжный магазин</h4>
-						<p class="feature-desc">Абсолютные знания о месте назначения
-							Мы стремимся учиться</p>
+			{% for acard in aboutus_card %}
+				<div class="col-xl-4 col-lg-6 col-md-6">
+					<div class="single-feature-box box-1">
+						<div class="feature-icon">
+							<img src="{{ acard.icon.url }}" alt="feature-icon">
+						</div>
+						<div class="feature-content">
+							<h4 class="feature-title">{{ acard.name }}</h4>
+							<p class="feature-desc">{{ acard.desc|safe }}</p>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-xl-4 col-lg-6 col-md-6">
-				<div class="single-feature-box box-3">
-					<div class="feature-icon">
-						<img src="{% static 'images/home-three/feature-icon23.png' %}" alt="feature-icon">
-					</div>
-					<div class="feature-content">
-						<h4 class="feature-title">Легкое онлайн-обучение</h4>
-						<p class="feature-desc">Абсолютные знания о месте назначения
-							Мы стремимся учиться</p>
-					</div>
-				</div>
-			</div>
+			{% endfor %}
 		</div>
 		<div class="feature-shape21">
 			<img src="{% static 'images/home-three/feature-shape21.png' %}" alt="shape">
@@ -318,7 +289,7 @@
 										<img src="{% static 'images/home-two/quote-icon21.png' %}" alt="quote">
 									</div>
 									<div class="testi-desc">
-										<p>{{ rev.desc }}</p>
+										<p>{{ rev.desc|safe }}</p>
 									</div>
 									<div class="testi-ratting">
 										<ul>
@@ -366,41 +337,15 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="brand-list2 owl-carousel">
-					<div class="col-lg-12">
-						<div class="single-brand-box">
-							<div class="brand-thumb">
-							   <img src="{% static 'images/home-three/brand-img1.png' %}" alt="brand">
+					{% for par in partner %}
+						<div class="col-lg-12">
+							<div class="single-brand-box">
+								<div class="brand-thumb">
+								<img src="{{ par.logo.url }}" alt="brand">
+								</div>
 							</div>
-						</div>
-					</div>				    
-					<div class="col-lg-12">
-						<div class="single-brand-box">
-							<div class="brand-thumb">
-								<img src="{% static 'images/home-three/brand-img2.png' %}" alt="brand">
-							</div>
-						</div>
-					</div>				   
-					<div class="col-lg-12">
-						<div class="single-brand-box">
-							<div class="brand-thumb">
-								<img src="{% static 'images/home-three/brand-img3.png' %}" alt="brand">
-							</div>
-						</div>
-					</div>	
-					<div class="col-lg-12">
-						<div class="single-brand-box">
-							<div class="brand-thumb">
-								<img src="{% static 'images/home-three/brand-img4.png' %}" alt="brand">
-							</div>
-						</div>
-					</div>	
-					<div class="col-lg-12">
-						<div class="single-brand-box">
-							<div class="brand-thumb">
-								<img src="{% static 'images/home-three/brand-img5.png' %}" alt="brand">
-							</div>
-						</div>
-					</div>				    				    			    
+						</div>				    
+					{% endfor %}    				    			    
 				</div>
 			</div>
 		</div>

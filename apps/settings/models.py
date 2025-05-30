@@ -93,3 +93,62 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.email}"
+    
+
+class AboutUs_blog(models.Model):
+    title = models.CharField(max_length=30, verbose_name='Заголовок')
+    under_title = models.CharField(max_length=30, verbose_name='Под заголовок')
+    desc = RichTextField(verbose_name='Описание')
+    advantage_first = models.CharField(max_length=100, verbose_name='Наши приемущества/сильные стороны')
+    advantage_second = models.CharField(max_length=100, verbose_name='Наши приемущества/сильные стороны', null=True, blank=True)
+    advantage_third = models.CharField(max_length=100, verbose_name='Наши приемущества/сильные стороны', null=True, blank=True)
+    experience = models.IntegerField(default=5, verbose_name='Количество лет опыта')
+    banner_first = models.ImageField(upload_to='home', verbose_name='Баннер')
+
+    def __str__(self):
+        return f'{self.title} {self.under_title}'
+    
+    class Meta:
+        verbose_name = 'AboutUs_blog'
+        verbose_name_plural = 'AboutUs_blogs'
+
+
+class AboutUs_card(models.Model):
+    icon = models.ImageField(upload_to='home', verbose_name='Иконка')
+    name = models.CharField(max_length=30, verbose_name='Заголовок')
+    desc = RichTextField(verbose_name='Короткое описание')
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name = 'AboutUs_card'
+        verbose_name_plural = 'AboutUs_cards'
+
+
+class AboutUs_life(models.Model):
+    title = models.CharField(max_length=30, verbose_name='Заголовок')
+    under_title = models.CharField(max_length=30, verbose_name='Под заголовок')
+    desc = RichTextField(verbose_name='Описание')
+    advantage_first = models.CharField(max_length=100, verbose_name='Наши приемущества/сильные стороны')
+    advantage_second = models.CharField(max_length=100, verbose_name='Наши приемущества/сильные стороны', null=True, blank=True)
+    advantage_third = models.CharField(max_length=100, verbose_name='Наши приемущества/сильные стороны', null=True, blank=True)
+    banner_first = models.ImageField(upload_to='home', verbose_name='Баннер')
+
+    def __str__(self):
+        return f'{self.title} {self.under_title}'
+    
+    class Meta:
+        verbose_name = 'AboutUs_life'
+        verbose_name_plural = 'AboutUs_lifes'
+
+class Partner(models.Model):
+    name = models.CharField(max_length=200, verbose_name='Название')
+    logo = models.ImageField(upload_to='home', verbose_name='logo')
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name = 'партнёр'
+        verbose_name_plural = 'Партнёры'

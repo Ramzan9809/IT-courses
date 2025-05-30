@@ -4,7 +4,8 @@ from django.http import JsonResponse
 import json
 
 from .forms import ContactForm
-from .models import Faq, Settings, Slider, Reviews, Purchase, ContactMessage
+from .models import (Faq, Settings, Slider, Reviews, Purchase, ContactMessage,
+                      AboutUs_blog, AboutUs_card, AboutUs_life, Partner)
 from apps.courses.models import Course, Video, Instructors, Category
 from apps.blogs.models import Blog
 from apps.events.models import Event
@@ -14,8 +15,12 @@ from .cart import Cart
 
 def home(request):
     settings = Settings.objects.latest('id')
+    partner = Partner.objects.all()
+    aboutus_life = AboutUs_life.objects.latest('id')
+    aboutus_blog = AboutUs_blog.objects.latest('id')
+    aboutus_card = AboutUs_card.objects.all()[:3]
     sliders = Slider.objects.all()[:2]
-    category = Category.objects.all()[:4]
+    category = Category.objects.all()
     faq = Faq.objects.all()[:3]
     event = Event.objects.all()[:3]
     reviews = Reviews.objects.all()
@@ -42,12 +47,16 @@ def home(request):
     context = {
         'settings': settings,
         'sliders': sliders,
+        'aboutus_blog': aboutus_blog,
+        'aboutus_life': aboutus_life,
+        'aboutus_card': aboutus_card,
         'course': course,
         'category': category,
         'faq': faq,
         'event': event,
         'reviews': reviews,
         'blog': blog,
+        'partner': partner,
         'instructor': instructor,
     }
     return render(request, 'index.html', context)
@@ -55,6 +64,8 @@ def home(request):
 
 def reviews(request):
     reviews = Reviews.objects.all()
+    partner = Partner.objects.all()
+
 
     for r in reviews:
         rating = float(r.rating)
@@ -67,13 +78,16 @@ def reviews(request):
         r.empty_stars = range(empty)
 
     context = {
+        'partner': partner,
         'reviews': reviews,
     }
     return render(request, 'pages/reviews.html', context) 
 
 def faq(request):
     faq = Faq.objects.all()
+    partner = Partner.objects.all()
     context = {
+        'partner': partner,
         'faq': faq,
     }
     return render(request, 'pages/faq.html', context)
@@ -103,6 +117,9 @@ def footer(request):
 
 
 def about(request):
+    aboutus_blog = AboutUs_blog.objects.latest('id')
+    aboutus_card = AboutUs_card.objects.all()[:3]
+    partner = Partner.objects.all()
     video = Video.objects.latest('id')
     course = Course.objects.latest('id')
     instructor = Instructors.objects.all()
@@ -118,6 +135,9 @@ def about(request):
     course.empty_stars = range(empty)
 
     context = {
+        'partner': partner,
+        'aboutus_blog': aboutus_blog,
+        'aboutus_card': aboutus_card,
         'video': video,
         'course': course,
         'instructor': instructor,
@@ -153,9 +173,11 @@ def cart_clear(request):
 
 def cart_detail(request):
     cart = Cart(request)
+    partner = Partner.objects.all()
     category = Category.objects.all()[:6]
     context = {
         'cart': cart,
+        'partner': partner,
         'category': category,
         'cart_total_quantity': sum(item['quantity'] for item in cart),
         'cart_total_price': sum(float(item['price']) * item['quantity'] for item in cart),
@@ -165,6 +187,7 @@ def cart_detail(request):
 
 def checkout_view(request):
     category = Category.objects.all()[:6]
+    partner = Partner.objects.all()
     cart = Cart(request)
 
     if request.method == 'POST':
@@ -175,6 +198,7 @@ def checkout_view(request):
 
     context = {
         'category': category,
+        'partner': partner,
         'cart': cart,
         'cart_total_price': cart.get_total_price(),
     }

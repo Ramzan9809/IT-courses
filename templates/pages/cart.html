@@ -222,41 +222,15 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="brand-list2 owl-carousel">
-					<div class="col-lg-12">
-						<div class="single-brand-box">
-							<div class="brand-thumb">
-							   <img src="{% static 'images/home-three/brand-img1.png' %}" alt="brand">
+					{% for par in partner %}
+						<div class="col-lg-12">
+							<div class="single-brand-box">
+								<div class="brand-thumb">
+								<img src="{{ par.logo.url }}" alt="brand">
+								</div>
 							</div>
-						</div>
-					</div>				    
-					<div class="col-lg-12">
-						<div class="single-brand-box">
-							<div class="brand-thumb">
-								<img src="{% static 'images/home-three/brand-img2.png' %}" alt="brand">
-							</div>
-						</div>
-					</div>				   
-					<div class="col-lg-12">
-						<div class="single-brand-box">
-							<div class="brand-thumb">
-								<img src="{% static 'images/home-three/brand-img3.png' %}" alt="brand">
-							</div>
-						</div>
-					</div>	
-					<div class="col-lg-12">
-						<div class="single-brand-box">
-							<div class="brand-thumb">
-								<img src="{% static 'images/home-three/brand-img4.png' %}" alt="brand">
-							</div>
-						</div>
-					</div>	
-					<div class="col-lg-12">
-						<div class="single-brand-box">
-							<div class="brand-thumb">
-								<img src="{% static 'images/home-three/brand-img5.png' %}" alt="brand">
-							</div>
-						</div>
-					</div>				    				    			    
+						</div>				    
+					{% endfor %}    				    			    
 				</div>
 			</div>
 		</div>

@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Slider, Settings, Faq, Reviews, Purchase, ContactMessage
+from .models import (Slider, Settings, Faq, Reviews, Purchase, ContactMessage, 
+                     AboutUs_blog, AboutUs_card, AboutUs_life, Partner)
+from apps.courses.models import Video
 
 
 class PurchaseAdmin(admin.ModelAdmin):
@@ -17,6 +19,10 @@ class ContactMessageAdmin(admin.ModelAdmin):
     search_fields = ('first_name', 'last_name', 'email', 'phone', 'message')
 
 
+admin.site.register(Partner)
+admin.site.register(AboutUs_life)
+admin.site.register(AboutUs_card)
+admin.site.register(AboutUs_blog)
 admin.site.register(ContactMessage, ContactMessageAdmin)
 admin.site.register(Purchase, PurchaseAdmin)
 admin.site.register(Reviews)

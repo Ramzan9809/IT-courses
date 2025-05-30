@@ -38,11 +38,11 @@
 				<div class="header-logo">
 					{% if settings.logo %}
 					<a class="active_logo" href="{% url "home" %}">
-						<img src="{{settings.logo_2.url }}" width="80px" alt="logo">
+						<img src="{{settings.logo_2.url }}" width="100%" alt="logo">
 					</a>
 					{% else %}
 					<a class="logo_two" href="{% url "home" %}">
-						<img src="{% static 'images/footer-logo.png' %}" width="80px"  alt="logo">
+						<img src="{% static 'images/footer-logo.png' %}" width="100%"  alt="logo">
 					</a>
 					{% endif %}
 				</div>

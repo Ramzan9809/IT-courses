@@ -137,45 +137,19 @@
 <div class="brand-area style-one inner">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-5">
-				<div class="section-sub-title">
-					<h6>Наши партнёры</h6>
-				</div>
-				<div class="section_title">
-					<h1>Наши надежные партнеры</h1>
-				</div>
-			</div>
-			<div class="col-lg-7">
-				<div class="brand-list owl-carousel">
-					<div class="col-lg-12">
-						<div class="single-brand-box">
-							<div class="brand-thumb">
-							   <img src="{% static 'images/inner-img/brand-inner1.png' %}" alt="brand">
+			<div class="col-lg-12">
+				<div class="brand-list2 owl-carousel">
+					{% for par in partner %}
+						<div class="col-lg-12">
+							<div class="single-brand-box">
+								<div class="brand-thumb">
+								<img src="{{ par.logo.url }}" alt="brand">
+								</div>
 							</div>
-						</div>
-					</div>				    
-					<div class="col-lg-12">
-						<div class="single-brand-box">
-							<div class="brand-thumb">
-								<img src="{% static 'images/inner-img/brand-inner2.png' %}" alt="brand">
-							</div>
-						</div>
-					</div>				   
-					<div class="col-lg-12">
-						<div class="single-brand-box">
-							<div class="brand-thumb">
-								<img src="{% static 'images/inner-img/brand-inner3.png' %}" alt="brand">
-							</div>
-						</div>
-					</div>				    				    			    
+						</div>				    
+					{% endfor %}    				    			    
 				</div>
 			</div>
-		</div>
-		<div class="brand-arrow-shape">
-			<img src="{% static 'images/home-one/brand-arrow.png' %}" alt="arrow">
-		</div>
-		<div class="brand-star-shape">
-			<img src="{% static 'images/home-one/brand-star.png' %}" alt="star">
 		</div>
 	</div>
 </div>
